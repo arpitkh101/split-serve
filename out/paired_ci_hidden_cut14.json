@@ -1,0 +1,29 @@
+{
+  "pipe_self_minus_pipe_4b": {
+    "point": -0.32636445806692826,
+    "ci95": [
+      -0.4743243552243114,
+      -0.19296341722751884
+    ],
+    "y_better": 21,
+    "what": "value of the 4B (residual + KV)"
+  },
+  "1.7B_minus_pipe_4b": {
+    "point": 7.38466728043745,
+    "ci95": [
+      6.332013166954213,
+      8.633232318882053
+    ],
+    "y_better": 64,
+    "what": "gain over untrained 1.7B"
+  },
+  "4B_minus_pipe_4b": {
+    "point": 4.218451540565757,
+    "ci95": [
+      3.463058999713128,
+      5.096727924020559
+    ],
+    "y_better": 61,
+    "what": "vs untrained 4B (negative = pipeline better)"
+  }
+}
