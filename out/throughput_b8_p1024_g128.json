@@ -1,0 +1,35 @@
+[
+  {
+    "cond": "replicated",
+    "batches": 12,
+    "batch": 8,
+    "prompt": 1024,
+    "gen": 128,
+    "wall_s": 32.37809565849602,
+    "gen_tok_s": 379.51583470523303,
+    "req_s": 2.964967458634633,
+    "decode_idle_s": null
+  },
+  {
+    "cond": "disagg-17b",
+    "batches": 12,
+    "batch": 8,
+    "prompt": 1024,
+    "gen": 128,
+    "wall_s": 66.72721619904041,
+    "gen_tok_s": 184.1527445614719,
+    "req_s": 1.4386933168864993,
+    "decode_idle_s": 5.794299840927124
+  },
+  {
+    "cond": "disagg-4b",
+    "batches": 12,
+    "batch": 8,
+    "prompt": 1024,
+    "gen": 128,
+    "wall_s": 68.50323789007962,
+    "gen_tok_s": 179.37838237248494,
+    "req_s": 1.4013936122850386,
+    "decode_idle_s": 7.265514338389039
+  }
+]
