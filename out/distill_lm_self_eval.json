@@ -1,0 +1,7 @@
+{
+  "tag": "lm_self_eval",
+  "eval_of": "v2_k1_full_h0_self",
+  "source": "17b",
+  "ppl": 11.337589263916016,
+  "kl_to_4b": 0.7071397011168301
+}
