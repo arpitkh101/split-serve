@@ -1,0 +1,29 @@
+{
+  "self_minus_bridge": {
+    "point": -1.0311372644786747,
+    "ci95": [
+      -1.26567732947959,
+      -0.824617569317377
+    ],
+    "y_better_chunks": 5,
+    "what": "value of the 4B cache"
+  },
+  "1.7B_minus_bridge": {
+    "point": 6.767268636924218,
+    "ci95": [
+      5.756942722420542,
+      7.953626133923345
+    ],
+    "y_better_chunks": 64,
+    "what": "gain over untrained 1.7B"
+  },
+  "bridge_minus_4B": {
+    "point": -3.60674961865098,
+    "ci95": [
+      -4.457249999908208,
+      -2.8853032386562765
+    ],
+    "y_better_chunks": 2,
+    "what": "distance to untrained 4B"
+  }
+}

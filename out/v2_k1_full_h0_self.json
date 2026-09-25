@@ -1,0 +1,15 @@
+{
+  "tag": "k1_full_h0_self",
+  "k": 1,
+  "rank": 0,
+  "hidden": "0",
+  "source": "17b",
+  "share_heads": false,
+  "random_init": false,
+  "uniform": false,
+  "steps": 3000,
+  "params_M": 14.737408,
+  "ridge_r2": 0.999940469322579,
+  "step0": 19.140399932861328,
+  "final": 11.337589263916016
+}

@@ -1,0 +1,16 @@
+{
+  "tag": "k1h256_self",
+  "seed": 0,
+  "k": 1,
+  "rank": 0,
+  "hidden": "256",
+  "source": "17b",
+  "share_heads": false,
+  "random_init": false,
+  "uniform": false,
+  "steps": 3000,
+  "params_M": 18.414592,
+  "ridge_r2": 0.999940469322579,
+  "step0": 19.140399932861328,
+  "final": 11.375653266906738
+}

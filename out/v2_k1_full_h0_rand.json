@@ -1,0 +1,15 @@
+{
+  "tag": "k1_full_h0_rand",
+  "k": 1,
+  "rank": 0,
+  "hidden": "0",
+  "source": "4b",
+  "share_heads": false,
+  "random_init": true,
+  "uniform": false,
+  "steps": 3000,
+  "params_M": 14.737408,
+  "ridge_r2": NaN,
+  "step0": 38399036.0,
+  "final": 837.2019653320312
+}

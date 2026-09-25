@@ -1,0 +1,16 @@
+{
+  "tag": "k1s3",
+  "seed": 3,
+  "k": 1,
+  "rank": 0,
+  "hidden": "0",
+  "source": "4b",
+  "share_heads": false,
+  "random_init": false,
+  "uniform": false,
+  "steps": 3000,
+  "params_M": 14.737408,
+  "ridge_r2": 0.4467381447040583,
+  "step0": 587.8901977539062,
+  "final": 12.35256290435791
+}

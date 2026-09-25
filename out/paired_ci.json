@@ -1,0 +1,32 @@
+{
+  "bridge_self_minus_bridge_4b": {
+    "point": 1.0653640129874695,
+    "ci95": [
+      0.6384942925465993,
+      1.4553587697836496
+    ],
+    "b_better_chunks": 59,
+    "n": 64,
+    "what": "value of the 4B's cache, same stitch"
+  },
+  "1.7B_minus_4B": {
+    "point": 3.160519018273238,
+    "ci95": [
+      2.5624904158007054,
+      3.8148354147139467
+    ],
+    "b_better_chunks": 60,
+    "n": 64,
+    "what": "untrained gap"
+  },
+  "4B_minus_bridge_4b": {
+    "point": 3.161619486901193,
+    "ci95": [
+      2.31092057512401,
+      4.095353461296275
+    ],
+    "b_better_chunks": 55,
+    "n": 64,
+    "what": "trained 4B-bridge vs untrained 4B"
+  }
+}

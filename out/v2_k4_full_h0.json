@@ -1,0 +1,13 @@
+{
+  "tag": "k4_full_h0",
+  "k": 4,
+  "rank": 0,
+  "hidden": "0",
+  "source": "4b",
+  "share_heads": false,
+  "steps": 3000,
+  "params_M": 58.7776,
+  "ridge_r2": 0.6082167631552443,
+  "step0": 66.81974792480469,
+  "final": 12.203462600708008
+}

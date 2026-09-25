@@ -1,0 +1,14 @@
+{
+  "tag": "k4_r16_h128_rand",
+  "k": 4,
+  "rank": 16,
+  "hidden": "128",
+  "source": "4b",
+  "share_heads": false,
+  "random_init": true,
+  "steps": 3000,
+  "params_M": 9.235968,
+  "ridge_r2": NaN,
+  "step0": 227027.546875,
+  "final": 14.341620445251465
+}
