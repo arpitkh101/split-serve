@@ -41,7 +41,7 @@ class GraphedBridge:
 
 @torch.inference_mode()
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--tag", default="reskv_4b"); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument("--tag", default="reskv_4b"); ap.add_argument("--lengths", default="256,1024,4096"); a = ap.parse_args()
     m4, m17 = load(C.PREFILL_MODEL), load(C.DECODE_MODEL)
     maps, Lc, _ = R.load_maps(a.tag); maps = maps.to(torch.bfloat16)
     R.DEV = DEV
@@ -50,7 +50,7 @@ def main():
         m = maps.maps[l]; x = torch.cat([H[j][0] for j in m.src], -1); return m(x)
     maps.forward = fwd
     rows = []
-    for T in (256, 1024, 4096):
+    for T in [int(x) for x in a.lengths.split(",")]:
         ids = torch.randint(0, 150000, (1, T), device=DEV)
         pre4 = timed(lambda: m4(input_ids=ids, output_hidden_states=True, use_cache=False))
         pre17 = timed(lambda: m17(input_ids=ids, use_cache=True))

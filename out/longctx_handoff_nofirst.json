@@ -1,0 +1,3018 @@
+{
+ "2048": {
+  "reskv:kl_4b_c28": {
+   "em": 0.114,
+   "f1": 0.23377838821060573,
+   "contains": 0.244,
+   "n": 500,
+   "per": [
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.12500000000000003,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.19999999999999998,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.28571428571428575,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.08,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.2,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.125,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3076923076923077,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3333333333333333,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3636363636363636,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.36363636363636365,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.2857142857142857,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5714285714285715,
+     0.0
+    ],
+    [
+     0.0,
+     0.1818181818181818,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.28571428571428575,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.14285714285714288,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.22222222222222224,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.16666666666666669,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.14285714285714288,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.15384615384615385,
+     0.0
+    ],
+    [
+     0.0,
+     0.3636363636363636,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.1818181818181818,
+     0.0
+    ],
+    [
+     0.0,
+     0.6153846153846153,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3333333333333333,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.5555555555555556,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3636363636363636,
+     1.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3636363636363636,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.15384615384615385,
+     1.0
+    ],
+    [
+     0.0,
+     0.16666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.13333333333333336,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.15384615384615385,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.25,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.75,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.19999999999999998,
+     1.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8571428571428571,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.35294117647058826,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.28571428571428575,
+     0.0
+    ],
+    [
+     0.0,
+     0.16666666666666669,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3333333333333333,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.16666666666666669,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.18181818181818182,
+     1.0
+    ],
+    [
+     0.0,
+     0.10526315789473685,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666665,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.28571428571428575,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     0.0,
+     0.13333333333333333,
+     0.0
+    ],
+    [
+     0.0,
+     0.8571428571428571,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.26666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5714285714285715,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2857142857142857,
+     1.0
+    ],
+    [
+     0.0,
+     0.6153846153846153,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.25,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.1818181818181818,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.25,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3333333333333333,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     0.0,
+     0.7272727272727273,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3333333333333333,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2857142857142857,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.30769230769230765,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.23529411764705882,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.3076923076923077,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.26666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0689655172413793,
+     0.0
+    ],
+    [
+     0.0,
+     0.3333333333333333,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.18181818181818182,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.11764705882352941,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3076923076923077,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4615384615384615,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4444444444444445,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.30769230769230765,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.1818181818181818,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.42857142857142855,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.23529411764705882,
+     0.0
+    ],
+    [
+     0.0,
+     0.631578947368421,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.14285714285714285,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2,
+     0.0
+    ],
+    [
+     0.0,
+     0.8571428571428571,
+     0.0
+    ],
+    [
+     0.0,
+     0.2857142857142857,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.18181818181818182,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4615384615384615,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2666666666666667,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3333333333333333,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.42857142857142855,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.18181818181818182,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2666666666666667,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4615384615384615,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.2,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "preds": [
+    "1922",
+    "\"Hey Pa! There's a Goat on the Roof\" was released in",
+    "The Fyre Festival was held in the Bahamas in 2017 and",
+    "Claudio L\u00f3pez",
+    "The Big Picture (2017) is a 2017",
+    "2002",
+    "India",
+    "The BayArena is a football stadium located in Leverkusen, Germany",
+    "The answer is not known",
+    "The city of Alba Longa was the capital of the Roman province of Al",
+    "1999",
+    "The answer is: 1",
+    "Tennis",
+    "The UFC champion",
+    "The genus Brabejum has more individual species than the genus Marsilea",
+    "Vigilant Systems, Inc",
+    "The University of California, San Diego (UCSD) is a public university located",
+    "The Living Daylights (1985) is the 14th",
+    "games",
+    "Rockstar Games",
+    "The European Environment Agency (EEA) is a member of the European Union (",
+    "(1) 1930s: The 1930",
+    "The Labrador Retriever is a type of gun dog, not a member of",
+    "1",
+    "The Thomas Jefferson Memorial in Washington, D.C",
+    "The Collegiate School of St Peter is a school for boys and girls, and",
+    "The 2015 CrossFit Games were held at the StubHub Center",
+    "The President of the United States",
+    "2012",
+    "The Minnesota Vikings quarterback, Brett Favre, holds the record for the most career",
+    "Stapleton Cotton",
+    "The SpongeBob SquarePants TV Show is a television series created by Stephen Hill",
+    "The Las Vegas Outlaws, the New York Jets, the New York Giants,",
+    "2017",
+    "(1) 1968: The first time that the film was",
+    "The film industry",
+    "The genus Chamelaucium is a group of about 400 species",
+    "The Big Shot",
+    "The Adventures of Huckleberry Finn",
+    "Alan Turing",
+    "The author of the novel is not known, but the novel was published in",
+    "1990s",
+    "The answer is not known",
+    "Alachua County, Florida",
+    "The Hard Way (1991 film) is a 199",
+    "The genus D",
+    "The answer is: 1",
+    "The Seduction of Hillary Rodham",
+    "The current holder of the PFA Young Player of the Year award is Dele",
+    "1961",
+    "The southernmost administrative region of Denmark is the region of Region Zealand, which is",
+    "The Big Lebowski",
+    "(1) Yanka Dyagileva was born in 196",
+    "(The answer is not provided in the documents.)",
+    "The town of Antelope, Kansas, was named after the antelope",
+    "(1) The Barton Mine is located in the United States of America",
+    "March 25 , 2015 ",
+    "(Hank Azaria)",
+    "The answer is: 1",
+    "The Kanichee Mine was the first to be discovered in 191",
+    "The star of \"I Love Lucy\" was described as \"a woman of great",
+    "Robin Gibb",
+    "John II Jagie\u0142\u0142o",
+    "The Indian government has given the handicraft a Geographical Indication (GI)",
+    "The son of Bob Tisch, who was the co-owner of the New York",
+    "John Sullivan",
+    "The Monarchs are a team in the National Basketball Association (NBA) and",
+    "2011-07-07 17:0",
+    "The 38th Battalion (Ottawa, CEF) was disb",
+    "1990s",
+    "The song \"Shukratara\" by Arun Date was adjudged as",
+    "Kassie DePaiva",
+    "The Wynn Resort and Casino is a luxury resort and casino located in Las Vegas",
+    "The answer is not in the text",
+    "indoor ski slope",
+    "The hamlet of Boght Corners is located in the town of Colonie",
+    "The manager of Aston Villa was replaced in 1990 by the then",
+    "The Show Must Go On (play) is a play by K\u014dki Mit",
+    "1964",
+    "No, they are not",
+    "No, they were not both English",
+    "No, they were not",
+    "Cuyler Reynolds",
+    "(1) 1990s: The 1990",
+    "1987",
+    "The State Capitol in Saint Paul, Minnesota",
+    "Muppet Treasure Island is the first movie to be released in the series, and",
+    "The Two Souls of Socialism",
+    "1988",
+    "The 2017 Los Angeles Chargers season was the first season under head",
+    "(The answer is not provided in the document.)",
+    "The city of Sault Ste",
+    "Grand Valley State University is located in the United States",
+    "The answer is not available",
+    "Imelda Marcos",
+    "The answer is not in the documents provided",
+    "The Braxtons (film)",
+    "The answer is not known",
+    "The Crown",
+    "The Monster (2013) is the fourth single from Eminem's",
+    "The disease is not specified in the text",
+    "The Frost Place, located in the suburb of Cranston, Rhode Island, is",
+    "1941",
+    "1987",
+    "The new permanent member on the fourteenth season of So You Think You Can Dance",
+    "16 miles (26 km) long",
+    "550",
+    "Casey Brock (Chadwick)",
+    "The answer is:",
+    "Francisco Antonio de la Sant\u00edsima Trinidad de Bol\u00edvar y P\u00e1ez",
+    "Ribhu Dasgupta",
+    "1907",
+    "The English translation of the noodle is \"feu\" (French for \"",
+    "1981",
+    "The United Kingdom",
+    "The Austro-Hungarian Military was the military of the Dual Monarchy,",
+    "The film \"Medicine\" is a standalone song by The 197",
+    "The Netherlands",
+    "The primary duty of the Austrian Pinscher and the Maremma Sheepdog is to",
+    "The Simpsons Spin-Off Showcase is a 24 episode television series that features",
+    "1914",
+    "(1986)",
+    "The IFFHS World Best Club Coach is an award given annually to the most",
+    "U.S",
+    "The United States Army (US Army) is the branch of the United States military",
+    "The band Social Code was formed in 1999, and the band",
+    "The publisher of \"Finnegans Wake\" is the same as the publisher",
+    "(1) 1975: The first issue of the magazine was",
+    "Mario Girolami was born in 1914, and Daniel My",
+    "The University of California, Berkeley is older than Syracuse University",
+    "The answer is:",
+    "The answer is not known",
+    "the United States of America",
+    "The film Ithu Engalai is a Tamil film directed by S",
+    "1945-03-09 (March 9,",
+    "David Dunn",
+    "The answer is not available",
+    "3 years",
+    "(1) 1940s-1950s:",
+    "The song \"Don't Hurt Yourself\" is a song by American singer Beyonc\u00e9",
+    "King Duncan",
+    "The Frog Prince",
+    "The Eden Valley Railway",
+    "Alexander Borodin",
+    "The Second Battle of Bull Run was fought first, and the Battle of Cold Harbor",
+    "The Heartbreak Kid (1973) is a 197",
+    "The Centurions (TV series) : The Centurions (TV series",
+    "The 2015 Africa Magic Viewers' Choice Awards were held on",
+    "The 2003 Christmas film Love Actually was released on 24",
+    "The Bachelor was based on the novel \"Dr",
+    "The Diamond",
+    "John Gielgud",
+    "The case of Reynolds v",
+    "1978",
+    "The University of St Andrews is a public research university located in St Andrews, F",
+    "The answer is not available",
+    "Bayport",
+    "The Kingdom of the Isles",
+    "(1) 1995: The film \"Welcome to the Doll",
+    "The Nusretiye Mosque is unique for retaining a Baroque style of",
+    "Rafael M\u00e1rquez",
+    "1907",
+    "The crash site was in the town of Somerset, Pennsylvania, United States of America",
+    "The 2007 World Wrestling Entertainment (WWE) draft was held",
+    "Masa Takayama",
+    "The goddess associated with the goddess Frigg is the goddess Hl\u00edn",
+    "The Ford Mustang II concept car was the first of the Ford Mustang series to be",
+    "The American television series \"Agent Carter\" is a spin-off of the Marvel Cin",
+    "The Firth of Clyde",
+    "The Red Butte Creek oil spill occurred in 2010 when a",
+    "Armin Meiwes",
+    "The answer is not available",
+    "The Church of England's Oxford Movement was opposed by a clergyman who wrote what",
+    "15,000",
+    "The 2014 edition of the MTV Africa Music Awards was hosted by",
+    "London, England",
+    "The United States of America, the United Kingdom, and the United States of the",
+    "The home of the common party is the United States of America",
+    "The Virgilia genus is found in Africa and in the Southern Hemisphere, and",
+    "The Lady Day is the first published magazine in the United States, and was published",
+    "Fennec fox",
+    "The business of Waring & Gillow was dissolved in 1938",
+    "The 39th United States President, George H",
+    "Nate Albert",
+    "1,200,000 barrels of oil per day",
+    "The Kilby International Awards were named after Jack Kilby, an American electrical engineer",
+    "Richard Nixon",
+    "The Killing of a Sacred Deer",
+    "Hern\u00e1n Crespo",
+    "1996",
+    "Albert Gallatin",
+    "The movie \"Queen of Blood\" was released in 1968,",
+    "Richard Bachman",
+    "William Maldonado \"Bill\" Woodfull",
+    "The State of Nevada",
+    "Dire Straits",
+    "World War I",
+    "13 billion dollars",
+    "(1) 1998: The Young Turks (2)",
+    "The Schumann\u2013Runge bands are named after the German mathematician and physicist",
+    "The WB drama series \"Charmed\" (1998\u201320",
+    "Gregg Popovich",
+    "(1) 1999-2000: The band",
+    "The composer's name is written in the first person in the text",
+    "The answer is: The football club that plays in the area between the old toll",
+    "The University at Albany, SUNY, is a public research university located in Albany",
+    "The Big 12 Conference",
+    "11",
+    "The United States Peace Index (USPI) is a measurement of American States and",
+    "The actor who played the role of the character in the web series Red Bird is",
+    "The company is known as \"SoftICE\" and is a registered trademark of Nu",
+    "Old German Shepherd",
+    "The Light Princess (French: La Princesse de Paris) is a French",
+    "1999",
+    "The genus Othona is the only genus in the family Othona,",
+    "The Million Dollar Duck is a comedy film",
+    "A",
+    "The rule of three is a writing technique that is often used in various kinds of",
+    "10 miles",
+    "The Four III (Chinese: \u56db\u5927\u540d\u6355 3 ; 4",
+    "The Price of Peace (1995) is a 199",
+    "(1) 1960s and 1970s",
+    "The Birds (1963)",
+    "The most decorated African player of all time, Samuel Eto'o, was born",
+    "The Battle of Bunker Hill is named after the hill in Charlestown,",
+    "The Muppet Christmas Carol is older than Bedknobs and Broomsticks",
+    "The 2012 NBA 2K16 game featured a cover",
+    "The 2017 Grammy Award for Best Pop Vocal Album was won by",
+    "The 1990s were a decade of great change for the NFL",
+    "The Mindy Project (2012\u20132014) is",
+    "(Kieron Moore)",
+    "Pulitzer Prize for Poetry",
+    "Eric Whitacre",
+    "1981",
+    "Brad Pitt",
+    "Al-Masjid an-Nabawi",
+    "The answer is not known",
+    "The Kingdom of Bohemia, also referred to by the name of the country,",
+    "USAC",
+    "The Rockefeller family is the family of William Avery Rockefeller, who was the founder of",
+    "1975",
+    "The Kung Fu Man is a 2012 Chinese-American Kung",
+    "The 1960s were a time of great change for the music",
+    "2027 Fairmount Avenue, North, in the Fairmount section",
+    "The Muffins (1998) is a song by the American",
+    "The usual main ingredient of H\u00e1karlur is the Greenland shark (Somn",
+    "The band At the Drive-In and the band Muse are both rock bands",
+    "The voice actress in the animated film Alpha and Omega is the same as the voice",
+    "The answer is not known",
+    "\"The Red Queen's Race\" is a science fiction short story that was first",
+    "(1) 1939: The first of the 19",
+    "The Atlantic Ocean is the body of water that surrounds the United States and its territories",
+    "The answer is not known",
+    "The film \"Elephant\" was directed by Gus Van Sant and written by the",
+    "Timothy Dalton",
+    "The answer is: 1",
+    "Atlantic Coast Conference (ACC)",
+    "The Real Real (2016 film)",
+    "The actress who made her film debut in the 2014 film",
+    "1946",
+    "(1) 1998: The year in which the company was",
+    "Subway",
+    "(1) 1940s-1950s:",
+    "The length of an episode for the show that Jose Maria del R\u00edo is a",
+    "SARS",
+    "The Waterpark at SeaWorld San Antonio is the first waterpark in the United",
+    "The Royal Family (1998)",
+    "1827",
+    "The World's Greatest Super Heroes (1998) is a 1",
+    "Leslie S",
+    "The University of New Haven is a public university located in West Haven, Connecticut,",
+    "I Am Furious (Yellow)",
+    "The 14th Lord Napier, 14th Lord Napier",
+    "(1) Tionne Watkins and (2) Park Soyeon are",
+    "The answer is: 1982, 1983,",
+    "(1) 1969 Australian Open \u2013 (2) 1",
+    "The Grammy Award for Best Pop Group",
+    "140 million records worldwide",
+    "The answer is: 1",
+    "(1) 1999-2000: The first",
+    "The answer is: 1",
+    "1993 (1993) is the year in which",
+    "The Firth of Forth Site of Scientific Interest (SSSI) is a",
+    "Political correctness",
+    "Both are names of plants",
+    "the Wailing (2009 film)",
+    "The Other Magpie was a wild and attractive woman who fought in the Battle of",
+    "1973",
+    "James Packer",
+    "Both Arbutus and Aspidistra are flowering plants in the family Ericace",
+    "Mako",
+    "South America",
+    "The Handmaid's Tale",
+    "South Yarra",
+    "2016",
+    "2004",
+    "The Devil's Advocate (1997 film) is a 19",
+    "The answer is not available",
+    "The Pogues' song \"The Longplayer\" is a tribute to J",
+    "The Teen Titans (2003\u20132006) is a",
+    "2012",
+    "1945",
+    "\"Boz\"",
+    "The answer is: The largest film production company in Hong Kong is the Shaw Brothers",
+    "The 2002 population of Suining was 520,",
+    "The Las Vegas Strip in Paradise, Nevada, United States of America",
+    "The answer is not available in the provided documents",
+    "1947",
+    "The producer of \"Live By Night\" is the same as the producer of \"",
+    "The two businesses are considered to be the most important in the country",
+    "1996",
+    "The Southern State Parkway",
+    "The answer is: Sam Neill",
+    "The Baseball Writers' Association of America (BBWAA) is a professional organization",
+    "The answer is not available in the provided documents",
+    "The King of Anuradhapura (Anuradhapura) was",
+    "The So Low Project",
+    "James Franco",
+    "The original version of Dawn of the Dead was directed by George A",
+    "The Salzkammergut is a resort area located in Austria",
+    "The answer is: 1928, 1929,",
+    "The film is a romantic comedy and is set in the 1970",
+    "The film was released in 1935 and was the first film to",
+    "The answer is not the 53rd United States Secretary of the Treasury,",
+    "Thomas Jefferson",
+    "The song \"Love the Way You Lie\" was written by Alexander Grant and was",
+    "The British Liberal Party",
+    "The League of the Three Emperors (German: Drei Kaiserabkommen",
+    "The answer is not known",
+    "The most numerous species in the genus is the species \"Osmunda spectabil",
+    "James Earl Jones",
+    "The actress who played the role of the main character in the 201",
+    "Musician and producer",
+    "(1) The Supreme Court of the United States is the judicial branch of the",
+    "(1) 1990s: The 1990",
+    "F",
+    "The answer is not available",
+    "The answer is: Wushu Sansha (Wushu Sanda)",
+    "Both are served over ice, and the drink is made with tonic water",
+    "1945",
+    "Robert Thornby was born in 1888, and Mark Steven Johnson",
+    "The character of the monster in \"Monsters, Inc.\" is voiced by Jim",
+    "J",
+    "The answer is not known",
+    "The Florida Panthers are a professional ice hockey team based in the Miami metropolitan area",
+    "The state of Arata is a municipality in the state of Bahia in the",
+    "The Dying Fetus and Fallujah are both American death metal bands",
+    "The band rose to prominence in the early 1970s, and",
+    "1935",
+    "The Walt Disney Company",
+    "Tricia Helfer",
+    "The first direct challenge to teaching intelligent design first aired on the National Public Radio (",
+    "John William Henry is older than Jed Hoyer",
+    "The song \"Take Me\" is a song by Frank Sinatra with the Tommy Dor",
+    "2014\u201315 season",
+    "The actress who played the role of the main character in the film is the same",
+    "The company is now known as Orica, and the building is now known as",
+    "The answer is not available",
+    "The city of Lincoln is located in the United Kingdom, and is the county town",
+    "He was the first chairman of the New York Stock Exchange and the first chairman of",
+    "1,000,000",
+    "1986",
+    "(1) 1940s-1950s:",
+    "(1) The Roman Catholic Church is a Christian church that is part of the",
+    "(1) 1940s-1950s:",
+    "1977",
+    "The 1979 Tony Award for Best Lighting Design for \"Evita",
+    "11",
+    "The Danish West Indies (Dansk Westindien) was a Danish colony in",
+    "No, the flowering plants are not in the same family as the non-flowering",
+    "W",
+    "The series in which Sharon Gless played Debbie Novotny was developed and written",
+    "10",
+    "1845",
+    "The film was released on 21 May 1999",
+    "1995",
+    "The Searchers",
+    "(1998) 1998 1998",
+    "The Multinational Monitor has more issues per month than In These Times ",
+    "(1) 1945: The United States entered World War II",
+    "The answer is: 1",
+    "150 miles west of the capital of Lithuania, the city of Tr",
+    "The United Kingdom",
+    "No",
+    "The game was developed by Jordan Mechner and published by Br\u00f8derbund",
+    "The French Hotchkiss M1914 machine gun, also known as",
+    "1997",
+    "(1) 1912: The first major text on Cubism",
+    "1940",
+    "19",
+    "The answer is: 1999",
+    "Hebraic",
+    "Ordos City",
+    "The Big Lebowski (1998) is a cult film directed",
+    "tenure",
+    "(1) The Fish House is a historic building in the city of Key West",
+    "The 2007 film \"Zoo\" was released in the United",
+    "1999",
+    "Minnesota State University Mankato (MSU) is a public university located in",
+    "1995\u20131996",
+    "The Dead Milkmen were a British punk rock band formed in 198",
+    "40 million",
+    "The film \"The Hunchback of Notre Dame\" (1939",
+    "Heir to the Empire",
+    "The cities of Beitun, Xinjiang and Wafangdian are all",
+    "The Golden Globe Award for Best Actor in a Leading Role",
+    "John Wesley",
+    "The band Dirty Pretty Things were formed in 2005 by former Libert",
+    "(1) 1999-2000: The first",
+    "The Power of Madonna",
+    "Thomas Friedman has won more Pulitzer Prizes than any other person in the history of",
+    "The Golden Globe Award for Best Supporting Actress was won by Kim Cattrall in",
+    "The body converts the psychedelic compounds into the active form of the drug, which is",
+    "PPA (Pattugliatore Polivalente d'Altura)",
+    "The Church at Hoxne was dedicated to Edmund the Martyr, who was",
+    "The answer is: 1",
+    "The film \"Johnny Angel\" was released in 1945 and was",
+    "William Henry Harrison (1734\u20131805) was the",
+    "The county seat of the county in which Keokuk, Oklahoma is located is",
+    "The founder of the orchestra is a man of the people, a man who has",
+    "1994",
+    "Alcoholic beverages are served in the pubs, and the pubs are known for their",
+    "(1) 1930s: 1930s",
+    "Ohio River",
+    "The band's name is a play on the phrase \"rock 'n' roll",
+    "The genus Bactris has more species than the genus Epigaea",
+    "The answer is: 1",
+    "The 1993 Tehran mid-air collision occurred on 28 February",
+    "2003",
+    "The answer is not the same as the question",
+    "Panthera pardus",
+    "The Pirates Plunge is the first flume ride in Ireland, and the first",
+    "The 1981 Georgia Tech Yellow Jackets football team was led by head",
+    "The answer is: 1",
+    "1993",
+    "The movie \"Supergirl\" (2014) is the first",
+    "1,174,000",
+    "The Distant Sound",
+    "1",
+    "The Walking Dead",
+    "The current governor of the state of South Dakota is Dennis Daugaard",
+    "The Likwit Crew is a hip hop collective that was founded by King Tee who",
+    "No",
+    "The airport code for the airport is EYVI",
+    "freedom and democracy",
+    "The genus Polypodium has 75\u2013100 species, while",
+    "The Salvation Army",
+    "The film industry of the Russian Federation (Russian: \u0424\u0438\u043b\u044c\u043c\u043e\u0432\u0430\u044f \u043f\u0440\u043e\u043c",
+    "The United States Supreme Court in Kessler v",
+    "1945",
+    "The answer is: 1",
+    "The 1965 Mexican Grand Prix was won by Richie Ginther,",
+    "One Magic Christmas was released in 1985, and Muppet Treasure",
+    "(The answer is not provided in the text.)",
+    "The Enchanted Forest is a 1980s American animated television",
+    "The Troubles",
+    "The stadium that was named after Rodney Cline is located in Panama City, Florida",
+    "Italian",
+    "No",
+    "No",
+    "(1) General aviation (2) Commercial aviation (3) Military aviation (",
+    "Roman Polanski",
+    "China",
+    "Dante Bonifim (Dante Bonifim)",
+    "Nana Patekar",
+    "University of Washington",
+    "The Heiress",
+    "The Landsman Kill is a body of water in the United States, located in",
+    "The Cleveland Browns were the older team when they had their worst season",
+    "The legend of the Wendigo is the source of the modern medical term Wendigo",
+    "The answer is: 1",
+    "Amber Heard",
+    "The Dying Swan is a ballet composed by the Russian composer and pianist Igor",
+    "The answer is not known",
+    "The park encompasses over 1 million acre and includes parts of two mountain ranges (",
+    "1995-01-20",
+    "1100",
+    "M",
+    "278",
+    "Romeo",
+    "31",
+    "The genus Styrax has about 130 species, with the majority",
+    "The Republic of Rhodesia (1965\u20131971)",
+    "1998",
+    "567",
+    "The 2004 World Series of Poker Tournament was held on April",
+    "The 2016 Brit Awards were held on 24 February",
+    "Aspidistra",
+    "The American Broadcasting Company (ABC) is the American broadcasting company that is the parent",
+    "The band God Lives Underwater was formed in 1993 in Per",
+    "The Soloist",
+    "The WB (United States) was a television network that was part of the Warner",
+    "(1) 1999-2000: The University",
+    "1962",
+    "The Tennessee River is the largest tributary of the Ohio River",
+    "The magazine is known as the \"The New Yorker\" in the United States and",
+    "The 7th Habit of Highly Effective Teens",
+    "Aksel Sandemose",
+    "1947",
+    "12"
+   ],
+   "ms": {
+    "prefill": 444.7431531078764
+   },
+   "sec": 487
+  }
+ }
+}

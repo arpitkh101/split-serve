@@ -36,6 +36,22 @@ def main():
                 print(f"  P{P:>5}: {A['final'][P]:7.3f} vs {B['final'][P]:7.3f}   gap {gap:+.3f}  95% [{lo:+.3f}, {hi:+.3f}]   P(gap>0) {p:.3f}")
                 res[f"{ta}|{tb}|{P}"] = {"a": A["final"][P], "b": B["final"][P], "gap": gap, "lo": lo, "hi": hi, "p_gt0": p}
         json.dump(res, open(f"{OUT}/paired_ci_hv2.json", "w"), indent=2)
+    elif mode == "longctx":
+        # python src/paired_ci.py longctx handoff_base handoff_pw ...   (same examples, same seed; 17b row from any file)
+        T = {}
+        for tag in sys.argv[2:]:
+            for L, conds in json.load(open(f"{OUT}/longctx_{tag}.json")).items(): T.setdefault(L, {}).update(conds)
+        for L, conds in T.items():
+            print(f"\n[L={L}]  n={conds['17b']['n']}   EM: " + "  ".join(f"{c} {v['em']:.3f}" for c, v in conds.items()))
+            for metric, idx in (("EM", 0), ("F1", 1), ("contains", 2)):
+                for c in conds:
+                    if c == "17b": continue
+                    gap, lo, hi = boot_acc_gap([p[idx] for p in conds[c]["per"]], [p[idx] for p in conds["17b"]["per"]], g)
+                    print(f"  {metric:8s} {c:22s} − 1.7B re-prefill: {gap*100:+.1f}  95% [{lo*100:+.1f}, {hi*100:+.1f}]")
+                    res[f"{L}|{c}|{metric}"] = {"gap": gap, "lo": lo, "hi": hi}
+            ms = {c: v["ms"] for c, v in conds.items()}
+            print("  ms: " + "  ".join(f"{c}: " + ",".join(f"{k} {x:.0f}" for k, x in m.items()) for c, m in ms.items()))
+        json.dump(res, open(f"{OUT}/paired_ci_longctx.json", "w"), indent=2)
     else:
         T = json.load(open(f"{OUT}/task_{sys.argv[2]}.json"))
         for task, conds in T.items():

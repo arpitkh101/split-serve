@@ -204,9 +204,117 @@ def pipeline_nll(m4, m17, maps, ids, P, Lc, source, first_tok=False, prompt_w=0.
     return loss
 
 
+def _kl_chunk(ls, lt):
+    """Sum over positions of KL(teacher || student), both given as bf16 logits; float inside."""
+    lt = torch.log_softmax(lt.float(), -1); ls = torch.log_softmax(ls.float(), -1)
+    return (lt.exp() * (lt - ls)).sum()
+
+
+def pipeline_kl(m4, m17, maps, ids, P, Lc, source, prompt_w=1.0, chunk=256):
+    """Receiver-matching objective: KL(native 1.7B || pipeline), with the native 1.7B doing its
+    own prefill as the teacher.  Scored densely: every prompt position from the prefill logits,
+    and every continuation token decoded off the stitched cache vs off the native cache.  One
+    extra no-grad 1.7B forward per step.  Targets parity with the receiver's own prefill directly,
+    instead of next-token loss on text, which rewards adaptation as much as transfer.
+    The KL is computed in position chunks under activation checkpointing: a float log-softmax of
+    a 2k x 152k logit matrix, times four, does not fit next to the models on a 24 GB card."""
+    from torch.utils.checkpoint import checkpoint
+    with torch.no_grad():
+        t = m17(input_ids=ids, use_cache=False).logits[0]           # bf16 [T, V]
+    cache, plg = prefill(m4, m17, maps, ids[:, :P], Lc, source)
+    lg = continuation_logits(m17, cache, ids, P)                     # float [cont-1, V], positions P..end-1
+    sc = torch.cat([plg[0, -1:].float(), lg], 0).to(t.dtype)         # positions P-1..end-1
+    sp = plg[0, :P - 1]                                               # positions 0..P-2
+    tc, tp = t[P - 1:-1], t[:P - 1]
+    def total(ls, lt):
+        acc = 0.0
+        for i in range(0, ls.shape[0], chunk):
+            acc = acc + checkpoint(_kl_chunk, ls[i:i + chunk], lt[i:i + chunk], use_reentrant=False)
+        return acc / ls.shape[0]
+    return total(sc, tc) + prompt_w * total(sp, tp)
+
+
+class AttnTap:
+    """Capture every layer's attention output (the input to o_proj) during a forward."""
+    def __init__(self, m17):
+        self.out = {}; self.h = [l.self_attn.o_proj.register_forward_pre_hook(self._mk(i)) for i, l in enumerate(m17.model.layers)]
+    def _mk(self, i):
+        def hook(mod, args): self.out[i] = args[0]
+        return hook
+    def remove(self):
+        for h in self.h: h.remove()
+
+
+def pipeline_attn(m4, m17, maps, ids, P, Lc, source, prompt_w=1.0, kl_w=1.0):
+    """Attention-matching objective.  The 1.7B's queries at the continuation positions must
+    produce the same per-layer attention outputs over the stitched cache as over the 1.7B's own
+    cache: that is what retrieval into the context needs, and what next-token or logit matching
+    on local text does not enforce.  Loss = mean over layers of normalised MSE between attention
+    outputs (student: decode off the stitched cache; teacher: the native 1.7B on the same text),
+    plus kl_w * the receiver-matching logit KL of pipeline_kl."""
+    from torch.utils.checkpoint import checkpoint
+    tap = AttnTap(m17)
+    try:
+        with torch.no_grad():
+            t = m17(input_ids=ids, use_cache=False).logits[0]
+            T_attn = {i: a[0, P:-1].float() for i, a in tap.out.items()}    # continuation positions P..end-1
+        tap.out = {}
+        cache, plg = prefill(m4, m17, maps, ids[:, :P], Lc, source)
+        lg = continuation_logits(m17, cache, ids, P)
+        S_attn = {i: a[0, :-1].float() for i, a in tap.out.items()}        # same positions (last input token dropped to align with lg)
+    finally:
+        tap.remove()
+    attn = sum(((S_attn[i] - T_attn[i]) ** 2).mean() / (T_attn[i].var() + 1e-6) for i in T_attn) / len(T_attn)
+    sc = torch.cat([plg[0, -1:].float(), lg], 0).to(t.dtype); sp = plg[0, :P - 1]
+    tc, tp = t[P - 1:-1], t[:P - 1]
+    def total(ls, lt, chunk=256):
+        acc = 0.0
+        for i in range(0, ls.shape[0], chunk):
+            acc = acc + checkpoint(_kl_chunk, ls[i:i + chunk], lt[i:i + chunk], use_reentrant=False)
+        return acc / ls.shape[0]
+    return attn + kl_w * (total(sc, tc) + prompt_w * total(sp, tp))
+
+
 @torch.no_grad()
 def evaluate(m4, m17, maps, chunks, P, Lc, source):
     return [pipeline_nll(m4, m17, maps, ch.unsqueeze(0).to(DEV), P, Lc, source).item() for ch in chunks]
+
+
+def load_qa_examples(tok, n, seed, lengths=(512, 1024, 2048)):
+    """Multi-document QA training examples from the HotpotQA TRAIN split (evaluation uses
+    validation): the same prompt format as longctx_eval, padded with distractor documents to a
+    length drawn from `lengths`, followed by the gold answer and a newline.  Returns a list of
+    (ids [1, T], P) with P the prompt length, so the loss falls on the answer tokens only: the
+    retrieval signal that wikitext continuation never provides."""
+    import random
+    from datasets import load_dataset
+    import longctx_eval as LC
+    ds = list(load_dataset("hotpotqa/hotpot_qa", "distractor")["train"])
+    rng = random.Random(seed); rng.shuffle(ds); ds = ds[:n + 3000]
+    cache = {}
+    def ntok(t):
+        if t not in cache: cache[t] = len(tok(t, add_special_tokens=False).input_ids)
+        return cache[t]
+    def doc(t, ss): return f"Document ({t}): {''.join(ss).strip()}\n\n"
+    pool = [doc(t, ss) for ex in ds[n:] for t, ss in zip(ex["context"]["title"], ex["context"]["sentences"])]
+    out = []
+    for ex in ds[:n]:
+        own = [doc(t, ss) for t, ss in zip(ex["context"]["title"], ex["context"]["sentences"])]
+        q = f"Question: {ex['question']}\nAnswer:"
+        L = rng.choice(lengths); budget = L - ntok(LC.HEADER) - ntok(q) - sum(ntok(d) for d in own) - 8
+        docs = list(own)
+        for d in rng.sample(pool, 200):
+            if ntok(d) > budget: continue
+            docs.append(d); budget -= ntok(d)
+            if budget < 40: break
+        rng.shuffle(docs)
+        prompt = LC.HEADER + "".join(docs) + q
+        pid = tok(prompt, return_tensors="pt").input_ids
+        aid = tok(" " + ex["answer"].strip() + "\n", return_tensors="pt", add_special_tokens=False).input_ids
+        if aid.shape[1] < 2: continue
+        out.append((torch.cat([pid, aid], 1), pid.shape[1]))
+    print(f"  qa examples: {len(out)}, prompt tokens {min(p for _, p in out)}-{max(p for _, p in out)}", flush=True)
+    return out
 
 
 # -------------------------------------------------------------------- main
@@ -215,7 +323,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cut", type=int, default=20); ap.add_argument("--source", default="4b", choices=["4b", "17b"])
     ap.add_argument("--steps", type=int, default=3000); ap.add_argument("--lr", type=float, default=1e-4)
-    ap.add_argument("--lengths", default="256,512,1024,2048"); ap.add_argument("--corpus", default="wt103")
+    ap.add_argument("--lengths", default="256,512,1024,2048")
+    ap.add_argument("--corpus", default="wt103", help="wt103 | hotpot: alternate multi-document QA examples (loss on the answer) with wt103 chunks")
     ap.add_argument("--calib-chunks", type=int, default=64); ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--cut-src", type=int, default=1, help="top-k 4B layers concatenated into the cut map")
     ap.add_argument("--cut-mlp", type=int, default=0, help="hidden width of a zero-init MLP branch on the cut map")
@@ -223,6 +332,7 @@ def main():
     ap.add_argument("--attn-dh", type=int, default=64); ap.add_argument("--attn-lr", type=float, default=3e-4)
     ap.add_argument("--first-tok", action="store_true", help="include the prompt's last-position logit (token P) in the training loss")
     ap.add_argument("--prompt-w", type=float, default=0.0, help="weight of the prompt-position LM loss (tokens 1..P from the prefill logits)")
+    ap.add_argument("--teacher", default="", choices=["", "17b", "attn"], help="17b: KL to the native 1.7B's own-prefill distribution; attn: that plus per-layer attention-output matching at the continuation positions")
     ap.add_argument("--fit-only", action="store_true"); ap.add_argument("--layers", default="0-28")
     ap.add_argument("--tag", default=None)
     a = ap.parse_args(); Lc = a.cut
@@ -260,7 +370,8 @@ def main():
 
     lens = [int(x) for x in a.lengths.split(",")]; elens = [256, 512, 1024, 2048]
     ev = {P: C.load_text_chunks(tok, N_EVAL, P + CONT, split="test", seed=0) for P in elens}
-    tr = {P: load_corpus_chunks(tok, a.corpus, N_TRAIN[P], P + CONT, seed=777) for P in lens}
+    qa = load_qa_examples(tok, 4000, seed=777) if a.corpus == "hotpot" else None
+    tr = {P: load_corpus_chunks(tok, "wt103" if qa else a.corpus, N_TRAIN[P], P + CONT, seed=777) for P in lens}
 
     def full_eval(label):
         res = {P: (lambda n: {"ppl": ppl(n), "nll": n})(evaluate(m4, m17, maps, ev[P], P, Lc, a.source)) for P in elens}
@@ -274,19 +385,24 @@ def main():
     opt = torch.optim.AdamW(groups, weight_decay=0.0)
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, max(1, a.steps)); t0, run = time.time(), None
     for step in range(a.steps):
-        P = lens[torch.randint(0, len(lens), (1,)).item()]
-        ids = tr[P][torch.randint(0, len(tr[P]), (1,)).item()].unsqueeze(0).to(DEV)
-        loss = pipeline_nll(m4, m17, maps, ids, P, Lc, a.source, a.first_tok, a.prompt_w)
+        if qa and step % 2 == 0:                                     # alternate: QA example, wikitext chunk
+            ids, P = qa[torch.randint(0, len(qa), (1,)).item()]; ids = ids.to(DEV)
+        else:
+            P = lens[torch.randint(0, len(lens), (1,)).item()]
+            ids = tr[P][torch.randint(0, len(tr[P]), (1,)).item()].unsqueeze(0).to(DEV)
+        if a.teacher == "attn": loss = pipeline_attn(m4, m17, maps, ids, P, Lc, a.source, a.prompt_w or 1.0)
+        elif a.teacher: loss = pipeline_kl(m4, m17, maps, ids, P, Lc, a.source, a.prompt_w or 1.0)
+        else: loss = pipeline_nll(m4, m17, maps, ids, P, Lc, a.source, a.first_tok, a.prompt_w)
         opt.zero_grad(); loss.backward(); torch.nn.utils.clip_grad_norm_(maps.parameters(), 1.0); opt.step(); sched.step()
         run = loss.item() if run is None else 0.98 * run + 0.02 * loss.item()
         if step % 250 == 0:
             print(f"  [{step:4d}] lm ema={run:.4f} train-ppl~{math.exp(run):6.2f}  {time.time()-t0:.0f}s", flush=True)
     rF = full_eval("final") if a.steps else r0
-    print(f"\n[{a.tag}] RESULT cut={Lc} source={a.source} cut_src={a.cut_src} cut_mlp={a.cut_mlp} attn={a.attn_heads}x{a.attn_dh} first_tok={a.first_tok} prompt_w={a.prompt_w} seed={a.seed} steps={a.steps}  " +
+    print(f"\n[{a.tag}] RESULT cut={Lc} source={a.source} cut_src={a.cut_src} cut_mlp={a.cut_mlp} attn={a.attn_heads}x{a.attn_dh} first_tok={a.first_tok} prompt_w={a.prompt_w} teacher={a.teacher or 'none'} seed={a.seed} steps={a.steps}  " +
           "  ".join(f"P{P}: {r0[P]['ppl']:.3f}->{rF[P]['ppl']:.3f}" for P in elens), flush=True)
     json.dump({"tag": a.tag, "cut": Lc, "source": a.source, "spec": maps.spec(), "params_M": n_par / 1e6,
                "steps": a.steps, "seed": a.seed, "corpus": a.corpus, "train_lengths": lens,
-               "cut_src": a.cut_src, "cut_mlp": a.cut_mlp, "attn": [a.attn_heads, a.attn_dh], "attn_lr": a.attn_lr, "first_tok": a.first_tok, "prompt_w": a.prompt_w,
+               "cut_src": a.cut_src, "cut_mlp": a.cut_mlp, "attn": [a.attn_heads, a.attn_dh], "attn_lr": a.attn_lr, "first_tok": a.first_tok, "prompt_w": a.prompt_w, "teacher": a.teacher,
                "step0": {P: r0[P]["ppl"] for P in elens}, "final": {P: rF[P]["ppl"] for P in elens},
                "nll_final": {P: rF[P]["nll"] for P in elens}},
               open(f"{C.RESULTS}/hv2_{a.tag}.json", "w"), indent=2)

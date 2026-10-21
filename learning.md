@@ -390,3 +390,128 @@ pair.
 - Guard scripts with a main block from the first file, not the fifth. Module-level calls
   re-ran whole experiments on import.
 - Batched linear solves peak at eight times the memory of a per-head loop. Loop.
+
+## 13. Next: the handoff setting, and a receiver-matching objective
+
+Reading the 2026 cache-transfer papers against our results changed the plan in two ways.
+
+**The setting was wrong.** Every task prompt here is under 220 tokens, where the small model's
+own prefill is cheap and near-perfect, so parity at more FLOPs was the only possible outcome.
+The published wins (7 to 25x lower handoff latency at 32K; the one quality gain for a small
+receiver, measured on LongBench) are all at long context, and all in the handoff frame: the
+sender's cache already exists (a previous turn, a shared prefix, another agent) and the
+receiver continues from it. The baseline is then re-prefill, not "4B prefill + bridge".
+
+**The objective was indirect.** We trained the maps on next-token loss over text, which
+rewards adaptation as much as transfer. Recent methods train against the receiver's native
+trajectory (CacheLink: "through the receiver behaviour"; Mixture-of-Translators: align the
+replayed target trajectory with the native one). Our goal is parity with the receiver's own
+prefill, so the teacher should be the 1.7B on its own prefill, matched densely at every
+position.
+
+Plan, in order:
+1. Long-context handoff evaluation: multi-document QA built from HotpotQA distractor examples
+   padded with extra paragraphs to 2k / 4k / 8k tokens, short greedy answers scored by EM/F1.
+   Conditions: 1.7B re-prefill (baseline), 4B native, pipeline (4B cache exists, bridge, 1.7B
+   decodes, 4B emits token 1), self control. Latency: bridge vs 1.7B re-prefill at 2k to 16k.
+2. Receiver-matching objective: KL between the native 1.7B's distribution (own prefill) and
+   the pipeline's, over prompt positions and over the continuation decoded off the stitched
+   cache. One extra no-grad 1.7B forward per step. Compare with the text objective on (1).
+3. Goodput under a request stream with the decoder doing no prompt work.
+4. A second pair with a larger receiver.
+
+Infrastructure: eic-gt-gpu9 was rebooted; it now has eight idle A5000s, the same package
+versions, and internet. Models and datasets are being re-downloaded there. Checkpoints go to
+`ckpt/` on disk (SPLITSERVE_WORK), never /dev/shm again.
+
+## 14. The handoff test: the stitched cache does not support retrieval
+
+Multi-document QA (HotpotQA distractor, padded to 2k / 4k / 8k tokens with extra documents,
+500 questions, short greedy answers). Two harness lessons first: the models answer in full
+sentences without demonstrations, so three short Q/A pairs sit in the header and generation
+stops at a newline or period; and Qwen3-4B's first token after "Answer:" is often a newline,
+which emptied 22 percent of its answers, so newline-only tokens and end-of-text are blocked as
+the first token for every condition (a lone space is allowed; the 1.7B starts numbers with it).
+
+At 2k tokens:
+
+| condition | EM | F1 | contains | words per answer |
+|---|---|---|---|---|
+| 1.7B re-prefill (the baseline) | 38.8 | 52.1 | 44.6 | 2.4 |
+| 4B native | 45.6 | 58.5 | 52.8 | 3.6 |
+| KL-objective self control | 38.8 | 53.0 | 44.4 | 2.3 |
+| text-objective self control | 35.2 | 50.6 | 43.6 | 2.8 |
+| KL pipeline, 4B emits token 1 | 24.6 | 43.4 | 43.4 | 4.7 |
+| text pipeline, 4B emits token 1 | 25.2 | 42.6 | 42.2 | |
+| KL pipeline, token 1 from the mapped final residual | 11.4 | 23.4 | 24.4 | |
+| KL pipeline, 1.7B recomputes the last 64 tokens | 11.2 | 21.7 | 22.8 | |
+
+Three things, in order of importance.
+
+**The stitched cache supports continuation but not retrieval.** With the 4B emitting the first
+token the pipeline finds the gold string almost as often as the baseline (contains 43 vs 45)
+and then completes it from the cache: the 4B located the answer, the 1.7B copied the rest of
+the span. Take the 4B's first token away, by any route, and EM falls to 11: the 1.7B's own
+queries cannot find the answer in the stitched documents. Wikitext perplexity and the short
+few-shot tasks never asked for this; LAMBADA did, and failed for the same reason.
+
+**The receiver-matching objective fixes the control, not the transfer.** KL to the native 1.7B
+puts the self control exactly at native (38.8); the text objective costs 3.6 EM through
+adaptation. On the 4B source both objectives lose the same 14 EM. The loss is in what the
+maps can express, not in the signal.
+
+**The latency case is thin at these lengths.** The eager bridge is 79 ms at 2k against a 133 ms
+re-prefill, 164 against 280 at 4k. A CUDA graph roughly halves the bridge; the ratio stays
+under 3x until contexts are much longer.
+
+Next: an attention-matching objective. Retrieval is a property of keys, not of next-token
+distributions: the 1.7B's queries at the answer position have to score the gold document's
+keys the way they would in the native cache. Train the maps so that every layer's attention
+output over the stitched cache matches the native 1.7B's on the same text (MSE on the o_proj
+inputs at the continuation positions, plus the logit KL). Runs `attn_{4b,self}_c28`.
+
+## 15. Retrieval is learnable: attention matching on QA data
+
+Three objectives on wikitext (text NLL, KL to the native 1.7B, KL plus per-layer attention
+matching) gave the same long-context result, so the data was changed instead: 4,000
+multi-document QA prompts built from the HotpotQA train split (disjoint from the evaluation
+questions), 512 to 2k tokens, gold answer appended, loss on the answer tokens only, alternated
+step by step with wikitext chunks. Objective: attention matching plus the logit KL. Runs
+`attnqa_{4b,self}_c28`, 3,000 steps as always.
+
+Long-context QA, 500 questions, paired bootstrap against the 1.7B re-prefilling the same prompts:
+
+| context | re-prefill | self control | pipeline, 4B emits token 1 | pipeline, 1.7B emits token 1 | wikitext-trained pipeline |
+|---|---|---|---|---|---|
+| 2k EM | 38.8 | 38.0 | 41.6 (+2.8 [-1.0, +6.8]) | 35.4 (-3.4 [-7.6, +0.8]) | 25.2 |
+| 2k F1 | 52.1 | 50.4 | 56.2 (+4.0 [+0.4, +7.7]) | 48.2 (-3.9 [-7.8, +0.1]) | 42.6 |
+| 4k EM | 36.2 | 38.0 | 36.0 (-0.2 [-4.2, +3.8]) | 27.6 (-8.6 [-12.8, -4.4]) | 19.6 |
+| 4k F1 | 50.5 | 49.2 | 50.5 (0.0 [-3.9, +3.9]) | 40.9 (-9.6 [-13.6, -5.5]) | 36.1 |
+| 8k EM | 35.6 | 34.2 | 31.0 (-4.6 [-8.8, -0.2]) | 25.2 (-10.4 [-14.4, -6.4]) | 19.8 |
+| 8k F1 | 48.5 | 46.8 | 43.3 (-5.1 [-9.2, -1.2]) | 36.9 (-11.6 [-15.6, -7.6]) | 34.3 |
+
+**What changed.** With the 1.7B producing its own first token off the stitched cache, EM at 2k
+went from 11 to 35: the 1.7B can now find the answer in the stitched documents itself. The
+self control sits at native at every length (38.0 / 38.0 / 34.2 against 38.8 / 36.2 / 35.6),
+so in-domain training did not inflate the control and the pipeline's numbers are transfer.
+With the 4B emitting the first token the pipeline is at parity or better at 2k and 4k, and
+4.6 EM under at 8k, which is beyond the training lengths (prompts up to 3.8k).
+
+**What it means.** The linear residual maps can carry retrievable keys. They never learned to
+on wikitext because next-token prediction on prose rarely needs a lookup 2k tokens back; the
+attention-matching loss on answer tokens asks for exactly that. The first-step loss on QA
+examples was 7.3 against 1.6 on wikitext text, the retrieval gap showing up directly in the
+training signal. This is the same objective CacheLink argues for (receiver behaviour rather
+than reconstruction), and it needed retrieval-shaped data to bite.
+
+**Cost.** Bridge as a CUDA graph, bf16: 30 / 58 / 113 ms at 2k / 4k / 8k, against a 1.7B
+re-prefill of 133 / 278 / 608 ms, so 4.4 to 5.4 times cheaper on the critical path once the
+4B's cache exists. (The eval harness reports 79 / 166 / 316 ms because its maps run in fp32
+with a dynamic cache.) Short tasks are unchanged within noise except ARC-Challenge, 45.4
+against 47.6 for the text objective, a 2 to 3 point cost of the QA-weighted training.
+
+**What is still open.** Lengths beyond the training distribution lose 5 EM at 8k; training on
+4k to 8k prompts is the obvious next run (memory permitting on 24 GB). The 1.7B's own first
+token off the mapped final position is still the weak link at 4k and above (LAMBADA stays at
+19 to 23 under every objective), so the prefiller emitting token 1 remains the design.
+One seed, one model pair, one long-context task.

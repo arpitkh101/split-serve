@@ -53,6 +53,21 @@ Interference, fixed arrival rate of 2 to 4 prefills/s, decoder at batch 8: a col
 prefill costs the decoder 8 to 33 percent of throughput and a 40 to 55 percent p99 tail;
 with prefill on the other GPU there is no tail and under 4 percent cost.
 
+**Context handoff at long context.** The setting where the bridge saves work: the 4B's
+reading of a long context already exists (a previous turn, a shared prefix, another agent)
+and the 1.7B continues from it instead of re-reading. Multi-document QA (HotpotQA distractor
+padded to 2k / 4k / 8k tokens), 500 questions, short greedy answers, paired bootstrap against
+the 1.7B re-prefilling the same prompt. Stitch trained with attention matching on QA data
+from the train split.
+
+| context | 1.7B re-prefill EM / F1 | pipeline EM / F1 | EM gap [95% CI] | bridge vs re-prefill |
+|---|---|---|---|---|
+| 2k | 38.8 / 52.1 | 41.6 / 56.2 | +2.8 [-1.0, +6.8] | 30 ms vs 133 ms |
+| 4k | 36.2 / 50.5 | 36.0 / 50.5 | -0.2 [-4.2, +3.8] | 58 ms vs 278 ms |
+| 8k | 35.6 / 48.5 | 31.0 / 43.3 | -4.6 [-8.8, -0.2] | 113 ms vs 608 ms |
+
+Bridge timings are the CUDA-graph bf16 path. 8k is beyond the training prompt lengths.
+
 ## How it got here
 
 Each step was decided by the result of the one before. Details and tables in learning.md.
@@ -85,6 +100,12 @@ Each step was decided by the result of the one before. Details and tables in lea
    fixed, everything the decoder reads off the cache transfers; only the last position's
    output state does not, by any map tried, including a causal attention branch over the
    source positions. The prefiller emits that token anyway. Parity, one mechanism.
+9. **The handoff test, and retrieval.** On long multi-document QA the wikitext-trained
+   stitch lost 14 EM points: the 1.7B could complete an answer the 4B's first token had
+   started, but could not find one itself (EM 11 on its own). Three objectives on wikitext
+   gave the same result. Training the same maps with an attention-matching loss on QA data
+   restored retrieval (EM 35 on its own, parity or better with the 4B's first token at 2k
+   and 4k), with the control still at native.
 
 ## Findings that transfer beyond this pair
 
@@ -101,6 +122,9 @@ Each step was decided by the result of the one before. Details and tables in lea
 - The one representation that does not transfer between the two models is the last
   position's output state (LAMBADA 23 mapped vs 53 native). Route around it: the prefill
   instance emits the first token, as disaggregated serving systems already do.
+- Retrieval is a property of keys, and next-token loss on prose never asks for it. A stitch
+  that is perfect on perplexity can be useless for finding an answer 2k tokens back. Train on
+  data that needs the lookup, with a loss on the attention outputs, and it becomes learnable.
 
 ## Repository layout
 
@@ -128,6 +152,7 @@ src/
   diag_task.py          component swap: early KV vs hand-over residual
   residual_stitch.py    residual-space stitch at every layer (the final design)
   residual_suffix.py    wikitext cost of a native suffix
+  longctx_eval.py       long-context multi-document QA in the handoff setting, with timings
   paired_ci*.py         paired bootstrap CIs from saved per-chunk NLLs and task hits
 out/                    every result as json (perplexities, per-chunk NLLs, task hits, timings)
 learning.md             the full account, step by step, failures included
@@ -178,14 +203,22 @@ $PY src/task_eval.py --tag pw_c28 --conds 17b,reskv:pw_4b_c28,reskv:pw_self_c28 
 $PY src/task_eval.py --tag pw4bfirst_c28 --conds 17b,4b,reskv:pw_4b_c28@4b --n 1000
 $PY src/paired_ci.py task pw4bfirst_c28
 $PY src/latency_residual.py --tag pw_4b_c28
+
+# handoff setting: attention-matching objective on QA data, long-context evaluation
+$PY src/residual_stitch.py --cut 28 --teacher attn --corpus hotpot --source 4b  --tag attnqa_4b_c28
+$PY src/residual_stitch.py --cut 28 --teacher attn --corpus hotpot --source 17b --tag attnqa_self_c28
+$PY src/longctx_eval.py --conds 17b,4b --n 500 --tag handoff_base
+$PY src/longctx_eval.py --conds reskv:attnqa_4b_c28@4b,reskv:attnqa_4b_c28,reskv:attnqa_self_c28 --n 500 --tag handoff_attnqa
+$PY src/paired_ci.py longctx handoff_base handoff_attnqa
+$PY src/latency_residual.py --tag attnqa_4b_c28 --lengths 2048,4096,8192
 ```
 
 ## Caveats
 
 - One model pair. The final design is one seed; the residual-space stitch before it
   reproduced on a second seed.
-- Every task prompt is under 220 tokens. Long prompts, where offloading prefill pays,
-  have not been measured on a task.
+- The long-context result is one seed, one task family, and the stitch was trained on the
+  same task's train split; 8k is beyond its training lengths.
 - With the 4B emitting the first token, LAMBADA measures the 4B, and the ARC and PIQA
   log-likelihood sums mix one 4B log-probability with the 1.7B's.
 - Per request the split costs more: about 2.75x the prefill FLOPs of the 1.7B alone and
