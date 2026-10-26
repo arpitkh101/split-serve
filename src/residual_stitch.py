@@ -165,18 +165,27 @@ def native_kv(m17, h, l, pos_emb):
     return C.apply_rope(k, cos, sin), v
 
 
-def prefill(m4, m17, maps, ids, Lc, source, H=None):
+def prefill(m4, m17, maps, ids, Lc, source, H=None, last_only=False, ckpt=False):
+    """ckpt=True recomputes each layer's map + projections in the backward pass instead of keeping
+    their activations; needed to train on 8k-token prompts within 24 GB."""
     T = ids.shape[1]; cache = DynamicCache()
     pos = torch.arange(T, device=DEV).unsqueeze(0)
     pe = m17.model.rotary_emb(torch.zeros(1, T, 1, device=DEV, dtype=m17.dtype), pos)
     if H is None:
         src_model = m4 if source == "4b" else m17
         H = hidden_states(src_model, ids)
+    def layer_kv(l, *Hs):
+        return native_kv(m17, maps(Hs, l).unsqueeze(0).to(m17.dtype), l, pe)
     for l in range(Lc):
-        h = maps(H, l).unsqueeze(0).to(m17.dtype)
-        k, v = native_kv(m17, h, l, pe)
+        if ckpt and torch.is_grad_enabled():
+            from torch.utils.checkpoint import checkpoint
+            k, v = checkpoint(layer_kv, l, *H, use_reentrant=False)
+        else:
+            k, v = layer_kv(l, *H)
         cache.update(k, v, l, {})
     h = maps(H, Lc).unsqueeze(0).to(m17.dtype)
+    if last_only and Lc == m17.config.num_hidden_layers:          # no native tail: skip the lm_head over T positions
+        return cache, m17.lm_head(m17.model.norm(h[:, -1:]))
     return cache, run_last_layers(m17, h, Lc, cache, T)
 
 
@@ -245,7 +254,7 @@ class AttnTap:
         for h in self.h: h.remove()
 
 
-def pipeline_attn(m4, m17, maps, ids, P, Lc, source, prompt_w=1.0, kl_w=1.0):
+def pipeline_attn(m4, m17, maps, ids, P, Lc, source, prompt_w=1.0, kl_w=1.0, prompt_kl=True):
     """Attention-matching objective.  The 1.7B's queries at the continuation positions must
     produce the same per-layer attention outputs over the stitched cache as over the 1.7B's own
     cache: that is what retrieval into the context needs, and what next-token or logit matching
@@ -256,23 +265,25 @@ def pipeline_attn(m4, m17, maps, ids, P, Lc, source, prompt_w=1.0, kl_w=1.0):
     tap = AttnTap(m17)
     try:
         with torch.no_grad():
-            t = m17(input_ids=ids, use_cache=False).logits[0]
+            keep = 0 if prompt_kl else ids.shape[1] - P + 1                   # 0 = all positions
+            t = m17(input_ids=ids, use_cache=False, logits_to_keep=keep).logits[0]
             T_attn = {i: a[0, P:-1].float() for i, a in tap.out.items()}    # continuation positions P..end-1
         tap.out = {}
-        cache, plg = prefill(m4, m17, maps, ids[:, :P], Lc, source)
+        cache, plg = prefill(m4, m17, maps, ids[:, :P], Lc, source, last_only=not prompt_kl, ckpt=not prompt_kl)
         lg = continuation_logits(m17, cache, ids, P)
         S_attn = {i: a[0, :-1].float() for i, a in tap.out.items()}        # same positions (last input token dropped to align with lg)
     finally:
         tap.remove()
     attn = sum(((S_attn[i] - T_attn[i]) ** 2).mean() / (T_attn[i].var() + 1e-6) for i in T_attn) / len(T_attn)
-    sc = torch.cat([plg[0, -1:].float(), lg], 0).to(t.dtype); sp = plg[0, :P - 1]
-    tc, tp = t[P - 1:-1], t[:P - 1]
+    sc = torch.cat([plg[0, -1:].float(), lg], 0).to(t.dtype); tc = t[P - 1:-1] if prompt_kl else t[:-1]
     def total(ls, lt, chunk=256):
         acc = 0.0
         for i in range(0, ls.shape[0], chunk):
             acc = acc + checkpoint(_kl_chunk, ls[i:i + chunk], lt[i:i + chunk], use_reentrant=False)
         return acc / ls.shape[0]
-    return attn + kl_w * (total(sc, tc) + prompt_w * total(sp, tp))
+    loss = attn + kl_w * total(sc, tc)
+    if prompt_kl: loss = loss + kl_w * prompt_w * total(plg[0, :P - 1], t[:P - 1])
+    return loss
 
 
 @torch.no_grad()
@@ -325,6 +336,7 @@ def main():
     ap.add_argument("--steps", type=int, default=3000); ap.add_argument("--lr", type=float, default=1e-4)
     ap.add_argument("--lengths", default="256,512,1024,2048")
     ap.add_argument("--corpus", default="wt103", help="wt103 | hotpot: alternate multi-document QA examples (loss on the answer) with wt103 chunks")
+    ap.add_argument("--qa-lengths", default="512,1024,2048", help="target prompt lengths for the QA examples")
     ap.add_argument("--calib-chunks", type=int, default=64); ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--cut-src", type=int, default=1, help="top-k 4B layers concatenated into the cut map")
     ap.add_argument("--cut-mlp", type=int, default=0, help="hidden width of a zero-init MLP branch on the cut map")
@@ -370,7 +382,7 @@ def main():
 
     lens = [int(x) for x in a.lengths.split(",")]; elens = [256, 512, 1024, 2048]
     ev = {P: C.load_text_chunks(tok, N_EVAL, P + CONT, split="test", seed=0) for P in elens}
-    qa = load_qa_examples(tok, 4000, seed=777) if a.corpus == "hotpot" else None
+    qa = load_qa_examples(tok, 4000, seed=777, lengths=tuple(int(x) for x in a.qa_lengths.split(","))) if a.corpus == "hotpot" else None
     tr = {P: load_corpus_chunks(tok, "wt103" if qa else a.corpus, N_TRAIN[P], P + CONT, seed=777) for P in lens}
 
     def full_eval(label):
@@ -390,7 +402,7 @@ def main():
         else:
             P = lens[torch.randint(0, len(lens), (1,)).item()]
             ids = tr[P][torch.randint(0, len(tr[P]), (1,)).item()].unsqueeze(0).to(DEV)
-        if a.teacher == "attn": loss = pipeline_attn(m4, m17, maps, ids, P, Lc, a.source, a.prompt_w or 1.0)
+        if a.teacher == "attn": loss = pipeline_attn(m4, m17, maps, ids, P, Lc, a.source, a.prompt_w or 1.0, prompt_kl=(P <= 2048))
         elif a.teacher: loss = pipeline_kl(m4, m17, maps, ids, P, Lc, a.source, a.prompt_w or 1.0)
         else: loss = pipeline_nll(m4, m17, maps, ids, P, Lc, a.source, a.first_tok, a.prompt_w)
         opt.zero_grad(); loss.backward(); torch.nn.utils.clip_grad_norm_(maps.parameters(), 1.0); opt.step(); sched.step()

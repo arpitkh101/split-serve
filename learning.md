@@ -515,3 +515,52 @@ against 47.6 for the text objective, a 2 to 3 point cost of the QA-weighted trai
 token off the mapped final position is still the weak link at 4k and above (LAMBADA stays at
 19 to 23 under every objective), so the prefiller emitting token 1 remains the design.
 One seed, one model pair, one long-context task.
+
+## 16. Longer training prompts, a second seed, and an out-of-domain multi-turn test
+
+Three runs in parallel on gpu9, all with the attention-matching objective on QA data.
+
+**Training on 2k to 8k prompts closes the 8k gap.** Same recipe, QA prompts drawn from
+2k / 4k / 8k instead of 512 to 2k; two memory changes made 8k fit in 24 GB (teacher logits
+only at the answer positions, per-layer activation checkpointing of the bridge). Paired
+against the 1.7B re-prefilling, 500 questions:
+
+| context | 4B emits token 1 | 1.7B emits token 1 | self control |
+|---|---|---|---|
+| 2k EM | 40.2 (+1.4 [-2.6, +5.4]) | 33.2 (-5.6 [-9.8, -1.6]) | 36.8 (-2.0) |
+| 4k EM | 37.6 (+1.4 [-2.6, +5.2]) | 32.2 (-4.0 [-8.2, +0.2]) | 35.4 (-0.8) |
+| 8k EM | 34.2 (-1.4 [-5.4, +2.6]) | 30.6 (-5.0 [-9.0, -1.0]) | 33.0 (-2.6) |
+
+Parity with re-prefill at every length with the prefiller's first token (the 2k-trained
+stitch was 4.6 under at 8k), and a flat 4 to 6 point loss on the 1.7B's own first token
+instead of one that grew with length. No cost at the shorter lengths. This is the stitch to
+quote: `attnqa8k_4b_c28`.
+
+**Second seed reproduces.** Seed 1 of the 2k-trained recipe: +1.0 / -2.6 / -5.0 EM at
+2k / 4k / 8k with the 4B's first token (seed 0: +2.8 / -0.2 / -4.6), controls at native
+(+0.4 / 0.0 / -1.4). Same shape, intervals overlap throughout.
+
+**Out of domain it keeps half the gap.** A multi-turn handoff on SQuAD, which the stitch
+never saw: the 4B answers question one on a context, its generated answer joins the
+conversation, the 1.7B answers question two about the same context off the stitched cache.
+SQuAD is easier (re-prefill EM 70.8 / 71.0 / 67.8 at 2k / 4k / 8k) and the controls sit at
+native (68.8 / 68.4 / 68.0).
+
+| context | QA-trained, 4B emits token 1 | QA-trained, own token 1 | wikitext-trained, 4B token 1 |
+|---|---|---|---|
+| 2k EM | 59.0 (-11.8 [-16.0, -7.6]) | 54.0 (-16.8) | 47.4 (-23.4) |
+| 4k EM | 54.0 (-17.0 [-21.4, -12.8]) | 47.8 (-23.2) | 46.6 (-24.4) |
+| 8k EM | 50.6 (-17.2 [-21.8, -12.6]) | 45.8 (-22.0) | 43.0 (-24.8) |
+
+Retrieval training transfers: the QA-trained stitch recovers half of the wikitext-trained
+stitch's loss on a task it never saw, with its own first token (45 to 54 EM, where the
+wikitext stitch could not retrieve at all). But a 12 to 17 point gap remains and it grows
+with length, unlike in domain. Two differences from the HotpotQA setting may matter and are
+not separated here: the task (single-paragraph span extraction, answers often verbatim) and
+the 4B's own generated turn sitting in the context.
+
+**Where this leaves the claim.** In the handoff setting the stitch is at parity with
+re-prefilling the context at 2k to 8k on the task family it was trained on, reproduced on a
+second seed, at 4 to 5 times less critical-path latency. On a task family it was not trained
+on it retains about half the quality gap. The next thing to try is training on a mix of QA
+sources, which is cheap, and only then a second model pair.
