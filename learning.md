@@ -564,3 +564,59 @@ re-prefilling the context at 2k to 8k on the task family it was trained on, repr
 second seed, at 4 to 5 times less critical-path latency. On a task family it was not trained
 on it retains about half the quality gap. The next thing to try is training on a mix of QA
 sources, which is cheap, and only then a second model pair.
+
+## 17. A mix of QA sources, and three held-out tests
+
+Section 16 left one question: is the out-of-domain gap a data problem? Same recipe, same
+objective, same lengths (2k / 4k / 8k), but the training prompts now come from four sources
+(`--corpus qamix`, `src/qa_data.py`): HotpotQA, DROP, MuSiQue and CoQA, 1,000 records each
+from the train splits, CoQA contributing one to four earlier question and answer turns in
+the prompt. Three sets the stitch never saw: SQuAD single-turn, DuoRC (questions about movie
+plots) and the multi-turn SQuAD handoff of section 16. The HotpotQA-only stitch of section
+16 was scored on the same prompts. 500 questions per set and length, EM, paired bootstrap
+against the 1.7B re-prefilling the prompt, the 4B emitting the first token.
+
+| test | context | re-prefill | 4B alone | HotpotQA-only stitch | mixed stitch | control |
+|---|---|---|---|---|---|---|
+| HotpotQA (in domain) | 2k | 38.8 | 45.6 | 40.2 (+1.4) | 44.2 (+5.4 [+1.4, +9.6]) | 37.8 (-1.0) |
+| | 4k | 36.2 | 41.0 | 37.6 (+1.4) | 37.6 (+1.4 [-2.6, +5.4]) | 36.4 (+0.2) |
+| | 8k | 35.6 | 37.6 | 34.2 (-1.4) | 33.0 (-2.6 [-6.6, +1.6]) | 32.6 (-3.0) |
+| SQuAD single-turn | 2k | 67.8 | 59.6 | 48.8 (-19.0) | 52.0 (-15.8 [-20.2, -11.4]) | 63.4 (-4.4) |
+| | 4k | 66.6 | 51.8 | 42.6 (-24.0) | 44.0 (-22.6 [-27.4, -18.0]) | 61.4 (-5.2) |
+| | 8k | 58.4 | 50.8 | 41.2 (-17.2) | 41.8 (-16.6 [-21.0, -12.0]) | 56.4 (-2.0) |
+| DuoRC | 2k | 49.6 | 49.6 | 44.6 (-5.0) | 46.0 (-3.6 [-7.6, +0.4]) | 48.2 (-1.4) |
+| | 4k | 49.2 | 45.4 | 40.6 (-8.6) | 41.6 (-7.6 [-11.6, -3.6]) | 47.2 (-2.0) |
+| | 8k | 48.8 | 45.4 | 38.6 (-10.2) | 39.8 (-9.0 [-13.2, -4.8]) | 45.2 (-3.6) |
+| SQuAD multi-turn | 2k | 70.8 | 72.6 | 60.4 (-10.4) | 64.8 (-6.0 [-10.0, -2.0]) | 67.8 (-3.0) |
+| | 4k | 71.0 | 71.4 | 53.4 (-17.6) | 57.2 (-13.8 [-18.0, -9.6]) | 66.6 (-4.4) |
+| | 8k | 67.8 | 69.2 | 55.0 (-12.8) | 59.8 (-8.0 [-12.2, -3.6]) | 67.2 (-0.6) |
+
+With the 1.7B's own first token the mixed stitch scores 35.0 / 31.0 / 26.2 on HotpotQA,
+47.8 / 44.4 / 37.6 on SQuAD, 38.0 / 35.6 / 32.6 on DuoRC and 59.8 / 53.2 / 55.6 multi-turn:
+4 to 10 points under the 4B-first-token rows, as before. Short tasks: ARC-E 80.1 (+0.2),
+ARC-C 45.6 (-3.8 [-6.7, -0.9], control 48.2), PIQA 70.3 (-1.3), LAMBADA 59.2; wikitext
+perplexity identical to the HotpotQA-only stitch at every length.
+
+**The mix helps, by a little, everywhere.** One to four EM points over the HotpotQA-only
+stitch on every held-out set at every length, four points in domain at 2k, nothing lost on
+wikitext or the short tasks. The direction is consistent across 12 comparisons.
+
+**It does not close the gap.** The gate for this step was a held-out gap of about 5 points
+or less at 8k. None of the three sets passes: DuoRC is 9 under, multi-turn SQuAD 8, SQuAD
+single-turn 17. The gap is not monotone in length either; it is largest at 4k on two of the
+three sets, and the re-prefill baseline itself drops at 8k on SQuAD.
+
+**Where the SQuAD gap comes from.** Two parts. The 4B alone is 8 to 15 points under the
+1.7B on SQuAD single-turn, so a pipeline that takes the 4B's first token starts from a
+weaker reader there; on DuoRC and multi-turn SQuAD the 4B is at parity, and the stitch still
+loses 6 to 14. The control also drifts 2 to 5 points on SQuAD under this objective, more
+than on any other set, so part of the loss is what the training does to the 1.7B's own
+cache, not the 4B's activations.
+
+**What this rules out.** More training data of the same kind is not the lever: four sources
+instead of one moved every number by a few points and left the shape alone. What remains is
+the mechanism: one linear map per layer from one 4B layer, trained to match attention
+outputs. Candidates, not yet run: two source layers per target layer (the code has this for
+the cut map only), a small nonlinear map, matching attention weights rather than outputs,
+and a sweep of the attention-to-KL weight. The in-domain result stands: parity with
+re-prefill from 2k to 8k on the trained task family, and now four points better at 2k.

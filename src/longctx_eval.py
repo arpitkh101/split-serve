@@ -10,6 +10,7 @@ at random positions.  Short greedy answers, scored by SQuAD-style exact match an
 Per-example scores and per-condition timings (4B prefill, bridge, 1.7B re-prefill) are saved.
 
   python src/longctx_eval.py --conds 17b,4b,reskv:pw_4b_c28@4b,reskv:pw_self_c28 --lengths 2048,4096,8192 --n 200 --tag handoff
+  python src/longctx_eval.py --dataset squad --conds 17b,reskv:qamix_4b_c28@4b --n 500 --tag squad_ood
 """
 import sys, json, re, string, time, random, warnings, argparse, collections, torch
 warnings.filterwarnings("ignore")
@@ -127,10 +128,12 @@ def main():
     ap.add_argument("--conds", default="17b,4b,reskv:pw_4b_c28@4b,reskv:pw_self_c28")
     ap.add_argument("--lengths", default="2048,4096,8192"); ap.add_argument("--n", type=int, default=200)
     ap.add_argument("--seed", type=int, default=0); ap.add_argument("--tag", required=True)
+    ap.add_argument("--dataset", default="hotpot", help="hotpot | squad | duorc (held out, never trained on)")
     a = ap.parse_args()
     m4, tok = load_sdpa(C.PREFILL_MODEL); m17, _ = load_sdpa(C.DECODE_MODEL)
     lengths = [int(x) for x in a.lengths.split(",")]
-    data = build_examples(tok, a.n, lengths, a.seed)
+    if a.dataset == "hotpot": data = build_examples(tok, a.n, lengths, a.seed)
+    else: import qa_data; data = qa_data.eval_set(tok, a.dataset, a.n, lengths, a.seed)
     for L in lengths:
         lens = [ids.shape[1] for ids, _, _ in data[L]]
         print(f"[L={L}] {len(data[L])} prompts, tokens {min(lens)}-{max(lens)} (mean {sum(lens)/len(lens):.0f})", flush=True)
@@ -142,7 +145,7 @@ def main():
             em = f1 = has = 0.0; per = []; preds = []; tms = collections.defaultdict(float); t0 = time.time()
             for ids, ans, nd in data[L]:
                 pred, tm = generate(c, tok, ids.to(DEV))
-                e, f, h = em_f1(pred, ans); em += e; f1 += f; has += h; per.append([e, f, h]); preds.append(pred)
+                e, f, h = max((em_f1(pred, g) for g in (ans if isinstance(ans, list) else [ans])), key=lambda x: (x[0], x[1])); em += e; f1 += f; has += h; per.append([e, f, h]); preds.append(pred)
                 for k, v in tm.items(): tms[k] += v
             N = len(data[L])
             r = {"em": em / N, "f1": f1 / N, "contains": has / N, "n": N, "per": per, "preds": preds,

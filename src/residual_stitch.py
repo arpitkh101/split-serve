@@ -335,7 +335,7 @@ def main():
     ap.add_argument("--cut", type=int, default=20); ap.add_argument("--source", default="4b", choices=["4b", "17b"])
     ap.add_argument("--steps", type=int, default=3000); ap.add_argument("--lr", type=float, default=1e-4)
     ap.add_argument("--lengths", default="256,512,1024,2048")
-    ap.add_argument("--corpus", default="wt103", help="wt103 | hotpot: alternate multi-document QA examples (loss on the answer) with wt103 chunks")
+    ap.add_argument("--corpus", default="wt103", help="wt103 | hotpot | qamix: alternate QA examples (loss on the answer) with wt103 chunks; qamix = hotpot, drop, musique, coqa")
     ap.add_argument("--qa-lengths", default="512,1024,2048", help="target prompt lengths for the QA examples")
     ap.add_argument("--calib-chunks", type=int, default=64); ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--cut-src", type=int, default=1, help="top-k 4B layers concatenated into the cut map")
@@ -382,7 +382,10 @@ def main():
 
     lens = [int(x) for x in a.lengths.split(",")]; elens = [256, 512, 1024, 2048]
     ev = {P: C.load_text_chunks(tok, N_EVAL, P + CONT, split="test", seed=0) for P in elens}
-    qa = load_qa_examples(tok, 4000, seed=777, lengths=tuple(int(x) for x in a.qa_lengths.split(","))) if a.corpus == "hotpot" else None
+    qlens = tuple(int(x) for x in a.qa_lengths.split(","))
+    if a.corpus == "hotpot": qa = load_qa_examples(tok, 4000, seed=777, lengths=qlens)
+    elif a.corpus == "qamix": import qa_data; qa = qa_data.train_mix(tok, 4000, 777, qlens)
+    else: qa = None
     tr = {P: load_corpus_chunks(tok, "wt103" if qa else a.corpus, N_TRAIN[P], P + CONT, seed=777) for P in lens}
 
     def full_eval(label):

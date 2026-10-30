@@ -51,7 +51,7 @@ def main():
                     res[f"{L}|{c}|{metric}"] = {"gap": gap, "lo": lo, "hi": hi}
             ms = {c: v["ms"] for c, v in conds.items()}
             print("  ms: " + "  ".join(f"{c}: " + ",".join(f"{k} {x:.0f}" for k, x in m.items()) for c, m in ms.items()))
-        json.dump(res, open(f"{OUT}/paired_ci_longctx.json", "w"), indent=2)
+        json.dump(res, open(f"{OUT}/paired_ci_longctx_{sys.argv[-1]}.json", "w"), indent=2)
     else:
         T = json.load(open(f"{OUT}/task_{sys.argv[2]}.json"))
         for task, conds in T.items():

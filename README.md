@@ -67,10 +67,12 @@ from the train split.
 | 8k | 35.6 / 48.5 | 34.2 / 47.3 | -1.4 [-5.4, +2.6] | 113 ms vs 608 ms |
 
 Bridge timings are the CUDA-graph bf16 path; the stitch was trained on prompts of 2k to 8k
-tokens. A second seed reproduces the shape. On a task family the stitch was not trained on
-(multi-turn SQuAD, the 4B's own first answer in the context) it retains about half the
-quality gap: 12 to 17 EM points under re-prefill, against 23 to 25 for the wikitext-trained
-stitch.
+tokens. A second seed reproduces the shape. On task families the stitch was not trained on
+it is useful but not at parity: trained on a mix of four QA sources (HotpotQA, DROP,
+MuSiQue, CoQA) it lands 4 to 9 EM under re-prefill on DuoRC, 6 to 14 under on multi-turn
+SQuAD and 16 to 23 under on SQuAD single-turn, against 23 to 25 under for the
+wikitext-trained stitch. The mix gains 1 to 4 points over HotpotQA-only training on every
+held-out set, and 4 points in domain at 2k (44.2 EM, +5.4 [+1.4, +9.6]).
 
 ## How it got here
 
@@ -111,6 +113,9 @@ Each step was decided by the result of the one before. Details and tables in lea
    restored retrieval (EM 35 on its own, parity or better with the 4B's first token at 2k
    and 4k), with the control still at native. Training on prompts up to 8k extended parity
    to 8k; a second seed reproduced it; out of domain the stitch keeps half the gap.
+10. **More QA sources.** Training on four QA sources instead of one gained 1 to 4 EM on
+   every held-out set and 4 in domain, but left 8 to 17 points under re-prefill at 8k out
+   of domain. More data of the same kind is not the lever; the map itself is.
 
 ## Findings that transfer beyond this pair
 
@@ -158,6 +163,7 @@ src/
   residual_stitch.py    residual-space stitch at every layer (the final design)
   residual_suffix.py    wikitext cost of a native suffix
   longctx_eval.py       long-context multi-document QA in the handoff setting, with timings
+  qa_data.py            QA sources in one format: the training mix and the held-out sets
   multiturn_eval.py     multi-turn handoff on SQuAD: the 4B answers turn one, the 1.7B turn two
   paired_ci*.py         paired bootstrap CIs from saved per-chunk NLLs and task hits
 out/                    every result as json (perplexities, per-chunk NLLs, task hits, timings)
@@ -218,6 +224,8 @@ $PY src/longctx_eval.py --conds reskv:attnqa8k_4b_c28@4b,reskv:attnqa8k_4b_c28,r
 $PY src/paired_ci.py longctx handoff_base handoff_attnqa8k
 $PY src/multiturn_eval.py --conds 17b,4b --n 500 --tag mt_base                      # out-of-domain multi-turn handoff on SQuAD
 $PY src/multiturn_eval.py --conds reskv:attnqa8k_4b_c28@4b,reskv:attnqa8k_self_c28 --n 500 --tag mt_attnqa8k
+$PY src/residual_stitch.py --cut 28 --teacher attn --corpus qamix --qa-lengths 2048,4096,8192 --source 4b --tag qamix_4b_c28   # four QA sources
+$PY src/longctx_eval.py --dataset squad --conds 17b,4b,reskv:qamix_4b_c28@4b --n 500 --tag squad_ood   # held out; also --dataset duorc
 $PY src/latency_residual.py --tag attnqa_4b_c28 --lengths 2048,4096,8192
 ```
 
@@ -225,9 +233,9 @@ $PY src/latency_residual.py --tag attnqa_4b_c28 --lengths 2048,4096,8192
 
 - One model pair. The final design is one seed; the residual-space stitch before it
   reproduced on a second seed.
-- The long-context parity result is in domain: the stitch was trained on the HotpotQA train
-  split and evaluated on its validation questions. Out of domain (SQuAD multi-turn) it is
-  12 to 17 EM under re-prefill. Two seeds, one model pair.
+- The long-context parity result is in domain: the stitch was trained on QA train splits
+  and evaluated on their validation questions. On held-out QA sets it is 4 to 23 EM under
+  re-prefill, and on SQuAD the 4B itself is 8 to 15 under the 1.7B. Two seeds, one model pair.
 - With the 4B emitting the first token, LAMBADA measures the 4B, and the ARC and PIQA
   log-likelihood sums mix one 4B log-probability with the 1.7B's.
 - Per request the split costs more: about 2.75x the prefill FLOPs of the 1.7B alone and
