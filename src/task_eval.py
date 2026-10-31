@@ -3,7 +3,9 @@ multiple choice, lm-eval style: the few-shot prompt is the prefill (where the pi
 each answer choice is decoded by the 1.7B off that cache. Per-example hits are saved for
 paired bootstrap. Conditions: 17b, 4b, pipe:TAG (residual-cut pipeline), hv2:TAG (with its
 tail LoRA), reskv:TAG (residual-space stitch), reskv:TAG@S (last S prompt tokens recomputed
-natively), reskv:TAG@4b (first decode token from the 4B's own logits).
+natively), reskv:TAG@4b (first decode token from the 4B's own logits), reskv:TAG@mix (first token
+from the sum of the 4B's and the stitched 1.7B's log-probabilities), reskv:TAG@17b (oracle: first
+token from the native 1.7B re-prefilling the prompt, stitched cache otherwise).
 """
 import sys, json, math, time, warnings, argparse, random, torch
 warnings.filterwarnings("ignore")
@@ -55,10 +57,12 @@ class Cond:
         self.pipe = False; self.reskv = None
         if name.startswith("reskv:"):
             import residual_stitch as R
-            tag = name.split(":")[1]; self.suffix = 0; self.first4b = False
+            tag = name.split(":")[1]; self.suffix = 0; self.first4b = False; self.first17b = False; self.firstmix = False
             if "@" in tag:
                 tag, sfx = tag.split("@")
                 if sfx == "4b": self.first4b = True      # first decode token from the 4B's own logits (DistServe-style)
+                elif sfx == "17b": self.first17b = True  # oracle: first token from the native 1.7B re-prefilling the prompt
+                elif sfx == "mix": self.firstmix = True  # first token from the 4B's and the stitched 1.7B's log-probs added
                 else: self.suffix = int(sfx)            # last S prompt tokens recomputed natively
             maps, Lc, source = R.load_maps(tag)
             self.reskv = (R, maps, Lc, source); return
@@ -87,14 +91,19 @@ class Cond:
     def prefill(self, ids):
         if self.reskv:
             R, maps, Lc, source = self.reskv; T = ids.shape[1]; S = min(self.suffix, T - 1)
-            if self.first4b:
+            if self.first4b or self.firstmix:
                 # one 4B forward gives both the source residuals and the prefiller's own next-token logits
                 box = {}; hk = self.m4.model.norm.register_forward_hook(lambda m, i, o: box.__setitem__("pre", i[0]))
                 try: o4 = self.m4(input_ids=ids, output_hidden_states=True, use_cache=False)
                 finally: hk.remove()
                 H = tuple(o4.hidden_states[:-1]) + (box["pre"],)
-                cache, _ = R.prefill(self.m4, self.m17, maps, ids, Lc, source, H=H)
+                cache, own = R.prefill(self.m4, self.m17, maps, ids, Lc, source, H=H)
+                if self.firstmix:
+                    return cache, (torch.log_softmax(o4.logits[0, -1].float(), -1) + torch.log_softmax(own[0, -1].float(), -1)).view(1, 1, -1)
                 return cache, o4.logits
+            if self.first17b:
+                cache, _ = R.prefill(self.m4, self.m17, maps, ids, Lc, source)
+                return cache, self.m17(input_ids=ids, use_cache=False, logits_to_keep=1).logits
             if S <= 0: return R.prefill(self.m4, self.m17, maps, ids, Lc, source)
             cache, _ = R.prefill(self.m4, self.m17, maps, ids[:, :T - S], Lc, source)
             pos = torch.arange(T - S, T, device=DEV).unsqueeze(0)

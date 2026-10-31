@@ -56,23 +56,29 @@ with prefill on the other GPU there is no tail and under 4 percent cost.
 **Context handoff at long context.** The setting where the bridge saves work: the 4B's
 reading of a long context already exists (a previous turn, a shared prefix, another agent)
 and the 1.7B continues from it instead of re-reading. Multi-document QA (HotpotQA distractor
-padded to 2k / 4k / 8k tokens), 500 questions, short greedy answers, paired bootstrap against
-the 1.7B re-prefilling the same prompt. Stitch trained with attention matching on QA data
-from the train split.
+padded to 2k to 32k tokens), short greedy answers, paired bootstrap against the 1.7B
+re-prefilling the same prompt. Stitch trained with attention matching on a mix of four QA
+train splits at 2k to 8k. Timing is batch 1, bf16, both models on flash attention, the
+re-prefill keeping only the last position's logits as a server does; the bridge is one
+CUDA graph.
 
-| context | 1.7B re-prefill EM / F1 | pipeline EM / F1 | EM gap [95% CI] | bridge vs re-prefill |
-|---|---|---|---|---|
-| 2k | 38.8 / 52.1 | 40.2 / 56.1 | +1.4 [-2.6, +5.4] | 30 ms vs 133 ms |
-| 4k | 36.2 / 50.5 | 37.6 / 51.1 | +1.4 [-2.6, +5.2] | 58 ms vs 278 ms |
-| 8k | 35.6 / 48.5 | 34.2 / 47.3 | -1.4 [-5.4, +2.6] | 113 ms vs 608 ms |
+| context | n | 1.7B re-prefill EM / F1 | pipeline EM / F1 | EM gap [95% CI] | bridge vs re-prefill |
+|---|---|---|---|---|---|
+| 2k | 500 | 38.8 / 52.1 | 44.2 / 58.2 | +5.4 [+1.4, +9.6] | 29 ms vs 119 ms, 4.2x |
+| 4k | 500 | 36.2 / 50.5 | 37.6 / 51.9 | +1.4 [-2.6, +5.4] | 56 ms vs 246 ms, 4.4x |
+| 8k | 500 | 35.6 / 48.5 | 33.0 / 45.0 | -2.6 [-6.6, +1.6] | 109 ms vs 535 ms, 4.9x |
+| 16k | 200 | 27.0 / 39.9 | 29.0 / 41.4 | +2.0 [-4.0, +8.0] | 219 ms vs 1,310 ms, 6.0x |
+| 32k | 200 | 27.5 / 37.5 | 24.5 / 37.0 | -3.0 [-8.5, +2.0] | 436 ms vs 3,622 ms, 8.3x |
 
-Bridge timings are the CUDA-graph bf16 path; the stitch was trained on prompts of 2k to 8k
-tokens. A second seed reproduces the shape. On task families the stitch was not trained on
-it is useful but not at parity: trained on a mix of four QA sources (HotpotQA, DROP,
-MuSiQue, CoQA) it lands 4 to 9 EM under re-prefill on DuoRC, 6 to 14 under on multi-turn
-SQuAD and 16 to 23 under on SQuAD single-turn, against 23 to 25 under for the
-wikitext-trained stitch. The mix gains 1 to 4 points over HotpotQA-only training on every
-held-out set, and 4 points in domain at 2k (44.2 EM, +5.4 [+1.4, +9.6]).
+Parity with re-prefill from 2k to 32k, four times the training length, with the control
+(same maps and objective on the 1.7B's own activations) drifting by the same amount at
+8k and 32k. On task families the stitch was not trained on it is useful but not at
+parity: 4 to 9 EM under re-prefill on DuoRC, 6 to 14 under on multi-turn SQuAD and 16 to
+23 under on SQuAD single-turn. Giving the pipeline the native 1.7B's first token (an
+oracle) halves those gaps; swapping native keys and values into the stitched cache block
+by block puts the other half in layers 12 to 23. A native question suffix, ridge-only
+maps, attention matching at prompt positions, two source layers in that band and a mixed
+first token were each tried and none moved it (learning.md section 18).
 
 ## How it got here
 
@@ -163,6 +169,9 @@ src/
   residual_stitch.py    residual-space stitch at every layer (the final design)
   residual_suffix.py    wikitext cost of a native suffix
   longctx_eval.py       long-context multi-document QA in the handoff setting, with timings
+  longctx_long.py       the same at 16k and 32k: last-logit forwards, flash attention, source layers on the CPU
+  latency_fair.py       bridge vs flash-attention last-logit re-prefill, 2k to 32k
+  layer_patch.py        native keys and values swapped into the stitched cache block by block
   qa_data.py            QA sources in one format: the training mix and the held-out sets
   multiturn_eval.py     multi-turn handoff on SQuAD: the 4B answers turn one, the 1.7B turn two
   paired_ci*.py         paired bootstrap CIs from saved per-chunk NLLs and task hits
@@ -227,6 +236,10 @@ $PY src/multiturn_eval.py --conds reskv:attnqa8k_4b_c28@4b,reskv:attnqa8k_self_c
 $PY src/residual_stitch.py --cut 28 --teacher attn --corpus qamix --qa-lengths 2048,4096,8192 --source 4b --tag qamix_4b_c28   # four QA sources
 $PY src/longctx_eval.py --dataset squad --conds 17b,4b,reskv:qamix_4b_c28@4b --n 500 --tag squad_ood   # held out; also --dataset duorc
 $PY src/latency_residual.py --tag attnqa_4b_c28 --lengths 2048,4096,8192
+$PY src/latency_fair.py --tag qamix_4b_c28                                    # headline timing column
+$PY src/longctx_long.py --conds 17b,reskv:qamix_4b_c28@4b,reskv:qamix_self_c28 --lengths 32768 --n 200 --tag handoff_qamix_long32
+$PY src/longctx_eval.py --dataset squad --conds reskv:qamix_4b_c28@17b --n 500 --tag squad_ood_oracle   # oracle first token
+$PY src/layer_patch.py --n 100 --length 4096
 ```
 
 ## Caveats
@@ -236,11 +249,15 @@ $PY src/latency_residual.py --tag attnqa_4b_c28 --lengths 2048,4096,8192
 - The long-context parity result is in domain: the stitch was trained on QA train splits
   and evaluated on their validation questions. On held-out QA sets it is 4 to 23 EM under
   re-prefill, and on SQuAD the 4B itself is 8 to 15 under the 1.7B. Two seeds, one model pair.
+- The 16k and 32k rows are 200 questions, so their intervals are wide, and at 32k the
+  choice of bf16 attention kernel alone moves the re-prefill baseline by 2 to 3 EM;
+  every row compares conditions run in the same process with the same kernel.
 - With the 4B emitting the first token, LAMBADA measures the 4B, and the ARC and PIQA
   log-likelihood sums mix one 4B log-probability with the 1.7B's.
 - Per request the split costs more: about 2.75x the prefill FLOPs of the 1.7B alone and
   3.4x the weights. The benefit is latency isolation, and a prefill service already
   running the larger model is the setting where the heterogeneous version beats a
   same-model split.
-- Timing is Hugging Face at batch 1 or 8, launch-bound; a serving engine would change the
-  absolute numbers.
+- Timing is Hugging Face at batch 1 or 8; a serving engine would change the absolute
+  numbers. A torch.compile'd re-prefill is 10 to 15 percent faster than the flash row
+  above, which leaves the bridge 3.5x to 7.9x ahead.

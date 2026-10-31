@@ -254,34 +254,62 @@ class AttnTap:
         for h in self.h: h.remove()
 
 
-def pipeline_attn(m4, m17, maps, ids, P, Lc, source, prompt_w=1.0, kl_w=1.0, prompt_kl=True):
+def prompt_attn_out(m17, maps, H, cache, l, pe, idx):
+    """Student attention output (the o_proj input) at prompt positions idx for layer l: queries from
+    the mapped residual, keys and values from the stitched cache, causal over the prompt."""
+    layer = m17.model.layers[l]; attn = layer.self_attn; cos, sin = pe; S = idx.numel()
+    x = layer.input_layernorm(maps(H, l).unsqueeze(0).to(m17.dtype)[:, idx])
+    q = C.apply_rope(attn.q_norm(attn.q_proj(x).view(1, S, -1, attn.head_dim)).transpose(1, 2), cos[:, idx], sin[:, idx])
+    k, v = cache.key_cache[l], cache.value_cache[l]; full = S == k.shape[2]; g = q.shape[1] // k.shape[1]
+    k, v = k.repeat_interleave(g, 1), v.repeat_interleave(g, 1)       # GQA by hand: enable_gqa falls back to the math kernel (8k x 8k scores)
+    mask = None if full else (torch.arange(k.shape[2], device=DEV)[None, :] <= idx[:, None])
+    o = F.scaled_dot_product_attention(q, k, v, attn_mask=mask, is_causal=full)
+    return o.transpose(1, 2).reshape(1, S, -1)
+
+
+def pipeline_attn(m4, m17, maps, ids, P, Lc, source, prompt_w=1.0, kl_w=1.0, prompt_kl=True, attn_w=1.0, prompt_attn=False, pattn_pos=8192):
     """Attention-matching objective.  The 1.7B's queries at the continuation positions must
     produce the same per-layer attention outputs over the stitched cache as over the 1.7B's own
     cache: that is what retrieval into the context needs, and what next-token or logit matching
     on local text does not enforce.  Loss = mean over layers of normalised MSE between attention
     outputs (student: decode off the stitched cache; teacher: the native 1.7B on the same text),
-    plus kl_w * the receiver-matching logit KL of pipeline_kl."""
+    plus kl_w * the receiver-matching logit KL of pipeline_kl.  prompt_attn: also match the
+    attention outputs at the prompt positions (all of them, or a random pattn_pos of them), the
+    student's queries coming from the mapped residuals; attn_w scales both attention terms."""
     from torch.utils.checkpoint import checkpoint
-    tap = AttnTap(m17)
+    tap = AttnTap(m17); H = None
     try:
         with torch.no_grad():
             keep = 0 if prompt_kl else ids.shape[1] - P + 1                   # 0 = all positions
             t = m17(input_ids=ids, use_cache=False, logits_to_keep=keep).logits[0]
             T_attn = {i: a[0, P:-1].float() for i, a in tap.out.items()}    # continuation positions P..end-1
+            if prompt_attn:
+                full = P <= pattn_pos
+                idx = torch.arange(P, device=DEV) if full else torch.randperm(P, device=DEV)[:pattn_pos].sort().values
+                T_p = {i: (a[0, :P] if full else a[0, idx]) for i, a in tap.out.items()}
+                H = hidden_states(m4 if source == "4b" else m17, ids[:, :P])
         tap.out = {}
-        cache, plg = prefill(m4, m17, maps, ids[:, :P], Lc, source, last_only=not prompt_kl, ckpt=not prompt_kl)
+        cache, plg = prefill(m4, m17, maps, ids[:, :P], Lc, source, H=H, last_only=not prompt_kl, ckpt=not prompt_kl)
         lg = continuation_logits(m17, cache, ids, P)
         S_attn = {i: a[0, :-1].float() for i, a in tap.out.items()}        # same positions (last input token dropped to align with lg)
     finally:
         tap.remove()
     attn = sum(((S_attn[i] - T_attn[i]) ** 2).mean() / (T_attn[i].var() + 1e-6) for i in T_attn) / len(T_attn)
+    if prompt_attn:
+        pe = m17.model.rotary_emb(torch.zeros(1, P, 1, device=DEV, dtype=m17.dtype), torch.arange(P, device=DEV).unsqueeze(0))
+        def pa(l):                                                           # checkpointed per layer: only the scalar survives the forward
+            def f(*Hs):
+                S_p = prompt_attn_out(m17, maps, Hs, cache, l, pe, idx)[0].float(); T = T_p[l].float()
+                return ((S_p - T) ** 2).mean() / (T.var() + 1e-6)
+            return checkpoint(f, *H, use_reentrant=False)
+        attn = attn + sum(pa(l) for l in T_p) / len(T_p)
     sc = torch.cat([plg[0, -1:].float(), lg], 0).to(t.dtype); tc = t[P - 1:-1] if prompt_kl else t[:-1]
     def total(ls, lt, chunk=256):
         acc = 0.0
         for i in range(0, ls.shape[0], chunk):
             acc = acc + checkpoint(_kl_chunk, ls[i:i + chunk], lt[i:i + chunk], use_reentrant=False)
         return acc / ls.shape[0]
-    loss = attn + kl_w * total(sc, tc)
+    loss = attn_w * attn + kl_w * total(sc, tc)
     if prompt_kl: loss = loss + kl_w * prompt_w * total(plg[0, :P - 1], t[:P - 1])
     return loss
 
@@ -339,12 +367,17 @@ def main():
     ap.add_argument("--qa-lengths", default="512,1024,2048", help="target prompt lengths for the QA examples")
     ap.add_argument("--calib-chunks", type=int, default=64); ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--cut-src", type=int, default=1, help="top-k 4B layers concatenated into the cut map")
+    ap.add_argument("--multi-src", type=int, default=1, help="top-k 4B layers concatenated into the maps of --multi-layers")
+    ap.add_argument("--multi-layers", default="", help="band of 1.7B layers lo-hi (hi exclusive) that get --multi-src source layers")
     ap.add_argument("--cut-mlp", type=int, default=0, help="hidden width of a zero-init MLP branch on the cut map")
     ap.add_argument("--attn-heads", type=int, default=0, help="add a zero-init causal attention branch (heads) to every map")
     ap.add_argument("--attn-dh", type=int, default=64); ap.add_argument("--attn-lr", type=float, default=3e-4)
     ap.add_argument("--first-tok", action="store_true", help="include the prompt's last-position logit (token P) in the training loss")
     ap.add_argument("--prompt-w", type=float, default=0.0, help="weight of the prompt-position LM loss (tokens 1..P from the prefill logits)")
     ap.add_argument("--teacher", default="", choices=["", "17b", "attn"], help="17b: KL to the native 1.7B's own-prefill distribution; attn: that plus per-layer attention-output matching at the continuation positions")
+    ap.add_argument("--attn-w", type=float, default=1.0, help="weight of the attention-matching terms (teacher attn)")
+    ap.add_argument("--prompt-attn", action="store_true", help="also match attention outputs at the prompt positions (teacher attn)")
+    ap.add_argument("--pattn-pos", type=int, default=8192, help="prompt positions scored by --prompt-attn; a random subset above this")
     ap.add_argument("--fit-only", action="store_true"); ap.add_argument("--layers", default="0-28")
     ap.add_argument("--tag", default=None)
     a = ap.parse_args(); Lc = a.cut
@@ -361,7 +394,17 @@ def main():
         missing = [l for l in range(Lc + 1) if not os.path.exists(ridge_path(l))]
         if missing:
             print(f"[{a.tag}] fitting uncached layers {missing} ...", flush=True); fit_layers(m4, m17, calib, missing)
+        ml = set(range(*[int(x) for x in a.multi_layers.split("-")])) if a.multi_src > 1 and a.multi_layers else set()
+        ml = {l for l in ml if l < Lc}
+        if ml:                                                       # two or more 4B source layers for a chosen band of maps
+            H4, H17 = collect(m4, m17, calib, sorted(ml)); multi = {}
+            for i, l in enumerate(sorted(ml)):
+                r = torch.load(ridge_path(l)); top = sorted(range(len(r["r2_all"])), key=lambda j: -r["r2_all"][j])[:a.multi_src]; top.sort()
+                W, b, r2 = ridge_fit(torch.cat([H4[j] for j in top], -1), H17[i]); multi[l] = LinMap(top, W, b)
+                print(f"  layer {l:2d}: concat of 4B layers {top}, R2 {r2:.3f} (single {r['r2']:.3f})", flush=True)
+            del H4, H17
         for l in range(Lc):
+            if l in ml: maps.append(multi[l]); continue
             r = torch.load(ridge_path(l)); maps.append(LinMap([r["j"]], r["W"], r["b"]))
         r = torch.load(ridge_path(Lc))
         if a.cut_src > 1:
@@ -405,7 +448,7 @@ def main():
         else:
             P = lens[torch.randint(0, len(lens), (1,)).item()]
             ids = tr[P][torch.randint(0, len(tr[P]), (1,)).item()].unsqueeze(0).to(DEV)
-        if a.teacher == "attn": loss = pipeline_attn(m4, m17, maps, ids, P, Lc, a.source, a.prompt_w or 1.0, prompt_kl=(P <= 2048))
+        if a.teacher == "attn": loss = pipeline_attn(m4, m17, maps, ids, P, Lc, a.source, a.prompt_w or 1.0, prompt_kl=(P <= 2048), attn_w=a.attn_w, prompt_attn=a.prompt_attn, pattn_pos=a.pattn_pos)
         elif a.teacher: loss = pipeline_kl(m4, m17, maps, ids, P, Lc, a.source, a.prompt_w or 1.0)
         else: loss = pipeline_nll(m4, m17, maps, ids, P, Lc, a.source, a.first_tok, a.prompt_w)
         opt.zero_grad(); loss.backward(); torch.nn.utils.clip_grad_norm_(maps.parameters(), 1.0); opt.step(); sched.step()
@@ -417,7 +460,7 @@ def main():
           "  ".join(f"P{P}: {r0[P]['ppl']:.3f}->{rF[P]['ppl']:.3f}" for P in elens), flush=True)
     json.dump({"tag": a.tag, "cut": Lc, "source": a.source, "spec": maps.spec(), "params_M": n_par / 1e6,
                "steps": a.steps, "seed": a.seed, "corpus": a.corpus, "train_lengths": lens,
-               "cut_src": a.cut_src, "cut_mlp": a.cut_mlp, "attn": [a.attn_heads, a.attn_dh], "attn_lr": a.attn_lr, "first_tok": a.first_tok, "prompt_w": a.prompt_w, "teacher": a.teacher,
+               "cut_src": a.cut_src, "multi_src": a.multi_src, "multi_layers": a.multi_layers, "cut_mlp": a.cut_mlp, "attn": [a.attn_heads, a.attn_dh], "attn_lr": a.attn_lr, "first_tok": a.first_tok, "prompt_w": a.prompt_w, "teacher": a.teacher, "attn_w": a.attn_w, "prompt_attn": a.prompt_attn,
                "step0": {P: r0[P]["ppl"] for P in elens}, "final": {P: rF[P]["ppl"] for P in elens},
                "nll_final": {P: rF[P]["nll"] for P in elens}},
               open(f"{C.RESULTS}/hv2_{a.tag}.json", "w"), indent=2)

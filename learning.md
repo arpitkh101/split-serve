@@ -620,3 +620,114 @@ outputs. Candidates, not yet run: two source layers per target layer (the code h
 the cut map only), a small nonlinear map, matching attention weights rather than outputs,
 and a sweep of the attention-to-KL weight. The in-domain result stands: parity with
 re-prefill from 2k to 8k on the trained task family, and now four points better at 2k.
+
+## 18. Where the held-out gap sits, and what does not move it
+
+Section 17 ended with a gap on held-out QA sets that more data did not close. This section
+runs the cheap diagnostics and the cheap fixes in parallel, re-measures the latency claim
+against a stronger baseline, and extends the in-domain result to 32k. The stitch is the
+four-source one of section 17 (`qamix_4b_c28`) throughout.
+
+**Fair timing** (`src/latency_fair.py`, `out/latency_fair.json`). The re-prefill numbers in
+earlier sections were sdpa attention with full-vocabulary logits over the prompt. A server
+runs flash attention and keeps the last position's logits only. Both models on flash_attn
+2.8.3, batch 1, bf16, median of 10; the bridge is the maps plus the 1.7B's own k/v
+projections as one CUDA graph, reading the 4B residuals in place.
+
+| prompt | 1.7B re-prefill, old path | 1.7B re-prefill, flash + last logit | same, torch.compile | bridge | 4B prefill | bridge speedup |
+|---|---|---|---|---|---|---|
+| 2k | 133 ms | 119 ms | 101 ms | 28.5 ms | 278 ms | 4.2x |
+| 4k | 281 | 246 | 218 | 55.6 | 558 | 4.4x |
+| 8k | 613 | 535 | 485 | 109 | 1,249 | 4.9x |
+| 16k | 1,481 | 1,310 | 1,201 | 219 | 3,134 | 6.0x |
+| 32k | out of memory | 3,622 | 3,434 | 436 | 8,983 | 8.3x |
+
+The stronger baseline takes 11 to 13 percent off the old number; the ratio still widens with
+length because the bridge is linear in the prompt and attention is not. The compiled column
+hit dynamo's recompile limit after the first lengths and is a floor, not a clean number;
+against it the speedup is 3.5x at 2k and 7.9x at 32k.
+
+**In domain beyond the training length.** HotpotQA handoff at 16k and 32k, 200 questions,
+4B first token, through `src/longctx_long.py`: the harness unchanged except that
+model forwards keep the last position's logits, the stitched conditions collect only the
+16 source layers the maps read and park them on the CPU, and both models run flash
+attention (sdpa materialises a 2 GiB causal mask at 32k).
+
+| context | re-prefill EM / F1 | pipeline EM / F1 | EM gap [95% CI] | control |
+|---|---|---|---|---|
+| 16k | 27.0 / 39.9 | 29.0 / 41.4 | +2.0 [-4.0, +8.0] | 26.5 (-0.5) |
+| 32k | 27.5 / 37.5 | 24.5 / 37.0 | -3.0 [-8.5, +2.0] | 24.5 (-3.0) |
+
+Four times the training length, within noise of re-prefill, the control drifting by the
+same amount. One caveat: at 32k the re-prefill row itself moved from 24.5 to 27.5 EM
+between sdpa and flash attention on the same 200 questions, so bf16 kernel choice is worth
+2 to 3 EM at this length and n; the pipeline and its baseline were always run in the same
+process with the same kernel.
+
+**Oracle first token.** `reskv:TAG@17b` takes the first decode token from the native 1.7B
+re-prefilling the prompt and everything after it from the stitched cache. It separates the
+two things the pipeline gets wrong: the first token and the cache.
+
+| set | context | re-prefill | 4B first token (default) | oracle first token | own first token |
+|---|---|---|---|---|---|
+| HotpotQA | 2k / 4k / 8k | 38.8 / 36.2 / 35.6 | 44.2 / 37.6 / 33.0 | 34.8 / 33.2 / 31.4 | 35.0 / 31.0 / 26.2 |
+| SQuAD | | 67.8 / 66.6 / 58.4 | 52.0 / 44.0 / 41.8 | 58.0 / 55.6 / 47.6 | 47.8 / 44.4 / 37.6 |
+| DuoRC | | 49.6 / 49.2 / 48.8 | 46.0 / 41.6 / 39.8 | 46.4 / 45.8 / 43.2 | 38.0 / 35.6 / 32.6 |
+| SQuAD multi-turn | | 70.8 / 71.0 / 67.8 | 64.8 / 57.2 / 59.8 | 63.0 / 59.2 / 57.8 | 59.8 / 53.2 / 55.6 |
+
+With a perfect first token the stitched cache is 3 to 4 EM under re-prefill on HotpotQA
+([-7.4, -0.6] at 2k), 3 to 6 on DuoRC, 10 to 11 on SQuAD and 7 to 12 on multi-turn SQuAD.
+So the held-out gap is about half first token and half cache, and the cache half is itself
+set-dependent: small on the two sets whose questions look like the training mix, large on
+SQuAD. The 4B's first token beats the oracle in domain (the 4B is the better reader there)
+and on nothing else.
+
+**Layer patching** (`src/layer_patch.py`, `out/layer_patch_squad4k.json`). 100 SQuAD
+questions at 4k that re-prefill answers and the pipeline does not, 4B first token held
+fixed, native 1.7B keys and values swapped into the stitched cache one block of four layers
+at a time.
+
+| cache | answers recovered |
+|---|---|
+| stitched | 18 |
+| native K/V, 4B first token | 42 |
+| native K/V, native first token | 85 |
+| stitched, native at layers 0-3 / 4-7 / 8-11 | 19 / 19 / 18 |
+| stitched, native at layers 12-15 | 23 |
+| stitched, native at layers 16-19 | 32 |
+| stitched, native at layers 20-23 | 26 |
+| stitched, native at layers 24-27 | 21 |
+| native, stitched only at 16-19 | 34 |
+
+Same split as the oracle: the first token is half of it (85 to 42), and the cache half lives
+in layers 12 to 23 with the peak at 16 to 19. The first eight layers and the last four are
+not where the loss is.
+
+**What did not move it.** Each of these was one or two runs, same recipe as `qamix_4b_c28`
+unless stated, EM on 500 questions with the 4B first token except where the row is about
+the first token.
+
+| change | HotpotQA 2k / 4k / 8k | SQuAD | DuoRC | verdict |
+|---|---|---|---|---|
+| reference: four-source stitch | 44.2 / 37.6 / 33.0 | 52.0 / 44.0 / 41.8 | 46.0 / 41.6 / 39.8 | |
+| native suffix, last 64 tokens (own first token) | 25.8 / 23.0 / 17.2 | 31.6 / 29.6 / 22.2 | 24.2 / 23.0 / 14.8 | 10 EM under the own-first-token rows everywhere; 128 the same |
+| native suffix, last 1 token | 32.8 / 30.4 / 29.0 | 47.6 / 46.8 / 40.2 | 37.2 / 37.2 / 31.0 | equals the own-first-token rows; 4 tokens is 10 to 15 worse than 1 |
+| ridge init only, no training | 11.8 / 9.4 / 8.4 | 15.0 / 11.0 / 9.6 | 18.6 / 15.4 / 12.6 | training is all of it; own first token 2 to 4 EM |
+| attention matching at prompt positions too | 41.6 / 35.6 / 34.2 | 49.0 / 42.2 / 38.8 | | no; control drift unchanged (4.4 to 4.6 on SQuAD); attention weight 3x within noise |
+| two 4B source layers for the maps at layers 12 to 23 | 41.8 / 36.2 / 34.6 | 50.8 / 44.6 / 39.6 | 44.2 / 41.4 / 38.0 | within noise of one source; bridge 78 to 97 ms at 2k |
+| first token from 4B and stitched 1.7B log-probs added | 41.2 / 35.8 / 35.2 | 52.0 / 46.8 / 43.0 | 48.0 / 44.0 / 42.0 | 1 to 3 EM up on the held-out sets, 3 down in domain at 2k; a wash |
+
+The suffix result is the surprising one. Recomputing the question natively over the
+stitched document keys, which section 10 found helpful with a native tail and short prompts, is a
+large loss at cut 28: the maps were trained with the question inside the stitched cache,
+and an answer attending into a half-native, half-stitched cache is a regime the training
+never saw. A one-token suffix leaves the question stitched and only changes who emits the
+first token, and lands exactly on the own-first-token rows.
+
+**Reading.** Four of the critic's cheap items (section 17's list) are now answered: the
+fair timing holds, the oracle and the patching agree on where the loss is, ridge refitting
+cannot help because ridge is nowhere near, and prompt-position attention matching does not
+reduce drift. The two targeted fixes, capacity where the patching pointed and a better
+first token, moved nothing, or two points. What is left is the mechanism itself at layers
+12 to 23 on question styles outside the training mix, and the first token on sets where
+the 4B reads worse than the 1.7B. Neither has a cheap fix on this list.
