@@ -1,0 +1,3632 @@
+{
+ "4096": {
+  "reskv:qamix_4b_c28@1": {
+   "em": 0.0,
+   "f1": 0.04973015873015876,
+   "contains": 0.13,
+   "n": 300,
+   "per": [
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2857142857142857,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "preds": [
+    "The safety goggles are in the studio",
+    "The ice tray is in the kitchen",
+    "The mug is in the kitchen",
+    "The basket is in the pantry",
+    "The plant is in the studio",
+    "The bottle is in the kitchen",
+    "The vase is in the kitchen",
+    "The safety goggles are in the studio",
+    "The toolbox is in the garage",
+    "The mug is in the kitchen",
+    "The toolbox is in the kitchen",
+    "The speaker is in the studio",
+    "The plant is in the kitchen",
+    "The paint roller is in the kitchen",
+    "The notebook is in the office",
+    "The ruler is in the kitchen",
+    "The safety goggles are in the office",
+    "The hammer is in the kitchen",
+    "The clock is in the office",
+    "The toolbox is in the office",
+    "The globe is in the studio",
+    "The basket is in the kitchen",
+    "The tea is in the kitchen",
+    "The pencil case is in the office",
+    "The charger is in the garage",
+    "The helmet is in the hallway",
+    "The pencil case is in the office",
+    "The basket is in the kitchen",
+    "The helmet is in the kitchen",
+    "The extension cord is in the hallway",
+    "The blanket is in the kitchen",
+    "The trowel is in the kitchen",
+    "The answer is the kitchen",
+    "The safety goggles are in the office",
+    "The camera is in the office",
+    "The measuring tape is in the kitchen",
+    "The keyboard is in the kitchen",
+    "The safety goggles are in the kitchen",
+    "The bottle is in the kitchen",
+    "The cutting board is in the kitchen",
+    "The tablet is in the lab",
+    "The water jug is in the kitchen",
+    "The camera is in the kitchen",
+    "The camera is in the kitchen",
+    "The lamp is in the kitchen",
+    "The wire cutters are in the kitchen",
+    "The keyboard is in the hallway",
+    "The watering can is in the garage",
+    "The tea is in the kitchen",
+    "The stapler is in the office",
+    "The ice tray is in the kitchen",
+    "The safety goggles are in the office",
+    "The doorstop is in the studio",
+    "The answer is the studio",
+    "The tennis ball is in the studio",
+    "The stapler is in the office",
+    "The keyboard is in the pantry",
+    "The cushion is in the lounge",
+    "kitchen",
+    "The kettle is in the kitchen",
+    "The extension cord is in the kitchen",
+    "The basket is in the studio",
+    "office",
+    "The water jug is in the pantry",
+    "The charger is in the kitchen",
+    "The kettle is in the kitchen",
+    "The thermos is in the pantry",
+    "The label maker is in the pantry",
+    "The notebook is in the studio",
+    "The paper bag is in the kitchen",
+    "The tennis ball is in the lounge",
+    "The plant is in the lounge",
+    "The umbrella is in the kitchen",
+    "The answer is the kitchen",
+    "The kettle is in the kitchen",
+    "The picture frame is in the kitchen",
+    "The soldering iron is in the garage",
+    "The spa",
+    "The basket is in the pantry",
+    "The label maker is in the kitchen",
+    "The extension cord is in the hallway",
+    "The backpack is in the kitchen",
+    "The picture frame is in the studio",
+    "The basket is in the studio",
+    "The thermos is in the kitchen",
+    "The tea is in the kitchen",
+    "The helmet is in the office",
+    "The ladle is in the lab",
+    "The camera is in the office",
+    "The extension cord is in the hallway",
+    "The paper bag is in the kitchen",
+    "The helmet is in the kitchen",
+    "The cushion is in the studio",
+    "The plant is in the studio",
+    "The ice tray is in the kitchen",
+    "The lamp is in the office",
+    "The mug is in the kitchen",
+    "The bread box is in the kitchen",
+    "The teapot is in the kitchen",
+    "The yoga mat is in the studio",
+    "The hand mixer",
+    "The spray bottle is in the kitchen",
+    "The watering can is in the kitchen",
+    "The coffee tin is in the office",
+    "The lamp is in the office",
+    "The bottle is in the kitchen",
+    "The plant is in the hallway",
+    "The spice rack is in the kitchen",
+    "The ruler is in the hallway",
+    "The ladle",
+    "The notebook is in the library",
+    "The workshop",
+    "The pillow is in the studio",
+    "The ice tray is in the kitchen",
+    "The backpack is in the kitchen",
+    "The trowel is in the kitchen",
+    "The yoga mat is in the gym",
+    "The clock is in the kitchen",
+    "The ice tray is in the kitchen",
+    "The warehouse",
+    "The tablet is in the kitchen",
+    "The ladle",
+    "The fruit bowl is in the hallway",
+    "The tea is in the kitchen",
+    "The ladle",
+    "The spa",
+    "The wire cutters are in the workshop",
+    "The water jug is in the kitchen",
+    "The flashlight is in the kitchen",
+    "The coffee tin is in the kitchen",
+    "The backpack is in the kitchen",
+    "The paint roller is in the studio",
+    "The tennis ball is in the kitchen",
+    "The toolbox is in the garage",
+    "The paint roller is in the studio",
+    "The pillow is in the hallway",
+    "The hammer is in the kitchen",
+    "The label maker is in the kitchen",
+    "The watering can is in the kitchen",
+    "The safety goggles are in the pantry",
+    "The hammer is in the kitchen",
+    "The hand mixer is in the kitchen",
+    "The ice tray is in the kitchen",
+    "The charger is in the garage",
+    "The plant is in the studio",
+    "The vase is in the kitchen",
+    "The helmet is in the kitchen",
+    "The notebook is in the library",
+    "The basket is in the kitchen",
+    "The paper bag is in the pantry in the kitchen",
+    "The picture frame is in the kitchen",
+    "The speaker is in the hallway",
+    "The paint roller is in the workshop",
+    "The extension cord is in the pantry",
+    "The helmet is in the hallway",
+    "The picture frame is in the studio",
+    "The stapler is in the kitchen",
+    "The trowel is in the kitchen",
+    "The dustpan is in the kitchen",
+    "The extension cord is in the pantry",
+    "The doorstop is in the kitchen",
+    "The umbrella is in the kitchen",
+    "The tennis ball is in the kitchen",
+    "The wire cutters are in the workshop",
+    "The tablet is in the lab",
+    "The water jug is in the studio",
+    "The globe is in the studio",
+    "The paint roller is in the studio",
+    "The clock is in the lounge",
+    "The picture frame is in the studio",
+    "The hand mixer is in the studio",
+    "The room where the bottle is located is the kitchen",
+    "The camera is in the office",
+    "The backpack is in the kitchen",
+    "The backpack is in the kitchen",
+    "The hammer is in the workshop",
+    "The safety goggles are in the kitchen",
+    "The yoga mat is in the kitchen",
+    "The spice rack in the kitchen",
+    "The spice rack is in the office",
+    "The measuring tape is in the kitchen",
+    "The toolbox is in the garage",
+    "The file is in the office",
+    "The spray bottle is in the kitchen",
+    "The cushion is in the kitchen",
+    "The stapler is in the kitchen",
+    "The umbrella is in the kitchen",
+    "The blanket is in the pantry in the kitchen",
+    "The bread box is in the kitchen",
+    "The label maker is in the pantry in the kitchen",
+    "The water jug is in the kitchen",
+    "The cushion is in the studio",
+    "The candle is in the kitchen",
+    "The helmet is in the garage",
+    "The ice tray is in the kitchen",
+    "The picture frame is in the studio",
+    "The file is in the library",
+    "The hammer is in the kitchen",
+    "The water jug is in the kitchen",
+    "The backpack is in the hallway",
+    "The speaker is in the kitchen",
+    "The lamp is in the kitchen",
+    "The kettle is in the kitchen",
+    "The paper bag is in the kitchen",
+    "The camera is in the studio",
+    "The blanket is in the kitchen",
+    "The warehouse",
+    "The answer is the kitchen",
+    "The ladle",
+    "The water jug is in the kitchen",
+    "The keyboard is in the studio",
+    "The charger is in the kitchen",
+    "The kettle is in the kitchen",
+    "The warehouse",
+    "The picture frame is in the kitchen",
+    "The lamp is in the kitchen",
+    "The umbrella is in the office",
+    "The tennis ball is in the gym",
+    "The fruit bowl is in the kitchen",
+    "The hammer is in the kitchen",
+    "The flashlight is in the office",
+    "The keyboard is in the studio",
+    "The measuring tape is in the lab",
+    "The speaker is in the kitchen",
+    "The vase is in the kitchen",
+    "The vase is in the kitchen",
+    "The hand mixer",
+    "workshop",
+    "The robot is in the lab",
+    "The water jug is in the pantry",
+    "The backpack is in the kitchen",
+    "The ice tray is in the kitchen",
+    "The charger is in the kitchen",
+    "The doorstop is in the hallway",
+    "The mug is in the kitchen",
+    "The label maker is in the pantry",
+    "The soldering iron is in the kitchen",
+    "The lamp is in the hallway",
+    "The mug is in the kitchen",
+    "The candle is in the kitchen",
+    "The trowel is in the kitchen",
+    "The basket is in the pantry",
+    "The safety goggles are in the kitchen",
+    "The tennis ball is in the hallway",
+    "The teapot is in the kitchen",
+    "The mug is in the kitchen",
+    "The label maker is in the kitchen",
+    "The answer is the kitchen",
+    "The safety goggles are in the kitchen",
+    "The basket is in the garage",
+    "The keyboard is in the studio",
+    "The sketchbook is in the studio",
+    "The ladle is in the kitchen",
+    "The spice rack",
+    "The paint roller is in the studio",
+    "The pillow is in the office",
+    "The kitchen",
+    "The dustpan is in the kitchen",
+    "The plant is in the kitchen",
+    "The teapot is in the kitchen",
+    "The spice rack is in the kitchen",
+    "The flashlight is in the kitchen",
+    "The ice tray is in the kitchen",
+    "kitchen",
+    "The paint roller is in the workshop",
+    "The spray bottle is in the office",
+    "The notebook is in the library",
+    "The tablet is in the kitchen",
+    "The speaker is in the studio",
+    "The extension cord is in the garage",
+    "The measuring tape is in the hallway",
+    "The tablet is in the kitchen",
+    "The ruler is in the kitchen",
+    "The coffee tin is in the kitchen",
+    "studio",
+    "The ice tray is in the kitchen",
+    "The helmet is in the workshop",
+    "The bread box is in the pantry",
+    "The hammer is in the garage",
+    "The notebook is in the office",
+    "The lamp is in the studio",
+    "The bottle is in the kitchen",
+    "The paint roller is in the studio",
+    "The sketchbook is in the kitchen",
+    "The doorstop is in the kitchen",
+    "The spray bottle is in the kitchen",
+    "The sketchbook is in the kitchen",
+    "The paint roller is in the garage",
+    "The fruit bowl is in the kitchen",
+    "kitchen",
+    "The paper bag is in the pantry",
+    "The answer is the kitchen",
+    "The bottle is in the lab",
+    "The robot is in the workshop",
+    "The blanket is in the kitchen",
+    "The clock is in the kitchen",
+    "The extension cord is in the kitchen",
+    "The mug is in the kitchen",
+    "The spice rack",
+    "The kettle is in the kitchen"
+   ],
+   "ms": {
+    "prefill": 1037.3089952836744
+   },
+   "sec": 394
+  },
+  "reskv:qamix_4b_c28@4": {
+   "em": 0.0,
+   "f1": 0.04882010582010585,
+   "contains": 0.13333333333333333,
+   "n": 300,
+   "per": [
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.2857142857142857,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.25,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2857142857142857,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2857142857142857,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     1.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.25,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "preds": [
+    "The safety goggles are in the studio",
+    "The ice tray is in the kitchen",
+    "The mug is in the kitchen",
+    "The basket is in the hallway",
+    "The plant is in the studio",
+    "The bottle is in the kitchen",
+    "The vase is in the kitchen",
+    "The safety goggles are in the kitchen",
+    "The toolbox is in the garage",
+    "The mug is in the kitchen",
+    "The toolbox is in the kitchen",
+    "The speaker is in the kitchen",
+    "The plant is in the kitchen",
+    "The paint roller is in the kitchen",
+    "The notebook is in the office",
+    "The ruler is in the kitchen",
+    "The safety goggles are in the office",
+    "The hammer is in the kitchen",
+    "The clock is in the office",
+    "The toolbox is in the office",
+    "The globe is in the studio",
+    "The basket is in the kitchen",
+    "The teapot is in the kitchen",
+    "The pencil case is in the office",
+    "The charger is in the kitchen",
+    "The helmet is in the hallway",
+    "The pencil case is in the office",
+    "The basket is in the kitchen",
+    "The helmet is in the kitchen",
+    "The extension cord is carried out of the hallway and set down on the tray in",
+    "The blanket is in the kitchen",
+    "The trowel is in the kitchen",
+    "The answer is the shelf in the kitchen",
+    "The safety goggles are in the office",
+    "The camera is in the office",
+    "The measuring tape is in the kitchen",
+    "The keyboard is in the workshop",
+    "The safety goggles are in the kitchen",
+    "The bottle is in the kitchen",
+    "The cutting board is in the kitchen",
+    "The tablet is in the lab",
+    "The water jug is in the kitchen",
+    "The camera is in the kitchen",
+    "The camera is in the kitchen",
+    "The lamp is in the kitchen",
+    "The wire cutters are in the garage",
+    "The keyboard is in the hallway",
+    "The watering can is in the garage",
+    "The teapot is in the kitchen",
+    "The stapler is in the office",
+    "The ice tray is in the kitchen",
+    "The safety goggles are in the office",
+    "The doorstop is in the studio",
+    "The answer is the room where the screwdriver is now is the kitchen",
+    "The tennis ball is in the studio",
+    "The stapler is in the office",
+    "The keyboard is in the hallway",
+    "The cushion is in the hallway",
+    "The fruit bowl is in the kitchen",
+    "The kettle is in the kitchen",
+    "The extension cord is now in the studio",
+    "The basket is in the kitchen",
+    "The keyboard is in the office",
+    "The water jug is now in the pantry",
+    "The charger is in the kitchen",
+    "The kettle is in the kitchen",
+    "The thermos is in the pantry",
+    "The label maker is in the kitchen",
+    "The notebook is in the studio",
+    "The paper bag is in the kitchen",
+    "The tennis ball is in the kitchen",
+    "The plant is in the studio",
+    "The umbrella is in the kitchen",
+    "The answer is the room where the bottle is now located is the kitchen",
+    "The kettle is in the kitchen",
+    "The picture frame is in the kitchen",
+    "The soldering iron is in the workshop",
+    "The answer is the shelf in the kitchen",
+    "The basket is in the pantry",
+    "The label maker is in the kitchen in the office",
+    "The extension cord is now in the kitchen",
+    "The backpack is in the kitchen",
+    "The picture frame is in the studio",
+    "The basket is in the garage",
+    "The thermos is in the kitchen",
+    "The teapot is in the kitchen",
+    "The helmet is in the office",
+    "The ladle is in the lab",
+    "The camera is in the office",
+    "The extension cord is now in the hallway",
+    "The paper bag is in the kitchen",
+    "The helmet is in the kitchen",
+    "The cushion is in the studio",
+    "The plant is in the studio",
+    "The ice tray is in the kitchen",
+    "The lamp is in the office",
+    "The mug is in the kitchen",
+    "The bread box is in the kitchen",
+    "The teapot is in the kitchen",
+    "The yoga mat is in the studio",
+    "The hand mixer is in the kitchen",
+    "The spray bottle is in the kitchen",
+    "The watering can is in the kitchen",
+    "The coffee tin is in the office",
+    "The lamp is in the office",
+    "The bottle is in the kitchen",
+    "The plant is in the hallway",
+    "The spice rack is in the kitchen",
+    "The ruler is in the hallway",
+    "The ladle",
+    "The notebook is in the library",
+    "The wrench is in the workshop",
+    "The pillow is in the studio",
+    "The ice tray is in the kitchen",
+    "The backpack is in the kitchen",
+    "The trowel is in the kitchen",
+    "The yoga mat is in the gym",
+    "The clock is in the kitchen",
+    "The ice tray is in the kitchen",
+    "The wrench is in the lab",
+    "The tablet is in the kitchen",
+    "The ladle",
+    "The fruit bowl is in the kitchen",
+    "The teapot is in the office",
+    "The ladle",
+    "The answer is the shelf in the kitchen",
+    "The wire cutters are in the workshop",
+    "The water jug is in the kitchen",
+    "The flashlight is in the office",
+    "The coffee tin is in the kitchen",
+    "The backpack is in the kitchen",
+    "The paint roller is in the kitchen",
+    "The tennis ball is in the kitchen",
+    "The toolbox is in the garage",
+    "The paint roller is in the studio",
+    "The pillow is in the hallway",
+    "The hammer is in the kitchen",
+    "The label maker is in the kitchen",
+    "The watering can is in the kitchen",
+    "The safety goggles are in the kitchen",
+    "The hammer is in the kitchen",
+    "The hand mixer is in the kitchen",
+    "The ice tray is in the kitchen",
+    "The charger is in the garage",
+    "The plant is in the studio",
+    "The vase is in the kitchen",
+    "The helmet is in the kitchen",
+    "The notebook is in the library",
+    "The basket in the kitchen",
+    "The paper bag is in the pantry in the kitchen",
+    "The picture frame is in the kitchen",
+    "The speaker is in the hallway",
+    "The paint roller is in the workshop",
+    "The extension cord is now in the pantry",
+    "The helmet is in the hallway",
+    "The picture frame is in the studio",
+    "The stapler is in the kitchen",
+    "The trowel is in the kitchen",
+    "The dust is in the kitchen",
+    "The extension cord is now in the hallway",
+    "The doorstop is in the kitchen",
+    "The umbrella is in the kitchen",
+    "The tennis ball is in the kitchen",
+    "The wire cutters are in the workshop",
+    "The tablet is in the kitchen",
+    "The water jug is in the kitchen",
+    "The globe is in the studio",
+    "The paint roller is in the studio",
+    "The clock is in the kitchen",
+    "The picture frame is in the studio",
+    "The hand mixer is in the kitchen",
+    "The spray bottle is in the kitchen",
+    "The camera is in the office",
+    "The backpack is in the kitchen",
+    "The backpack is in the hallway",
+    "The hammer is in the warehouse",
+    "The safety goggles are in the cabinet in the kitchen",
+    "The yoga mat is now in the studio",
+    "The spice rack is in the kitchen",
+    "The spice rack is in the office",
+    "The measuring tape is in the kitchen",
+    "The toolbox is in the garage",
+    "The file is in the kitchen",
+    "The spray bottle is in the kitchen",
+    "The cushion is in the garage",
+    "The stapler is in the kitchen",
+    "The umbrella is in the kitchen",
+    "The blanket is in the pantry in the kitchen",
+    "The bread box is in the kitchen",
+    "The label maker is in the pantry in the kitchen",
+    "The water jug is now in the hallway",
+    "The cushion is in the hallway",
+    "The candle is in the kitchen",
+    "The helmet is in the garage",
+    "The ice tray is in the kitchen",
+    "The picture frame is in the studio",
+    "The file is in the library",
+    "The hammer is in the kitchen",
+    "The water jug is now in the kitchen",
+    "The backpack is in the hallway",
+    "The speaker is in the kitchen",
+    "The lamp is in the office",
+    "The kettle is in the kitchen",
+    "The paper bag is in the kitchen",
+    "The camera is in the studio",
+    "The blanket is in the kitchen",
+    "The wrench is in the studio",
+    "The answer is the shelf in the office",
+    "The ladle",
+    "The water jug is in the kitchen",
+    "The keyboard is in the studio",
+    "The charger is in the kitchen",
+    "The kettle is in the kitchen",
+    "The wrench is in the office",
+    "The picture frame is in the kitchen",
+    "The lamp is now on the table in the kitchen",
+    "The umbrella is in the office",
+    "The tennis ball is in the gym",
+    "The fruit bowl is in the kitchen",
+    "The hammer is in the kitchen",
+    "The flashlight is now in the office",
+    "The keyboard is in the studio",
+    "The measuring tape is in the kitchen",
+    "The speaker is in the kitchen",
+    "The vase is in the kitchen",
+    "The vase is in the kitchen",
+    "The hand mixer is in the kitchen",
+    "The wrench is in the workshop",
+    "The answer is the room where the robot is in the lab",
+    "The water jug is in the pantry",
+    "The backpack is in the kitchen",
+    "The ice tray is in the kitchen",
+    "The charger is in the kitchen",
+    "The doorstop is in the kitchen",
+    "The mug is in the kitchen",
+    "The label maker is in the bedroom",
+    "The soldering iron is in the kitchen",
+    "The lamp is in the hallway",
+    "The mug is in the kitchen",
+    "The candle is in the lab",
+    "The trowel is in the kitchen",
+    "The basket is in the kitchen",
+    "The safety goggles are in the kitchen",
+    "The tennis ball is in the hallway",
+    "The teapot is in the kitchen",
+    "The mug is in the kitchen",
+    "The label maker is in the studio",
+    "The answer is the kitchen",
+    "The safety goggles are in the kitchen",
+    "The basket is in the garage",
+    "The keyboard is in the office",
+    "The sketchbook is in the kitchen",
+    "The ladle is in the kitchen",
+    "The spice rack in the kitchen",
+    "The paint roller is in the studio",
+    "The pillow is in the office",
+    "The clock is in the kitchen",
+    "The dustpan is in the kitchen",
+    "The plant is in the studio",
+    "The teapot is in the kitchen",
+    "The spice rack is in the kitchen",
+    "The flashlight is in the kitchen",
+    "The ice tray is now in the kitchen",
+    "The lamp is in the kitchen",
+    "The paint roller is in the workshop",
+    "The spray bottle is now in the office",
+    "The notebook is in the library",
+    "The tablet is in the kitchen in the hallway",
+    "The speaker is in the kitchen",
+    "The extension cord is now in the garage",
+    "The measuring tape is in the kitchen",
+    "The tablet is now in the kitchen",
+    "The ruler is in the kitchen",
+    "The coffee tin is in the kitchen",
+    "The sketchbook is in the studio",
+    "The ice tray is in the kitchen",
+    "The helmet is in the workshop",
+    "The bread box is now in the pantry",
+    "The hammer is in the warehouse",
+    "The notebook is in the office",
+    "The lamp is in the studio",
+    "The bottle is in the kitchen",
+    "The paint roller is in the studio",
+    "The sketchbook is in the kitchen",
+    "The doorstop is in the kitchen",
+    "The spray bottle is in the kitchen",
+    "The sketchbook is in the kitchen",
+    "The paint roller is in the kitchen",
+    "The fruit bowl is in the kitchen",
+    "The hand mixer is in the kitchen",
+    "The paper bag is in the pantry in the kitchen",
+    "The answer is the room where the sock is in the room",
+    "The bottle is in the kitchen",
+    "The answer is the room where the screwdriver is now",
+    "The blanket is in the kitchen",
+    "The clock is in the kitchen",
+    "The extension cord is now in the kitchen",
+    "The mug is in the kitchen",
+    "The spice rack in the kitchen",
+    "The kettle is in the kitchen"
+   ],
+   "ms": {
+    "prefill": 1044.8348604383257
+   },
+   "sec": 402
+  }
+ }
+}

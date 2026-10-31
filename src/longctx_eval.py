@@ -128,11 +128,12 @@ def main():
     ap.add_argument("--conds", default="17b,4b,reskv:pw_4b_c28@4b,reskv:pw_self_c28")
     ap.add_argument("--lengths", default="2048,4096,8192"); ap.add_argument("--n", type=int, default=200)
     ap.add_argument("--seed", type=int, default=0); ap.add_argument("--tag", required=True)
-    ap.add_argument("--dataset", default="hotpot", help="hotpot | squad | duorc (held out, never trained on)")
+    ap.add_argument("--dataset", default="hotpot", help="hotpot | squad | duorc | triviaqa | statetrack (held out, never trained on)")
     a = ap.parse_args()
     m4, tok = load_sdpa(C.PREFILL_MODEL); m17, _ = load_sdpa(C.DECODE_MODEL)
     lengths = [int(x) for x in a.lengths.split(",")]
     if a.dataset == "hotpot": data = build_examples(tok, a.n, lengths, a.seed)
+    elif a.dataset == "statetrack": import statetrack; data = statetrack.eval_set(tok, a.n, lengths, a.seed)
     else: import qa_data; data = qa_data.eval_set(tok, a.dataset, a.n, lengths, a.seed)
     for L in lengths:
         lens = [ids.shape[1] for ids, _, _ in data[L]]

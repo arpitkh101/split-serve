@@ -72,9 +72,11 @@ CUDA graph.
 
 Parity with re-prefill from 2k to 32k, four times the training length, with the control
 (same maps and objective on the 1.7B's own activations) drifting by the same amount at
-8k and 32k. On task families the stitch was not trained on it is useful but not at
-parity: 4 to 9 EM under re-prefill on DuoRC, 6 to 14 under on multi-turn SQuAD and 16 to
-23 under on SQuAD single-turn. Giving the pipeline the native 1.7B's first token (an
+8k and 32k. On held-out sets the picture splits by question style. TriviaQA with its
+Wikipedia pages, never trained on, is at parity: +1.2 / -2.4 / +0.8 EM at 2k / 4k / 8k
+against re-prefill, every interval spanning zero, with the pages worth 36 EM over closed
+book. Span questions over one passage are not: 4 to 9 EM under re-prefill on DuoRC, 6 to
+14 under on multi-turn SQuAD and 16 to 23 under on SQuAD single-turn. Giving the pipeline the native 1.7B's first token (an
 oracle) halves those gaps; swapping native keys and values into the stitched cache block
 by block puts the other half in layers 12 to 23. A native question suffix, ridge-only
 maps, attention matching at prompt positions, two source layers in that band and a mixed
@@ -172,7 +174,9 @@ src/
   longctx_long.py       the same at 16k and 32k: last-logit forwards, flash attention, source layers on the CPU
   latency_fair.py       bridge vs flash-attention last-logit re-prefill, 2k to 32k
   layer_patch.py        native keys and values swapped into the stitched cache block by block
-  qa_data.py            QA sources in one format: the training mix and the held-out sets
+  qa_data.py            QA sources in one format: the training mix and the held-out sets (SQuAD, DuoRC, TriviaQA)
+  statetrack.py         synthetic robot state-tracking log, a held-out non-QA test
+  closedbook.py         the same questions with no documents, to see what the context is worth
   multiturn_eval.py     multi-turn handoff on SQuAD: the 4B answers turn one, the 1.7B turn two
   paired_ci*.py         paired bootstrap CIs from saved per-chunk NLLs and task hits
 out/                    every result as json (perplexities, per-chunk NLLs, task hits, timings)
@@ -234,7 +238,8 @@ $PY src/paired_ci.py longctx handoff_base handoff_attnqa8k
 $PY src/multiturn_eval.py --conds 17b,4b --n 500 --tag mt_base                      # out-of-domain multi-turn handoff on SQuAD
 $PY src/multiturn_eval.py --conds reskv:attnqa8k_4b_c28@4b,reskv:attnqa8k_self_c28 --n 500 --tag mt_attnqa8k
 $PY src/residual_stitch.py --cut 28 --teacher attn --corpus qamix --qa-lengths 2048,4096,8192 --source 4b --tag qamix_4b_c28   # four QA sources
-$PY src/longctx_eval.py --dataset squad --conds 17b,4b,reskv:qamix_4b_c28@4b --n 500 --tag squad_ood   # held out; also --dataset duorc
+$PY src/longctx_eval.py --dataset squad --conds 17b,4b,reskv:qamix_4b_c28@4b --n 500 --tag squad_ood   # held out; also --dataset duorc, triviaqa, statetrack
+$PY src/closedbook.py --dataset triviaqa --n 500
 $PY src/latency_residual.py --tag attnqa_4b_c28 --lengths 2048,4096,8192
 $PY src/latency_fair.py --tag qamix_4b_c28                                    # headline timing column
 $PY src/longctx_long.py --conds 17b,reskv:qamix_4b_c28@4b,reskv:qamix_self_c28 --lengths 32768 --n 200 --tag handoff_qamix_long32

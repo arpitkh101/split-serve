@@ -731,3 +731,75 @@ reduce drift. The two targeted fixes, capacity where the patching pointed and a 
 first token, moved nothing, or two points. What is left is the mechanism itself at layers
 12 to 23 on question styles outside the training mix, and the first token on sets where
 the 4B reads worse than the 1.7B. Neither has a cheap fix on this list.
+
+## 19. Two more held-out sets: TriviaQA at parity, and a state tracker that shows what the cache carries
+
+Section 18 left the held-out gap on SQuAD, DuoRC and multi-turn SQuAD. Two more sets the
+stitch never saw, chosen to be unlike those three: TriviaQA with its Wikipedia pages, the
+closest held-out set to HotpotQA in answer type (entity names found in text), and a
+synthetic robot state-tracking log with no world knowledge at all. Same stitch
+(`qamix_4b_c28`), same harness, 4B first token unless stated.
+
+**TriviaQA** (`--dataset triviaqa`, rc.wikipedia validation; each entity page cut to about
+3,000 characters around the first answer alias, two pages at most, padded with other
+questions' pages to 2k / 4k / 8k; 500 questions).
+
+| context | re-prefill | 4B alone | pipeline | gap [95% CI] | control |
+|---|---|---|---|---|---|
+| 2k | 67.2 | 69.6 | 68.4 | +1.2 [-2.4, +4.8] | 65.0 (-2.2) |
+| 4k | 67.6 | 66.2 | 65.2 | -2.4 [-6.0, +1.0] | 66.0 (-1.6) |
+| 8k | 65.0 | 66.4 | 65.8 | +0.8 [-2.8, +4.4] | 63.4 (-1.6) |
+
+The first held-out set at parity. Closed book (`src/closedbook.py`, same questions, no
+pages) the 1.7B scores 30.8 and the 4B 37.4, so the pages are worth about 36 EM and the
+pipeline keeps all of it; this is retrieval, not memory. Read with section 17: the sets that
+lose are the ones whose questions ask for a span of one passage (SQuAD, DuoRC), the sets at
+parity ask for an entity that the training mix also asked for. The gap is about question
+style, which is what the layer patching said.
+
+**Robot state tracking** (`src/statetrack.py`, `--dataset statetrack`). A log of a mobile
+robot moving 40 objects between 10 rooms, 80 to 390 moves long, then "Which room is the X in
+now?". The answer is the room of the object's last move, with stale earlier moves of the
+same object and later moves of other objects in the way. Gold is one word; 300 questions
+per length, a third each with the deciding move in the last tenth, the middle, or the first
+tenth of the log. Chance is 10.
+
+| context | re-prefill | 4B alone | pipeline, 4B first token | pipeline, own first token | native suffix 1 | control |
+|---|---|---|---|---|---|---|
+| 2k, EM | 28.3 | 0.3 | 1.0 | 3.7 | 0.7 | 29.0 (+0.7) |
+| 4k, EM | 17.7 | 0.0 | 0.0 | 0.0 | 0.0 | 17.3 (-0.3) |
+| 8k, EM | 10.7 | 0.0 | 1.0 | 4.0 | 0.7 | 10.0 (-0.7) |
+| 2k, right room named | 28.3 | 19.0 | 6.7 | 4.7 | 21.0 | 29.0 |
+| 4k, right room named | 17.7 | 3.0 | 1.0 | 0.3 | 13.0 | 17.3 |
+| 8k, right room named | 10.7 | 14.3 | 12.3 | 11.7 | 14.7 | 10.0 |
+
+Three things in this table, in order of what they are worth.
+
+The task is too hard for both models past 2k: the 1.7B is at 18 at 4k and at chance at
+8k, so only the 2k row discriminates. A harder test than intended; the band split shows
+the 1.7B at 39 / 19 / 27 at 2k, so even recent moves are missed often.
+
+The pipeline's zero EM is format, not content. The 4B answers this question in a sentence
+("The scarf is in the **lounge**") or starts to reason ("To determine the final room, let's
+track its movements"), where the 1.7B natively answers "lab" as the header's examples do.
+With the 4B's first token the 1.7B follows the 4B's opening. With its own first token off
+the stitched final state it emits "1" or "?", the known final-position failure. The
+revealing row is the native suffix of one token: the 1.7B's own query at the last prompt
+token, over the stitched cache, produces "The scarf is in the laundry room". The 1.7B's
+query, the 4B's style. The stitched cache carries the prefiller's answer plan, not only its
+reading of the text, and the decoder follows it. On every QA set this went unnoticed
+because both models answer those in a word. Counting an answer right when it names the
+right room anywhere, that row is 21.0 / 13.0 / 14.7 against the 1.7B's 28.3 / 17.7 / 10.7,
+within about 7 at 2k and within noise after, with n=300.
+
+The oracle first token (`@17b`) is at exact parity here, -0.3 [-1.7, +0.7] at every
+length, and means nothing: the answer is one token, so an oracle first token is the oracle
+answer. The same caveat applies in part to the 4B-first-token design on any short-answer
+task: when the gold is one token the pipeline is whoever emits that token.
+
+**What to carry forward.** TriviaQA goes next to HotpotQA as the second set at parity, and
+the held-out picture is now: parity on entity questions over Wikipedia, 4 to 23 under on
+span questions over one passage. The state tracker is a usable harness for the robotics
+framing (planner reads the log, controller answers) once the answer has more than one token
+and the log is short enough for the 1.7B to be above chance; as built it mostly exposed that
+the cache transfers answer style, which is a result about the mechanism worth keeping.

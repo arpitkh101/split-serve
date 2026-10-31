@@ -63,6 +63,24 @@ def duorc(split):
         yield [(ex["title"], ex["plot"])], [(ex["question"], None)], list(ex["answers"])
 
 
+@source
+def triviaqa(split, window=3000):
+    """TriviaQA rc.wikipedia: trivia questions with the Wikipedia pages of the entities involved.  Each
+    page is cut to a window of about 3,000 characters around the first answer alias it contains
+    (pages run to 30k characters); questions whose pages contain no alias are skipped.  Held out."""
+    from datasets import load_dataset
+    ds = load_dataset("mandarjoshi/trivia_qa", "rc.wikipedia", split=split)
+    for ex in ds:
+        aliases = [ex["answer"]["value"]] + list(ex["answer"]["aliases"])
+        if any(len(a) > 60 for a in aliases[:1]): continue
+        docs = []
+        for title, page in zip(ex["entity_pages"]["title"], ex["entity_pages"]["wiki_context"]):
+            low = page.lower(); pos = min((low.find(a.lower()) for a in aliases if len(a) > 2 and low.find(a.lower()) >= 0), default=-1)
+            if pos < 0: continue
+            lo = max(0, pos - window // 2); docs.append((title, page[lo:lo + window]))
+        if docs: yield docs[:2], [(ex["question"], None)], aliases
+
+
 def fmt(title, text):
     text = " ".join(text.split())
     return f"Document ({title}): {text}\n\n" if title else f"Document: {text}\n\n"
