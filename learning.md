@@ -803,3 +803,54 @@ span questions over one passage. The state tracker is a usable harness for the r
 framing (planner reads the log, controller answers) once the answer has more than one token
 and the log is short enough for the 1.7B to be above chance; as built it mostly exposed that
 the cache transfers answer style, which is a result about the mechanism worth keeping.
+
+## 20. Robotics-flavoured tests: ALFWorld next action, state tracker v2
+
+Two held-out tests in the "planner reads the history, controller acts" framing, 300
+examples per length, 4B first token, same stitch as before.
+
+**ALFWorld next-action prediction** (`src/alfworld_data.py`, `--dataset alfworld`, 336
+household episodes from THUDM/AgentInstruct). The prompt is the environment instruction,
+earlier completed episodes as the robot's history until the budget is full (2 to 18 of
+them), then the current episode cut before one of its actions, ending in "ACTION:". Gold is
+that action, exact match after normalisation, which is the right metric because the
+environment parses the string.
+
+| context | re-prefill | 4B alone | pipeline | gap [95% CI] | control |
+|---|---|---|---|---|---|
+| 2k | 66.0 | 73.7 | 25.0 | -41.0 [-47.3, -34.7] | 52.3 (-13.7) |
+| 4k | 70.0 | 77.7 | 33.7 | -36.3 [-42.0, -30.3] | 57.3 (-12.7) |
+| 8k | 70.3 | 78.3 | 34.0 | -36.3 [-42.3, -30.0] | 62.0 (-8.3) |
+
+**State tracker v2** (`--dataset statetrack2`): 20 objects and 60 moves at every length,
+filler lines about the robot's other work for length, phrase answers "on the shelf in the
+kitchen".
+
+| context | re-prefill | 4B alone | pipeline | gap [95% CI] | control |
+|---|---|---|---|---|---|
+| 2k | 28.3 | 42.3 | 13.7 | -14.7 [-20.3, -9.0] | 21.7 (-6.7) |
+| 4k | 35.7 | 19.0 | 6.7 | -29.0 [-34.7, -23.3] | 28.0 (-7.7) |
+| 8k | 40.3 | 47.0 | 11.0 | -29.3 [-35.7, -23.3] | 34.0 (-6.3) |
+
+**Reading.** The worst held-out results so far, and the control is the clue. On every QA
+set the control was within 2 to 5 of re-prefill; here it is 7 to 14 under. The training
+objective itself damages something these tasks need and QA does not: copying an exact
+format from the context. ALFWorld actions are a formal grammar demonstrated by the earlier
+episodes ("go to cabinet 2", "put lettuce 2 in/on fridge 1"); the pipeline writes "go to the
+cabinet 2" and "put the lettuce in the fridge", content right, syntax paraphrased, F1 0.73
+against 0.83 with EM 34 against 70. The state tracker's answers are a fixed phrase and the
+same happens. Section 19's finding that the cache carries the prefiller's answer style is
+the same effect from the other side: the stitched cache is a semantic reading of the
+context, good enough for an entity answer, not a verbatim one, and the objective (attention
+outputs at answer positions plus logit KL) never asked for verbatim. The 4B alone being
+below the 1.7B at 4k on the state tracker (19.0) is its sentence-style habit again.
+
+**What this means for the robotics framing.** A controller that must emit exact action
+strings cannot run off this cache as trained. The fix is on the objective side. Section 11
+showed that a dense loss over every prompt position is what makes verbatim recall work
+(LAMBADA 8 to 23, control above native); the attention-matching objective keeps that
+prompt-position KL only for training prompts up to 2k, for memory, so the 4k and 8k
+examples, half the QA steps, never score a prompt position at all. QA did not miss it. A
+copy-exact task does. Scoring a subsample of prompt positions at every length is one
+training run, and it is the first time a held-out result has pointed at a specific change
+in the objective rather than at capacity.

@@ -5,6 +5,8 @@ mention of the object among earlier, stale mentions and later moves of other obj
 state update, no world knowledge, one-word gold.  Example i puts the deciding move in band i % 3 of
 the log: 0 = last tenth, 1 = middle, 2 = first tenth (every later move is about other objects).
 
+statetrack2: 20 objects, 60 moves at every length, filler lines for length, phrase answers.
+
   python src/longctx_eval.py --dataset statetrack --conds 17b,4b,reskv:qamix_4b_c28@4b,reskv:qamix_self_c28 --n 300 --tag statetrack
 """
 import random, torch
@@ -32,6 +34,49 @@ HEADER = ("Below is the log of a mobile robot moving objects between rooms, in o
           "Question: Which room is the drill in now?\nAnswer: garage\n\n")
 
 
+FILLER = [
+    "The robot charges at the dock in the {r} for a while.",
+    "The robot sweeps the floor of the {r}.",
+    "The robot checks the {s} in the {r} and finds nothing to do.",
+    "The robot pauses in the {r} doorway to update its map.",
+    "The robot wipes the {s} in the {r}.",
+    "The robot drives a loop through the {r} and comes back.",
+]
+HEADER2 = ("Below is the log of a mobile robot working in a house, in order. Answer with where the object "
+           "is at the end of the log, as in these examples.\n"
+           "Question: Where is the saucepan now?\nAnswer: on the counter in the kitchen\n"
+           "Question: Where is the drill now?\nAnswer: on the bench in the garage\n\n")
+
+
+def make2(rng, tok, L, band, n_obj=20, n_moves=60):
+    """Version 2: 20 objects and 60 moves at every length (difficulty fixed), filler lines about the
+    robot's other work make up the length, and the answer is a phrase: "on the {surface} in the {room}"."""
+    objs = rng.sample(OBJECTS, n_obj); state = {o: (rng.choice(SURFACES), rng.choice(ROOMS)) for o in objs}
+    init = "Initial positions: " + "; ".join(f"the {o} is on the {s} in the {r}" for o, (s, r) in state.items()) + ".\n\nLog:\n"
+    budget = L - len(tok(HEADER2 + init, add_special_tokens=False).input_ids) - 48
+    moves = []
+    for _ in range(n_moves):
+        o = rng.choice(objs); s1, r1 = state[o]; r2 = rng.choice([r for r in ROOMS if r != r1]); s2 = rng.choice(SURFACES)
+        moves.append((o, rng.choice(TEMPLATES).format(o=o, r1=r1, r2=r2, s=s2) + "\n")); state[o] = (s2, r2)
+    n_fill = 0; lines = [m[1] for m in moves]; who = [m[0] for m in moves]
+    used = sum(len(tok(l, add_special_tokens=False).input_ids) for l in lines)
+    while used < budget:
+        f = rng.choice(FILLER).format(r=rng.choice(ROOMS), s=rng.choice(SURFACES)) + "\n"
+        n = len(tok(f, add_special_tokens=False).input_ids)
+        if used + n > budget: break
+        pos = rng.randrange(len(lines) + 1); lines.insert(pos, f); who.insert(pos, None); used += n; n_fill += 1
+    N = len(lines); last = {}
+    for i, o in enumerate(who):
+        if o: last[o] = i
+    cnt = {o: who.count(o) for o in objs}
+    lo, hi = {0: (0.9, 1.0), 1: (0.4, 0.6), 2: (0.0, 0.1)}[band]
+    cands = [o for o in objs if o in last and lo * N <= last[o] < hi * N and cnt[o] >= 2]
+    if not cands: cands = [o for o in objs if o in last and cnt[o] >= 2] or list(last)
+    o = rng.choice(cands); s, r = state[o]
+    text = HEADER2 + init + "".join(lines) + f"\nQuestion: Where is the {o} now?\nAnswer:"
+    return text, [f"on the {s} in the {r}"], N, (N - 1 - last[o])
+
+
 def make(rng, tok, L, band, n_obj=40):
     objs = rng.sample(OBJECTS, n_obj); state = {o: rng.choice(ROOMS) for o in objs}
     init = "Initial positions: " + "; ".join(f"the {o} is in the {state[o]}" for o in objs) + ".\n\nLog:\n"
@@ -54,13 +99,13 @@ def make(rng, tok, L, band, n_obj=40):
     return text, [state[o]], N, (N - 1 - last[o])
 
 
-def eval_set(tok, n, lengths, seed):
+def eval_set(tok, n, lengths, seed, v2=False):
     """{L: [(ids, golds, n_events)]}; example i has its deciding move in band i % 3."""
     out = {}
     for L in lengths:
         rng = random.Random(seed * 1000 + L); rows = []
         for i in range(n):
-            text, golds, N, back = make(rng, tok, L, i % 3)
+            text, golds, N, back = (make2 if v2 else make)(rng, tok, L, i % 3)
             rows.append((tok(text, return_tensors="pt").input_ids, golds, N))
         out[L] = rows
     return out
