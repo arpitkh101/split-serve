@@ -112,9 +112,10 @@ def hidden_states(model, ids):
     otherwise run_last_layers applies the norm twice."""
     box = {}
     hk = model.model.norm.register_forward_hook(lambda m, i, o: box.__setitem__("pre", i[0]))
-    try: hs = model(input_ids=ids, output_hidden_states=True, use_cache=False).hidden_states
+    try: hs = model(input_ids=ids.to(model.device), output_hidden_states=True, use_cache=False).hidden_states
     finally: hk.remove()
-    return tuple(hs[:-1]) + (box["pre"],)
+    out = tuple(hs[:-1]) + (box["pre"],)
+    return out if model.device == torch.device(DEV) else tuple(h.to(DEV) for h in out)   # source model on another GPU
 
 
 @torch.no_grad()
@@ -267,7 +268,7 @@ def prompt_attn_out(m17, maps, H, cache, l, pe, idx):
     return o.transpose(1, 2).reshape(1, S, -1)
 
 
-def pipeline_attn(m4, m17, maps, ids, P, Lc, source, prompt_w=1.0, kl_w=1.0, prompt_kl=True, attn_w=1.0, prompt_attn=False, pattn_pos=8192):
+def pipeline_attn(m4, m17, maps, ids, P, Lc, source, prompt_w=1.0, kl_w=1.0, prompt_kl=True, attn_w=1.0, prompt_attn=False, pattn_pos=8192, prompt_sub=0):
     """Attention-matching objective.  The 1.7B's queries at the continuation positions must
     produce the same per-layer attention outputs over the stitched cache as over the 1.7B's own
     cache: that is what retrieval into the context needs, and what next-token or logit matching
@@ -275,21 +276,33 @@ def pipeline_attn(m4, m17, maps, ids, P, Lc, source, prompt_w=1.0, kl_w=1.0, pro
     outputs (student: decode off the stitched cache; teacher: the native 1.7B on the same text),
     plus kl_w * the receiver-matching logit KL of pipeline_kl.  prompt_attn: also match the
     attention outputs at the prompt positions (all of them, or a random pattn_pos of them), the
-    student's queries coming from the mapped residuals; attn_w scales both attention terms."""
+    student's queries coming from the mapped residuals; attn_w scales both attention terms.
+    prompt_sub: when prompt_kl is off (long prompts), still score the logit KL at a random
+    prompt_sub prompt positions, so every training length sees prompt positions."""
     from torch.utils.checkpoint import checkpoint
-    tap = AttnTap(m17); H = None
+    tap = AttnTap(m17); H = None; sub = (not prompt_kl) and prompt_sub > 0
     try:
         with torch.no_grad():
             keep = 0 if prompt_kl else ids.shape[1] - P + 1                   # 0 = all positions
-            t = m17(input_ids=ids, use_cache=False, logits_to_keep=keep).logits[0]
+            box = {}; hk = m17.model.norm.register_forward_hook(lambda m, i, o: box.__setitem__("h", o)) if sub else None
+            try: t = m17(input_ids=ids, use_cache=False, logits_to_keep=keep).logits[0]
+            finally:
+                if hk: hk.remove()
+            if sub:
+                sidx = torch.randperm(P - 1, device=DEV)[:prompt_sub].sort().values
+                t_sub = m17.lm_head(box["h"][0, sidx]); del box
             T_attn = {i: a[0, P:-1].float() for i, a in tap.out.items()}    # continuation positions P..end-1
+            if sub and H is None: H = hidden_states(m4 if source == "4b" else m17, ids[:, :P])
             if prompt_attn:
                 full = P <= pattn_pos
                 idx = torch.arange(P, device=DEV) if full else torch.randperm(P, device=DEV)[:pattn_pos].sort().values
                 T_p = {i: (a[0, :P] if full else a[0, idx]) for i, a in tap.out.items()}
-                H = hidden_states(m4 if source == "4b" else m17, ids[:, :P])
+                if H is None: H = hidden_states(m4 if source == "4b" else m17, ids[:, :P])
         tap.out = {}
         cache, plg = prefill(m4, m17, maps, ids[:, :P], Lc, source, H=H, last_only=not prompt_kl, ckpt=not prompt_kl)
+        if sub:                                                              # subsampled prompt positions from the final map
+            h_sub = maps(tuple(Hj[:, sidx] for Hj in H), Lc).unsqueeze(0).to(m17.dtype)
+            sub_loss = _kl_chunk(m17.lm_head(m17.model.norm(h_sub))[0], t_sub) / sidx.numel(); del h_sub
         lg = continuation_logits(m17, cache, ids, P)
         S_attn = {i: a[0, :-1].float() for i, a in tap.out.items()}        # same positions (last input token dropped to align with lg)
     finally:
@@ -311,6 +324,7 @@ def pipeline_attn(m4, m17, maps, ids, P, Lc, source, prompt_w=1.0, kl_w=1.0, pro
         return acc / ls.shape[0]
     loss = attn_w * attn + kl_w * total(sc, tc)
     if prompt_kl: loss = loss + kl_w * prompt_w * total(plg[0, :P - 1], t[:P - 1])
+    elif sub: loss = loss + kl_w * prompt_w * sub_loss
     return loss
 
 
@@ -378,6 +392,7 @@ def main():
     ap.add_argument("--attn-w", type=float, default=1.0, help="weight of the attention-matching terms (teacher attn)")
     ap.add_argument("--prompt-attn", action="store_true", help="also match attention outputs at the prompt positions (teacher attn)")
     ap.add_argument("--pattn-pos", type=int, default=8192, help="prompt positions scored by --prompt-attn; a random subset above this")
+    ap.add_argument("--prompt-sub", type=int, default=0, help="teacher attn: at lengths where the full prompt KL is off (above 2k), score the logit KL at this many random prompt positions")
     ap.add_argument("--fit-only", action="store_true"); ap.add_argument("--layers", default="0-28")
     ap.add_argument("--tag", default=None)
     a = ap.parse_args(); Lc = a.cut
@@ -448,7 +463,7 @@ def main():
         else:
             P = lens[torch.randint(0, len(lens), (1,)).item()]
             ids = tr[P][torch.randint(0, len(tr[P]), (1,)).item()].unsqueeze(0).to(DEV)
-        if a.teacher == "attn": loss = pipeline_attn(m4, m17, maps, ids, P, Lc, a.source, a.prompt_w or 1.0, prompt_kl=(P <= 2048), attn_w=a.attn_w, prompt_attn=a.prompt_attn, pattn_pos=a.pattn_pos)
+        if a.teacher == "attn": loss = pipeline_attn(m4, m17, maps, ids, P, Lc, a.source, a.prompt_w or 1.0, prompt_kl=(P <= 2048), attn_w=a.attn_w, prompt_attn=a.prompt_attn, pattn_pos=a.pattn_pos, prompt_sub=a.prompt_sub)
         elif a.teacher: loss = pipeline_kl(m4, m17, maps, ids, P, Lc, a.source, a.prompt_w or 1.0)
         else: loss = pipeline_nll(m4, m17, maps, ids, P, Lc, a.source, a.first_tok, a.prompt_w)
         opt.zero_grad(); loss.backward(); torch.nn.utils.clip_grad_norm_(maps.parameters(), 1.0); opt.step(); sched.step()
@@ -460,7 +475,7 @@ def main():
           "  ".join(f"P{P}: {r0[P]['ppl']:.3f}->{rF[P]['ppl']:.3f}" for P in elens), flush=True)
     json.dump({"tag": a.tag, "cut": Lc, "source": a.source, "spec": maps.spec(), "params_M": n_par / 1e6,
                "steps": a.steps, "seed": a.seed, "corpus": a.corpus, "train_lengths": lens,
-               "cut_src": a.cut_src, "multi_src": a.multi_src, "multi_layers": a.multi_layers, "cut_mlp": a.cut_mlp, "attn": [a.attn_heads, a.attn_dh], "attn_lr": a.attn_lr, "first_tok": a.first_tok, "prompt_w": a.prompt_w, "teacher": a.teacher, "attn_w": a.attn_w, "prompt_attn": a.prompt_attn,
+               "cut_src": a.cut_src, "multi_src": a.multi_src, "multi_layers": a.multi_layers, "cut_mlp": a.cut_mlp, "attn": [a.attn_heads, a.attn_dh], "attn_lr": a.attn_lr, "first_tok": a.first_tok, "prompt_w": a.prompt_w, "teacher": a.teacher, "attn_w": a.attn_w, "prompt_attn": a.prompt_attn, "prompt_sub": a.prompt_sub,
                "step0": {P: r0[P]["ppl"] for P in elens}, "final": {P: rF[P]["ppl"] for P in elens},
                "nll_final": {P: rF[P]["nll"] for P in elens}},
               open(f"{C.RESULTS}/hv2_{a.tag}.json", "w"), indent=2)

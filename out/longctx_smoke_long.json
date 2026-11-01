@@ -1,0 +1,273 @@
+{
+ "4096": {
+  "reskv:qamix_4b_c28@4b": {
+   "em": 0.35,
+   "f1": 0.5527777777777778,
+   "contains": 0.5,
+   "n": 20,
+   "per": [
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.22222222222222224,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ]
+   ],
+   "preds": [
+    "The Russian Civil War",
+    "Hey Pa! There's a Goat on the Roof",
+    "The Great Exuma Island",
+    "Claudio L\u00f3pez",
+    "Free Range Films",
+    "2002",
+    "India",
+    "The sport of football",
+    "Salim Stoudamire",
+    "The city of Alba Longa",
+    "You Can Be a Star",
+    "Colin Kaepernick",
+    "Tennis",
+    "Renzo Gracie",
+    "Marsilea",
+    "Viglen Ltd",
+    "California Polytechnic State University",
+    "James Bond",
+    "board game",
+    "Rockstar Games"
+   ],
+   "ms": {
+    "prefill_4b": 691.4211343508214,
+    "bridge": 166.1565397051163
+   },
+   "sec": 22
+  },
+  "reskv:qamix_self_c28": {
+   "em": 0.45,
+   "f1": 0.5433333333333333,
+   "contains": 0.45,
+   "n": 20,
+   "per": [
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ]
+   ],
+   "preds": [
+    "1923",
+    "Hey Pa! There's a Goat on the Roof",
+    "Great Exuma",
+    "Claudio L\u00f3pez",
+    "Free Range Films",
+    "2002",
+    "India",
+    "Football",
+    "Salim Stoudamire",
+    "Alba Longa",
+    "You Can Be a Star",
+    "Colin Kaepernick and his preferred nickname is \"Kaepernick\"",
+    "Football",
+    "mixed martial arts",
+    "Marsilea",
+    "Viglen",
+    "California Polytechnic State University",
+    "James Bond",
+    "board game",
+    "Rockstar Games"
+   ],
+   "ms": {
+    "prefill": 439.1260794480331
+   },
+   "sec": 12
+  }
+ }
+}

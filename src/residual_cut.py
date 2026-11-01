@@ -17,8 +17,9 @@ CHUNK, PROMPT, N_EVAL = 512, 256, 64
 
 def load_sdpa(name):
     from transformers import AutoModelForCausalLM, AutoTokenizer
+    dev = C.PREFILL_DEV if name == C.PREFILL_MODEL else DEV
     m = AutoModelForCausalLM.from_pretrained(name, torch_dtype=torch.bfloat16,
-                                             attn_implementation="sdpa").to(DEV).eval()
+                                             attn_implementation="sdpa").to(dev).eval()
     for p in m.parameters(): p.requires_grad_(False)
     return m, AutoTokenizer.from_pretrained(name)
 

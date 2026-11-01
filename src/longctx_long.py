@@ -34,10 +34,10 @@ def collect_needed(model, ids, need, want_logits):
     for j in need:
         if j < n: hooks.append(model.model.layers[j].register_forward_pre_hook(lambda m, a, j=j: H.__setitem__(j, a[0].cpu())))
         else: hooks.append(model.model.norm.register_forward_hook(lambda m, i, o: H.__setitem__(n, i[0].cpu())))
-    try: o = model(input_ids=ids, use_cache=False, logits_to_keep=1)
+    try: o = model(input_ids=ids.to(model.device), use_cache=False, logits_to_keep=1)
     finally:
         for h in hooks: h.remove()
-    return H, (o.logits if want_logits else None)
+    return H, (o.logits.to(DEV) if want_logits else None)
 
 
 @torch.no_grad()

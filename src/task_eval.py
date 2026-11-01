@@ -93,14 +93,17 @@ class Cond:
             R, maps, Lc, source = self.reskv; T = ids.shape[1]; S = min(self.suffix, T - 1)
             if self.first4b or self.firstmix:
                 # one 4B forward gives both the source residuals and the prefiller's own next-token logits
-                box = {}; hk = self.m4.model.norm.register_forward_hook(lambda m, i, o: box.__setitem__("pre", i[0]))
-                try: o4 = self.m4(input_ids=ids, output_hidden_states=True, use_cache=False)
-                finally: hk.remove()
-                H = tuple(o4.hidden_states[:-1]) + (box["pre"],)
-                cache, own = R.prefill(self.m4, self.m17, maps, ids, Lc, source, H=H)
+                if source == "4b":
+                    box = {}; hk = self.m4.model.norm.register_forward_hook(lambda m, i, o: box.__setitem__("pre", i[0]))
+                    try: o4 = self.m4(input_ids=ids.to(self.m4.device), output_hidden_states=True, use_cache=False)
+                    finally: hk.remove()
+                    H = tuple(h.to(DEV) for h in o4.hidden_states[:-1]) + (box["pre"].to(DEV),)
+                else:                                   # self stitch: the 4B only supplies the first token
+                    o4 = self.m4(input_ids=ids.to(self.m4.device), use_cache=False, logits_to_keep=1); H = None
+                cache, own = R.prefill(self.m4, self.m17, maps, ids, Lc, source, H=H); lg4 = o4.logits.to(DEV)
                 if self.firstmix:
-                    return cache, (torch.log_softmax(o4.logits[0, -1].float(), -1) + torch.log_softmax(own[0, -1].float(), -1)).view(1, 1, -1)
-                return cache, o4.logits
+                    return cache, (torch.log_softmax(lg4[0, -1].float(), -1) + torch.log_softmax(own[0, -1].float(), -1)).view(1, 1, -1)
+                return cache, lg4
             if self.first17b:
                 cache, _ = R.prefill(self.m4, self.m17, maps, ids, Lc, source)
                 return cache, self.m17(input_ids=ids, use_cache=False, logits_to_keep=1).logits
@@ -111,8 +114,8 @@ class Cond:
             return o.past_key_values, o.logits
         if self.pipe:
             return prefill_pipeline(self.m4, self.m17, self.kvbr, self.hbr, ids, self.Lc, self.js, self.source)
-        o = self.dec(input_ids=ids, use_cache=True)
-        return o.past_key_values, o.logits
+        o = self.dec(input_ids=ids.to(self.dec.device), use_cache=True)
+        return o.past_key_values, o.logits.to(DEV)
 
     @torch.no_grad()
     def score(self, ctx_ids, conts):
@@ -120,10 +123,11 @@ class Cond:
         T = ctx_ids.shape[1]
         cache, lg = self.prefill(ctx_ids); first = torch.log_softmax(lg[0, -1].float(), -1)
         out = []
+        dd = self.dec.device
         for c in conts:
-            c = c.to(DEV); lp = first[c[0, 0]].item(); ok = first.argmax().item() == c[0, 0].item()
+            c = c.to(dd); lp = first[c[0, 0].item()].item(); ok = first.argmax().item() == c[0, 0].item()
             if c.shape[1] > 1:
-                pos = torch.arange(T, T + c.shape[1], device=DEV).unsqueeze(0)
+                pos = torch.arange(T, T + c.shape[1], device=dd).unsqueeze(0)
                 l2 = torch.log_softmax(self.dec(input_ids=c, past_key_values=cache, position_ids=pos,
                                                 cache_position=pos[0], use_cache=True).logits[0, :-1].float(), -1)
                 tgt = c[0, 1:]; lp += l2[torch.arange(tgt.numel()), tgt].sum().item()

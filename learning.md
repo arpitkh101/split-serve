@@ -854,3 +854,80 @@ examples, half the QA steps, never score a prompt position at all. QA did not mi
 copy-exact task does. Scoring a subsample of prompt positions at every length is one
 training run, and it is the first time a held-out result has pointed at a specific change
 in the objective rather than at capacity.
+
+## 21. Scoring prompt positions at every length: the mechanism copies, the 4B-sourced cache still does not
+
+Section 20 ended with one specific change to the objective: the attention-matching recipe
+scores prompt positions only for training prompts up to 2k, so half the QA steps never ask
+the maps to reproduce the 1.7B's own next-token distribution anywhere inside the prompt,
+and copy-exact tasks fail with the control failing alongside. `--prompt-sub 512` adds a
+logit KL at 512 random prompt positions on every step whose prompt is longer than 2k
+(the full prompt KL stays for the short ones), computed from the stitched residual at
+those positions through the final norm and head, so it costs one extra head call and no
+attention. Same recipe as `qamix_4b_c28` otherwise, 3000 steps, both sources
+(`psub_4b_c28`, `psub_self_c28`), 300 examples per length on the robotics sets and 500 on
+the QA sets, 4B first token on the pipeline. Wikitext held-out losses are unchanged to the
+second decimal (P256 17.65 against 17.62, P2048 14.18 against 14.20), so the extra term
+did not cost the continuation objective anything.
+
+**ALFWorld next action.**
+
+| context | re-prefill | pipeline, section 20 | pipeline, prompt loss | gap [95% CI] | control, section 20 | control, prompt loss | control gap [95% CI] |
+|---|---|---|---|---|---|---|---|
+| 2k | 66.0 | 25.0 | 27.3 | -38.7 [-44.7, -32.7] | 52.3 | 58.7 | -7.3 [-11.3, -3.3] |
+| 4k | 70.0 | 33.7 | 33.0 | -37.0 [-43.0, -31.0] | 57.3 | 62.7 | -7.3 [-10.7, -4.3] |
+| 8k | 70.3 | 34.0 | 36.0 | -34.3 [-40.7, -28.3] | 62.0 | 65.0 | -5.3 [-8.3, -2.7] |
+
+**State tracker v2.**
+
+| context | re-prefill | pipeline, section 20 | pipeline, prompt loss | gap [95% CI] | control, section 20 | control, prompt loss | control gap [95% CI] |
+|---|---|---|---|---|---|---|---|
+| 2k | 28.3 | 13.7 | 12.7 | -15.7 [-21.7, -9.7] | 21.7 | 19.0 | -9.3 [-13.7, -5.0] |
+| 8k | 40.3 | 11.0 | 13.0 | -27.3 [-33.3, -21.3] | 34.0 | 41.3 | +1.0 [-4.0, +6.3] |
+
+**The QA sets did not pay for it.**
+
+| set | context | re-prefill | pipeline, section 17 | pipeline, prompt loss | gap [95% CI] | control, section 17 | control, prompt loss |
+|---|---|---|---|---|---|---|---|
+| HotpotQA | 2k | 38.8 | 44.2 | 42.2 | +3.4 [-0.6, +7.2] | 37.8 | 39.4 |
+| | 4k | 36.2 | 37.6 | 35.0 | -1.2 [-5.2, +2.8] | 36.4 | 35.8 |
+| | 8k | 35.6 | 33.0 | 31.2 | -4.4 [-8.4, -0.4] | 32.6 | 35.6 |
+| SQuAD | 2k | 67.8 | 52.0 | 49.4 | -18.4 [-23.0, -14.0] | 63.4 | 63.6 |
+| | 4k | 66.6 | 44.0 | 42.6 | -24.0 [-29.0, -19.0] | 61.4 | 62.4 |
+| | 8k | 58.4 | 41.8 | 39.8 | -18.6 [-23.2, -14.0] | 56.4 | 54.8 |
+
+**What the control shows.** The diagnosis of section 20 was right for the mechanism. With
+prompt positions scored at every length the same-model stitch copies the action grammar:
+its ALFWorld gap went from 8 to 14 under re-prefill to 5 to 7 under, and the state tracker
+at 8k went from 6 under to parity (+1.0 [-4.0, +6.3]). Its predictions now read "put
+soapbottle 1 in/on toilet 1" and "clean egg 2 with sinkbasin 1" where section 20's read
+"put the soapbottle in the toilet". Nothing moved on HotpotQA or SQuAD, in either direction,
+for either source. So the verbatim channel is learnable by these maps from this objective,
+in one run, at no cost elsewhere.
+
+**What the pipeline shows.** The 4B-sourced stitch did not move: ALFWorld within 2 of
+section 20 at every length, the state tracker the same, QA 1 to 2 EM lower everywhere,
+which is noise at n=500. Its first word is the native 1.7B's on 263 of 300 ALFWorld prompts
+(298 for the control), so the first token is not what is missing; the predictions are
+still the paraphrases of section 20 ("go to the toilet 1", "open the drawer", "put lettuce
+2 in the fridge"), with the content right and the grammar not.
+**First token ruled out** (`out/longctx_alf_2k_psub_oracle.json`,
+`out/longctx_alf_2k_psub_selfsfx.json`, 2k, 300 prompts). The 4B-sourced stitch scores 27.3
+with the 4B's first token, 27.0 with the native 1.7B's and 27.0 with its own. On this task
+the first token is worth nothing and the cache is the whole gap, unlike the held-out QA
+sets of section 18 where it was half. The same-model stitch scores 58.7 with its own first
+token, 58.3 with the native 1.7B's and 62.3 with the 4B's: the 4B reads this task better
+than the 1.7B (73.7 alone), and its first token is worth 4 points to a cache that can
+follow it. That last row, the 4B's first token over a cache that copies, is within 4 of
+re-prefill.
+
+**Reading.** This is the cleanest split the project has produced between the mechanism and
+the pair. Same maps, same objective, same data: on the 1.7B's own residuals the prompt
+loss teaches verbatim copying in one run; on the 4B's residuals it teaches nothing the
+decoder can use, and no choice of first token changes that. The 4B itself copies the grammar when it decodes natively (74 to 78 EM,
+above the 1.7B), so the format is in the 4B's residual stream. What the linear map per
+layer into the 1.7B's space carries across is the reading of the context, not the surface
+form, and 512 scored prompt positions per step over 3000 steps did not change that. Two
+things would tell whether this is capacity or data: a run where every prompt position is
+scored at every length (section 11 did that, at short prompts, and verbatim recall followed),
+and a run with a different prefiller, which the next section does.

@@ -79,9 +79,12 @@ book. Span questions over one passage are not: 4 to 9 EM under re-prefill on Duo
 14 under on multi-turn SQuAD and 16 to 23 under on SQuAD single-turn. Tasks that need an
 exact string copied from the context fail outright: ALFWorld next-action prediction is 36
 to 41 under (content right, action syntax paraphrased), and there the control is 8 to 14
-under too, so the objective is what to change (learning.md section 20). Giving the pipeline the native 1.7B's first token (an
-oracle) halves those gaps; swapping native keys and values into the stitched cache block
-by block puts the other half in layers 12 to 23. A native question suffix, ridge-only
+under too (learning.md section 20). Scoring prompt positions at every training length
+fixes the control, 5 to 7 under on ALFWorld and parity on a state-tracking log at 8k, and
+leaves the 4B-sourced pipeline where it was with any first token, so the cross-model cache
+is that whole gap (section 21). On the QA sets, giving the pipeline the native 1.7B's first
+token (an oracle) halves the gaps; swapping native keys and values into the stitched cache
+block by block puts the other half in layers 12 to 23. A native question suffix, ridge-only
 maps, attention matching at prompt positions, two source layers in that band and a mixed
 first token were each tried and none moved it (learning.md section 18).
 
@@ -242,6 +245,7 @@ $PY src/paired_ci.py longctx handoff_base handoff_attnqa8k
 $PY src/multiturn_eval.py --conds 17b,4b --n 500 --tag mt_base                      # out-of-domain multi-turn handoff on SQuAD
 $PY src/multiturn_eval.py --conds reskv:attnqa8k_4b_c28@4b,reskv:attnqa8k_self_c28 --n 500 --tag mt_attnqa8k
 $PY src/residual_stitch.py --cut 28 --teacher attn --corpus qamix --qa-lengths 2048,4096,8192 --source 4b --tag qamix_4b_c28   # four QA sources
+$PY src/residual_stitch.py --cut 28 --teacher attn --corpus qamix --qa-lengths 2048,4096,8192 --prompt-sub 512 --source 4b --tag psub_4b_c28   # plus prompt-position KL at every length (section 21)
 $PY src/longctx_eval.py --dataset squad --conds 17b,4b,reskv:qamix_4b_c28@4b --n 500 --tag squad_ood   # held out; also --dataset duorc, triviaqa, statetrack2, alfworld
 $PY src/closedbook.py --dataset triviaqa --n 500
 $PY src/latency_residual.py --tag attnqa_4b_c28 --lengths 2048,4096,8192

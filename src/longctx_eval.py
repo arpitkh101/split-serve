@@ -87,13 +87,16 @@ def prefill_timed(cond, ids):
         R, maps, Lc, source = cond.reskv
         box = {}; hk = cond.m4.model.norm.register_forward_hook(lambda m, i, o: box.__setitem__("pre", i[0]))
         sync(); t0 = time.perf_counter()
-        try: o4 = cond.m4(input_ids=ids, output_hidden_states=True, use_cache=False)
+        try:
+            if source == "4b": o4 = cond.m4(input_ids=ids.to(cond.m4.device), output_hidden_states=True, use_cache=False)
+            else: o4 = cond.m4(input_ids=ids.to(cond.m4.device), use_cache=False, logits_to_keep=1)   # self stitch: first token only
         finally: hk.remove()
+        # a prefill model on another GPU: the copy of its residuals counts as prefill, not bridge
+        H = (tuple(h.to(DEV) for h in o4.hidden_states[:-1]) + (box["pre"].to(DEV),)) if source == "4b" else None
         sync(); t1 = time.perf_counter()
-        H = tuple(o4.hidden_states[:-1]) + (box["pre"],)
         cache, _ = R.prefill(cond.m4, cond.m17, maps, ids, Lc, source, H=H)
         sync(); t2 = time.perf_counter()
-        return cache, o4.logits, {"prefill_4b": t1 - t0, "bridge": t2 - t1}
+        return cache, o4.logits.to(DEV), {"prefill_4b": t1 - t0, "bridge": t2 - t1}
     sync(); t0 = time.perf_counter()
     cache, lg = cond.prefill(ids)
     sync(); t1 = time.perf_counter()
@@ -114,11 +117,12 @@ def generate(cond, tok, ids, max_new=16):
     cache, lg, tm = prefill_timed(cond, ids)
     T = ids.shape[1]; first = lg[0, -1].float().clone(); first[bad_first(tok)] = -1e9
     nxt = first.argmax().item(); outs = [nxt]
+    dd = cond.dec.device
     for i in range(max_new - 1):
         txt = tok.decode(outs)
         if "\n" in txt or txt.rstrip().endswith("."): break
-        pos = torch.tensor([[T + i]], device=DEV)
-        o = cond.dec(input_ids=torch.tensor([[nxt]], device=DEV), past_key_values=cache, position_ids=pos, cache_position=pos[0], use_cache=True)
+        pos = torch.tensor([[T + i]], device=dd)
+        o = cond.dec(input_ids=torch.tensor([[nxt]], device=dd), past_key_values=cache, position_ids=pos, cache_position=pos[0], use_cache=True)
         cache = o.past_key_values; nxt = o.logits[0, -1].argmax().item(); outs.append(nxt)
     return tok.decode(outs).split("\n")[0].strip().rstrip("."), tm
 

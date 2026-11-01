@@ -10,8 +10,9 @@ import common as C
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RESULTS = os.environ.get("SPLITSERVE_RESULTS", os.path.join(ROOT, "out"))   # small json results, committed
 WORK = os.environ.get("SPLITSERVE_WORK", "/dev/shm/splitserve")             # large intermediates and checkpoints
-PREFILL_MODEL = "Qwen/Qwen3-4B"
-DECODE_MODEL  = "Qwen/Qwen3-1.7B"
+PREFILL_MODEL = os.environ.get("SPLITSERVE_PREFILL", "Qwen/Qwen3-4B")
+DECODE_MODEL  = os.environ.get("SPLITSERVE_DECODE", "Qwen/Qwen3-1.7B")
+PREFILL_DEV   = os.environ.get("SPLITSERVE_PREFILL_DEV", "cuda:0")   # a bigger prefill model can live on a second GPU
 
 
 def load_model(name, device="cuda:0", dtype=torch.bfloat16):
