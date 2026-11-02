@@ -384,6 +384,8 @@ def main():
     ap.add_argument("--multi-src", type=int, default=1, help="top-k 4B layers concatenated into the maps of --multi-layers")
     ap.add_argument("--multi-layers", default="", help="band of 1.7B layers lo-hi (hi exclusive) that get --multi-src source layers")
     ap.add_argument("--cut-mlp", type=int, default=0, help="hidden width of a zero-init MLP branch on the cut map")
+    ap.add_argument("--mlp-layers", default="", help="band of 1.7B layers lo-hi (hi exclusive) whose maps get a zero-init residual MLP branch (ridge map + MLP)")
+    ap.add_argument("--mlp-hidden", type=int, default=0, help="hidden width of that MLP branch (Linear(in, hidden) -> GELU -> Linear(hidden, 2048), last layer zero-init)")
     ap.add_argument("--attn-heads", type=int, default=0, help="add a zero-init causal attention branch (heads) to every map")
     ap.add_argument("--attn-dh", type=int, default=64); ap.add_argument("--attn-lr", type=float, default=3e-4)
     ap.add_argument("--first-tok", action="store_true", help="include the prompt's last-position logit (token P) in the training loss")
@@ -434,8 +436,13 @@ def main():
     else:
         for l in range(Lc + 1):
             maps.append(LinMap([l], torch.eye(2048), torch.zeros(2048), a.cut_mlp if l == Lc else 0))
+    mb = set(range(*[int(x) for x in a.mlp_layers.split("-")])) if a.mlp_hidden and a.mlp_layers else set()
+    mb = {l for l in mb if l < Lc}                                   # the cut map keeps --cut-mlp
+    if mb:                                                           # nonlinear maps in a band: ridge map + zero-init MLP, so step 0 equals the ridge solution
+        maps = [LinMap(m.src, m.W.data, m.b.data, a.mlp_hidden) if i in mb else m for i, m in enumerate(maps)]
+        print(f"  mlp branch (hidden {a.mlp_hidden}) on layers {sorted(mb)}", flush=True)
     if a.attn_heads:
-        maps = [AttnMap(m.src, m.W.data, m.b.data, a.attn_heads, a.attn_dh, a.cut_mlp if i == Lc else 0) for i, m in enumerate(maps)]
+        maps = [AttnMap(m.src, m.W.data, m.b.data, a.attn_heads, a.attn_dh, m.mlp[0].out_features if m.mlp is not None else 0) for i, m in enumerate(maps)]
     maps = ResMaps(maps).to(DEV).float(); n_par = sum(p.numel() for p in maps.parameters())
 
     lens = [int(x) for x in a.lengths.split(",")]; elens = [256, 512, 1024, 2048]
@@ -471,11 +478,11 @@ def main():
         if step % 250 == 0:
             print(f"  [{step:4d}] lm ema={run:.4f} train-ppl~{math.exp(run):6.2f}  {time.time()-t0:.0f}s", flush=True)
     rF = full_eval("final") if a.steps else r0
-    print(f"\n[{a.tag}] RESULT cut={Lc} source={a.source} cut_src={a.cut_src} cut_mlp={a.cut_mlp} attn={a.attn_heads}x{a.attn_dh} first_tok={a.first_tok} prompt_w={a.prompt_w} teacher={a.teacher or 'none'} seed={a.seed} steps={a.steps}  " +
+    print(f"\n[{a.tag}] RESULT cut={Lc} source={a.source} cut_src={a.cut_src} cut_mlp={a.cut_mlp} attn={a.attn_heads}x{a.attn_dh} mlp={a.mlp_layers or 'none'}x{a.mlp_hidden} first_tok={a.first_tok} prompt_w={a.prompt_w} teacher={a.teacher or 'none'} seed={a.seed} steps={a.steps}  " +
           "  ".join(f"P{P}: {r0[P]['ppl']:.3f}->{rF[P]['ppl']:.3f}" for P in elens), flush=True)
     json.dump({"tag": a.tag, "cut": Lc, "source": a.source, "spec": maps.spec(), "params_M": n_par / 1e6,
                "steps": a.steps, "seed": a.seed, "corpus": a.corpus, "train_lengths": lens,
-               "cut_src": a.cut_src, "multi_src": a.multi_src, "multi_layers": a.multi_layers, "cut_mlp": a.cut_mlp, "attn": [a.attn_heads, a.attn_dh], "attn_lr": a.attn_lr, "first_tok": a.first_tok, "prompt_w": a.prompt_w, "teacher": a.teacher, "attn_w": a.attn_w, "prompt_attn": a.prompt_attn, "prompt_sub": a.prompt_sub,
+               "cut_src": a.cut_src, "multi_src": a.multi_src, "multi_layers": a.multi_layers, "cut_mlp": a.cut_mlp, "mlp_layers": a.mlp_layers, "mlp_hidden": a.mlp_hidden, "attn": [a.attn_heads, a.attn_dh], "attn_lr": a.attn_lr, "first_tok": a.first_tok, "prompt_w": a.prompt_w, "teacher": a.teacher, "attn_w": a.attn_w, "prompt_attn": a.prompt_attn, "prompt_sub": a.prompt_sub,
                "step0": {P: r0[P]["ppl"] for P in elens}, "final": {P: rF[P]["ppl"] for P in elens},
                "nll_final": {P: rF[P]["nll"] for P in elens}},
               open(f"{C.RESULTS}/hv2_{a.tag}.json", "w"), indent=2)
