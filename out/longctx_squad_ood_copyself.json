@@ -1,0 +1,6033 @@
+{
+ "2048": {
+  "reskv:copy_self_c28": {
+   "em": 0.644,
+   "f1": 0.7666734866171546,
+   "contains": 0.712,
+   "n": 500,
+   "per": [
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5714285714285715,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.923076923076923,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8571428571428571,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2666666666666667,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4347826086956522,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666665,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.7272727272727273,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     0.0,
+     0.9230769230769231,
+     0.0
+    ],
+    [
+     0.0,
+     0.4444444444444445,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5925925925925927,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.9523809523809523,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8333333333333333,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.2727272727272727,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.7272727272727273,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5333333333333333,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8571428571428571,
+     0.0
+    ],
+    [
+     0.0,
+     0.888888888888889,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.9,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.125,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666665,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.7499999999999999,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.25,
+     1.0
+    ],
+    [
+     0.0,
+     0.25000000000000006,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8571428571428571,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.923076923076923,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.29629629629629634,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.923076923076923,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.09523809523809525,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.13333333333333333,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5714285714285715,
+     0.0
+    ],
+    [
+     0.0,
+     0.8000000000000002,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6153846153846154,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.7499999999999999,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8000000000000002,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3333333333333333,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2857142857142857,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2857142857142857,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.11764705882352941,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2857142857142857,
+     0.0
+    ],
+    [
+     0.0,
+     0.9655172413793104,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2666666666666667,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8571428571428571,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5714285714285715,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5714285714285715,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6153846153846153,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6153846153846153,
+     0.0
+    ],
+    [
+     0.0,
+     0.8571428571428571,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5882352941176471,
+     0.0
+    ],
+    [
+     0.0,
+     0.3636363636363636,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ]
+   ],
+   "preds": [
+    "Dane",
+    "Islamism",
+    "environmental determinism and orientalism",
+    "life skills",
+    "Mental Health (Care and Treatment) (Scotland) Act 2003",
+    "Saturn V",
+    "Albert C",
+    "Russia",
+    "2",
+    "the SPM understates the uncertainty associated with climate models",
+    "10",
+    "Non-revolutionary civil disobedience",
+    "French",
+    "1,230 km",
+    "early Lutheran hymals and early Lutheran hymnals",
+    "general relativity",
+    "special training",
+    "Betty Meggers",
+    "Luther",
+    "Education Service Contracting scheme",
+    "interacting and working directly with students",
+    "The Lisbon Treaty was very similar to the proposed constitutional treaty, but it was formally",
+    "1749",
+    "Belgrade",
+    "The hypersensitive response is a defense mechanism in plants where infected cells seal themselves off",
+    "3",
+    "Tesla",
+    "South Kensington tube station",
+    "Doctor Who",
+    "stratigraphic correlation",
+    "Warszawa",
+    "100",
+    "when they improve society as a whole",
+    "God",
+    "hash tables",
+    "his sons and grandsons",
+    "7th century",
+    "Spitalfields",
+    "cholera",
+    "female",
+    "planning, design, and financing",
+    "Marlee Matlin",
+    "1978",
+    "to plead guilty",
+    "Central Asia and China",
+    "Official Report",
+    "lung tissue",
+    "conversion",
+    "water systems coming from the Vistula old \u2013 riverbed",
+    "canalisation projects",
+    "workers are chronically understaffed",
+    "Congress and presidents",
+    "Chicago",
+    "John Fox",
+    "1948",
+    "A prayer for grace",
+    "Scotland Act 1788",
+    "Jacques Lefevre",
+    "2006",
+    "Warszawa",
+    "The harmonic series 1 + 1/2 + 1/3 +",
+    "24",
+    "United States",
+    "ground-based infantry",
+    "macrophysical considerations that yield forces as arising from a macroscopic statistical average of microscopic",
+    "economic growth by collecting resources from colonies",
+    "1 August 1521",
+    "OPEC",
+    "To \"exterminate\" all non-Dalek beings",
+    "13",
+    "water",
+    "The Waters of Mars",
+    "Destiny of the Doctor",
+    "non-violent",
+    "oxidizing agents",
+    "182 million tons",
+    "river",
+    "Brandon Marshall",
+    "viral antigens",
+    "Stephen Greenblatt",
+    "Mosley Street",
+    "visions",
+    "European Court of Justice",
+    "NP-complete",
+    "Internet pharmacies are operated by brick-and-mortar community pharmacies that serve consumers online and",
+    "Glucocorticoids",
+    "The Secret Life of Pets",
+    "France Antarctique",
+    "The Rhine water",
+    "Sage Gateshead",
+    "K-9 and Company",
+    "vitamin D receptor",
+    "1985",
+    "1930",
+    "books, films, radio, TV, music, live theater, comics and video",
+    "To ensure that in the interpretation and application of the Treaties the law is observed",
+    "1530",
+    "Anabaptists",
+    "composite number",
+    "The State Board of Education",
+    "Sunspot, New Mexico",
+    "1936",
+    "2011",
+    "force",
+    "C\u00e9loron wrote, \"All I can say is that the Natives",
+    "1206",
+    "conquering an area",
+    "CBSE",
+    "Coronation Street",
+    "time",
+    "Bruno Mars",
+    "William Maclure",
+    "90\u00b0",
+    "open to all irrespective of age, literacy level and has materials relevant to people of",
+    "1937",
+    "Glasgow",
+    "2003",
+    "Catholic Church",
+    "the most distinctive buildings in prewar Warsaw",
+    "Tem\u00fclen",
+    "Mark Twain",
+    "the resonance frequency of his own building",
+    "Hospital pharmacies can often be found within the premises of the hospital",
+    "17 seconds",
+    "30",
+    "the president would appoint cabinet ministers from both PNU and ODM camps depending on",
+    "mountainous areas",
+    "every four years",
+    "Newton",
+    "Newcastle Beer Festival",
+    "light color and intensity",
+    "the geographical area it covers as well as the frequency of meeting",
+    "Katy\u0144 Museum",
+    "earn as much income as they would otherwise",
+    "Adolf Galland",
+    "Dublin, Cork, Portarlington, Lisburn, Waterford and Yough",
+    "to abolish the state of Israel",
+    "bunker",
+    "Hashimoto's thyroiditis",
+    "Super Bowl XX",
+    "William and Judith Bollinger",
+    "non-deterministic Turing machine",
+    "Del\u00fc\u00fcn Boldog",
+    "summa cum laude",
+    "thylakoid",
+    "12",
+    "political activity caused exploitation of the East India Company",
+    "socially owned",
+    "Folk metal",
+    "Chengzong",
+    "10,006,721",
+    "Peter Howell",
+    "Venus",
+    "Masovian gothic style",
+    "$40 per barrel",
+    "previously separated specialties",
+    "180\u00b0",
+    "Dubrovnik, Croatia",
+    "Thomas Sowell",
+    "Richard E",
+    "Lake \u00dcberlingen",
+    "double membrane",
+    "chastity",
+    "1962",
+    "Humphry Davy",
+    "The Middle Rhine Valley",
+    "destination address, source address, and port numbers",
+    "\u00a31",
+    "1986",
+    "his work was published first",
+    "8",
+    "the history of arms",
+    "Planet of Giants",
+    "The temperature is too cold in northern Europe for the survival of fleas",
+    "Khongirad",
+    "higher returns",
+    "Melbourne Cricket Ground",
+    "France",
+    "Stanford University",
+    "lipids and proteins",
+    "Japan",
+    "Atlanta Falcons",
+    "Arizona Cardinals",
+    "St John the Baptist",
+    "Luther viewed the Catholic Church as corrupt and had lost sight of several central truths of",
+    "Jews",
+    "1162",
+    "vitamin D",
+    "trial division",
+    "social exclusion",
+    "United States Library of Congress",
+    "Cloth of St Gereon",
+    "300",
+    "Charleston",
+    "early 1546",
+    "1952",
+    "A hymnic version of Psalm 130",
+    "Derek Jacobi",
+    "Financial crisis of 2007\u201308",
+    "penniless",
+    "branching",
+    "The Book of Discipline",
+    "reactive oxygen species",
+    "Inspector Spacetime",
+    "English",
+    "Thoreau",
+    "European Commission",
+    "Dave Logan",
+    "C4 plants",
+    "mild and sunny",
+    "5",
+    "rich agricultural region",
+    "civil rebellion",
+    "11,000 years",
+    "Legislative Assembly",
+    "Louis-Joseph de Montcalm",
+    "February 7, 2016",
+    "1943",
+    "right",
+    "Chagatai and Jochi",
+    "the weight of the air that rushed back in",
+    "domestic legislation that applies only to England, Wales and Northern Ireland",
+    "four every morning",
+    "15 miles away",
+    "innate immune system and adaptive immune system",
+    "isotope ratios",
+    "University Athletic Association",
+    "10",
+    "three",
+    "On the Computational Complexity of Algorithms",
+    "the same velocity as the boat as it falls",
+    "During the Roman Empire",
+    "Artisans and craftsmen",
+    "Peter Davison, Colin Baker, Sylvester McCoy",
+    "chemical",
+    "$105 billion",
+    "Cadeby stone",
+    "6",
+    "a shift of the Th1/Th2 cytokine balance towards one that supports",
+    "deadly explosives",
+    "colloblasts",
+    "The Bachelorette",
+    "Vistula",
+    "The remainder of the British Isles",
+    "July",
+    "Nobel Prize",
+    "Stanford University",
+    "lymphocytes",
+    "Beyonc\u00e9",
+    "five to ten years",
+    "Johann von Staupitz",
+    "teachers in publicly funded schools",
+    "Philip Roth",
+    "declining",
+    "vocational schools",
+    "fire",
+    "sheath",
+    "overseas",
+    "50",
+    "Upper Rhine Graben",
+    "a transparent dome made of long, immobile cilia",
+    "William Smith",
+    "Southern Methodist University",
+    "second",
+    "To block oil deliveries to the United States",
+    "solve any problem in C",
+    "symphony performances",
+    "Emperor Charles V",
+    "Gothic architecture",
+    "30 \u00b0C",
+    "Many Millerton residents",
+    "Ollie Treiz",
+    "Super Bowl 50",
+    "Sun Life Stadium",
+    "Aristotle",
+    "The Lodger",
+    "1560",
+    "go home and change her dress",
+    "blue",
+    "chum salmon",
+    "1894",
+    "two",
+    "high voltage",
+    "consultant",
+    "11:28",
+    "4",
+    "canceled",
+    "Milton Friedman Institute",
+    "He was involved in the development of the Tesla coil, which is a type of",
+    "stratigraphers",
+    "1927",
+    "telephone repeater or amplifier",
+    "The camera was accidentally pointed into the Sun",
+    "The Pauli exclusion principle",
+    "William Rainey Harper",
+    "Kenya",
+    "a holy priesthood",
+    "2 millimeters",
+    "Infitah",
+    "dispossession",
+    "construction costs",
+    "Russell T Davies",
+    "Romanesque",
+    "nationalist differences",
+    "tenggis",
+    "The answer is: Jean Auguste Dominique Ingres",
+    "the Henry Cole wing",
+    "universal ruler",
+    "Germany",
+    "the disbelieving (Kafir) colonial powers",
+    "Broncos",
+    "Buckland Valley",
+    "third",
+    "Spain",
+    "Louis Pasteur",
+    "extension",
+    "2005",
+    "NFL Experience",
+    "2005",
+    "1271",
+    "20th Century",
+    "9 October 2006",
+    "gamma delta T cells",
+    "anthrax, typhus, smallpox, respiratory infections",
+    "Toyota Hilux",
+    "Genesis",
+    "The Roman Empire",
+    "Doctor Who and the Curse of Fatal Death",
+    "semicircle",
+    "Nederrijn",
+    "45 million",
+    "Wesleyan theology",
+    "1320",
+    "co-chair of TAR WGI",
+    "Friedrichstadt",
+    "Christianity and French culture",
+    "5,792",
+    "A chlorenchyma cell is a plant cell that contains chloroplasts",
+    "17",
+    "Renaissance architecture",
+    "Danny Lane",
+    "Cape of Good Hope",
+    "soluble components",
+    "Augustinian friars",
+    "Genghis Khan",
+    "$474 million",
+    "Duke William II of Normandy",
+    "A problem X is hard for a class of problems C if every problem in C",
+    "the crew noticed a strange odor in their spacesuits",
+    "December 28, 2015",
+    "a great antisemite of his time",
+    "1",
+    "Maine",
+    "Andrea Palladio",
+    "Huguon",
+    "Spain",
+    "Second World War",
+    "33",
+    "FuturePlan",
+    "Arizona Cardinals",
+    "O2",
+    "a and b are integers",
+    "3",
+    "P",
+    "drinking water",
+    "Smiljan",
+    "quantum mechanics",
+    "to avoid prohibitively costly dowry demands",
+    "1234",
+    "House of Tides",
+    "famine and bitterness",
+    "7",
+    "Mars",
+    "Dave Logan",
+    "Sun Life Stadium",
+    "1894",
+    "government",
+    "European Court of Justice",
+    "70,000",
+    "Document",
+    "adviser to churches in new territories",
+    "pathogens",
+    "Manakin Town",
+    "traditional",
+    "water pump",
+    "487",
+    "England",
+    "18 February",
+    "Asia, Africa and Caribbean",
+    "returned to Earth",
+    "MHC I",
+    "Some forms of H\u00e6matococcus pluvialis are not green due to",
+    "air conditioning",
+    "Cretaceous\u2013Paleogene extinction event",
+    "1185",
+    "Ogedei",
+    "black caiman",
+    "American Sign Language",
+    "The government",
+    "case law by the Court of Justice, international law and general principles of European Union",
+    "The Christmas Invasion",
+    "Nicholas E",
+    "20-18",
+    "11",
+    "inspiring",
+    "Neil Shubin and Paul Sereno",
+    "via the ballast tanks of ships",
+    "1835-1842",
+    "100\u2013150",
+    "415,000",
+    "time-sharing system",
+    "ESPN",
+    "Wang Zhen",
+    "The rocks collected from the Moon are extremely old compared to rocks found on Earth,",
+    "The Master",
+    "Afranji",
+    "$8",
+    "small",
+    "a spark in the teacher may create a spark of excitement in the student as well",
+    "42",
+    "Alfred S",
+    "Agriculture",
+    "tourism",
+    "Decision Time",
+    "1966",
+    "half the carbon fixed by the Calvin cycle",
+    "EU law",
+    "9",
+    "the authority and office of the Pope",
+    "San Francisco",
+    "a diatom",
+    "United Methodist Church",
+    "gamma delta T cells",
+    "A1",
+    "safety",
+    "Russell T Davies",
+    "strike him",
+    "Sonderungsverbot",
+    "Beroe",
+    "nonfunctional pseudogenes",
+    "1964 and 1965",
+    "The Doctor's battle with a rogue Time Lord called The Master",
+    "Carolina Panthers",
+    "Eleutherian",
+    "Maurus Servius Honoratus",
+    "3 January 1521",
+    "gold",
+    "Satyagraha",
+    "27",
+    "rigorous, intense learning experience",
+    "1041",
+    "Peanuts television specials",
+    "Lorelei",
+    "The contents were sold two years later to satisfy a debt",
+    "12th century",
+    "traditional old boy network",
+    "restaurant",
+    "1241",
+    "jellyfish",
+    "arrows",
+    "Cornell",
+    "Holocene",
+    "Miller\u2013Urey experiment",
+    "Von Miller",
+    "Jacksonville",
+    "Elway",
+    "June 1884",
+    "artisans and craftsmen",
+    "stronger in the Scottish Parliament than in other parliamentary systems",
+    "teach",
+    "human",
+    "independent schools",
+    "38\u201341 \u00b0C",
+    "18 July 2000",
+    "via a fluorescent screen",
+    "Video On Demand",
+    "time and space",
+    "rare and desired skills",
+    "L",
+    "green chloroplast lineage",
+    "[256kn + 1, 256k(n +",
+    "2010",
+    "300",
+    "mujahideen",
+    "German",
+    "cholera",
+    "higher-paid teachers",
+    "Stephen Colbert",
+    "Jacksonville",
+    "13 years and 48 days",
+    "June 1979",
+    "By deporting the Acadian population from the area",
+    "(p \u2212 1)!",
+    "41-yard line",
+    "Huguenot rebellions",
+    "The implication is that P is not equal to co-NP, which is a",
+    "constant velocity",
+    "jiggle TV",
+    "gauge bosons",
+    "carriage of their respective basic channels"
+   ],
+   "ms": {
+    "prefill": 229.69236350711435
+   },
+   "sec": 219
+  },
+  "reskv:copy_self_c28@4b": {
+   "em": 0.584,
+   "f1": 0.722695921029783,
+   "contains": 0.728,
+   "n": 500,
+   "per": [
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.625,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.26666666666666666,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.7499999999999999,
+     1.0
+    ],
+    [
+     0.0,
+     0.8571428571428571,
+     1.0
+    ],
+    [
+     0.0,
+     0.25,
+     0.0
+    ],
+    [
+     0.0,
+     0.2666666666666667,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4347826086956522,
+     0.0
+    ],
+    [
+     0.0,
+     0.8571428571428571,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.10526315789473684,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666665,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.7272727272727273,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     0.0,
+     0.4444444444444444,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.4444444444444444,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.9230769230769231,
+     0.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.09090909090909091,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.7499999999999999,
+     1.0
+    ],
+    [
+     0.0,
+     0.18181818181818182,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.15384615384615385,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.9523809523809523,
+     0.0
+    ],
+    [
+     0.0,
+     0.7826086956521738,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5263157894736842,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.25,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.7777777777777778,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.42857142857142855,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.26666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.2727272727272727,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.7368421052631579,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8571428571428571,
+     0.0
+    ],
+    [
+     0.0,
+     0.4444444444444445,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.13333333333333333,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.9333333333333333,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.3636363636363636,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.14285714285714288,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.9,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5714285714285715,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4615384615384615,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.7499999999999999,
+     1.0
+    ],
+    [
+     0.0,
+     0.4210526315789474,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.125,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.23529411764705882,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.42857142857142855,
+     0.0
+    ],
+    [
+     0.0,
+     0.375,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.15384615384615385,
+     1.0
+    ],
+    [
+     0.0,
+     0.25000000000000006,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8571428571428571,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     1.0
+    ],
+    [
+     0.0,
+     0.7142857142857143,
+     1.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.923076923076923,
+     0.0
+    ],
+    [
+     0.0,
+     0.375,
+     1.0
+    ],
+    [
+     0.0,
+     0.2857142857142857,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4242424242424242,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     0.0,
+     0.6956521739130436,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8235294117647058,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.18181818181818182,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4444444444444445,
+     1.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.09523809523809525,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.9,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.37499999999999994,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5714285714285715,
+     0.0
+    ],
+    [
+     0.0,
+     0.8333333333333333,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.16666666666666669,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8750000000000001,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6153846153846154,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2857142857142857,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     0.0,
+     0.39999999999999997,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.3636363636363636,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.13333333333333333,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3333333333333333,
+     0.0
+    ],
+    [
+     0.0,
+     0.25,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4444444444444445,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.19999999999999998,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666665,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.3333333333333333,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.16666666666666666,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.3636363636363636,
+     1.0
+    ],
+    [
+     0.0,
+     0.5714285714285715,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2857142857142857,
+     0.0
+    ],
+    [
+     0.0,
+     0.9655172413793104,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3636363636363636,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2666666666666667,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.16666666666666669,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4444444444444445,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.7499999999999999,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6153846153846153,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8181818181818181,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5333333333333333,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.4444444444444445,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.22222222222222224,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.33333333333333326,
+     0.0
+    ],
+    [
+     0.0,
+     0.8571428571428571,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.42105263157894735,
+     0.0
+    ],
+    [
+     0.0,
+     0.9,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "preds": [
+    "Dane",
+    "The term \"Islamism\" is used by Islamists to describe the political movement",
+    "The two forms of environmental determinism are orientalism and tropicality",
+    "numeracy, craftsmanship or vocational training, the arts, religion, civics,",
+    "Mental Health (Care and Treatment) (Scotland) Act 2003",
+    "The Saturn V",
+    "Albert C",
+    "Russia",
+    "The answer is 2",
+    "Lindzen criticized the SPM for understating the uncertainty associated with climate models",
+    "10",
+    "Non-revolutionary civil disobedience",
+    "Spanish",
+    "The Rhine is the second-longest river in Central and Western Europe, at",
+    "Early Lutheran hymals and the first choral hymnal with settings by Johann Walter",
+    "General relativity",
+    "The transport and storage demand for safety in dealing with oxygen is high, as oxygen",
+    "Betty Meggers",
+    "History chiefly holds Luther accountable",
+    "Education Service Contracting scheme",
+    "Supporting students",
+    "The Lisbon Treaty was very similar to the proposed constitutional treaty, but it was formally",
+    "1749",
+    "Belgrade",
+    "The hypersensitive response is a defense mechanism in plants where infected cells seal themselves off",
+    "The three, later four, classes",
+    "Tesla",
+    "South Kensington tube station",
+    "Doctor Who",
+    "stratigraphic correlation",
+    "Warszawa",
+    "100",
+    "According to John Rawls, inequalities in the distribution of wealth are only justified when",
+    "God",
+    "Hash tables",
+    "His sons and grandsons",
+    "The four rightly guided Caliphs died in the 7th century",
+    "Shoreditch",
+    "Cholera",
+    "The population of Jacksonville is 366,273",
+    "Planning, design, and financing",
+    "Marlee Matlin",
+    "1978",
+    "Whether or not to plead guilty",
+    "The Central Asia and China",
+    "The Official Report",
+    "The ozone layer of the upper atmosphere functions as a protective radiation shield for the planet",
+    "conversion",
+    "valleys and ground depressions with water systems coming from the Vistula old \u2013",
+    "The Rhine has been shortened due to canalisation projects completed in the 1",
+    "The workers wages will not be controlled by these organizations, or by the employer,",
+    "Congress and presidents",
+    "The physics department at the University of Chicago",
+    "John Fox",
+    "1948",
+    "The prayer for grace",
+    "Scotland Act 1788",
+    "Jacques Lefevre",
+    "2006",
+    "Warszawa",
+    "The harmonic series 1 + 1/2 + 1/3 +",
+    "24",
+    "United States",
+    "infantry",
+    "Because of macrophysical considerations that yield forces as arising from a macroscopic statistical average",
+    "European expansion into territorial imperialism was largely focused on economic growth by collecting resources from colonies",
+    "1 August 1521",
+    "Because OPEC issued a joint communiqu\u00e9 stating that, from then on, they",
+    "The Daleks' chief role in the series plot, as they frequently remark in",
+    "13",
+    "water",
+    "The Waters of Mars",
+    "The 2013 series Destiny of the Doctor",
+    "The type of civil disobedience that is commonly accepted is non-violent",
+    "Oxidizing agents",
+    "182 million tons",
+    "The river",
+    "Brandon Marshall",
+    "viral antigens",
+    "Stephen Greenblatt",
+    "Grey Street",
+    "The visions were linked to a word or idea he might have come across",
+    "The European Court of Justice",
+    "NP-complete",
+    "Community pharmacies",
+    "Glucocorticoids",
+    "The Secret Life of Pets",
+    "France Antarctique",
+    "The Rhine water",
+    "Sage Gateshead",
+    "K-9 and Company",
+    "A vitamin D receptor",
+    "1985",
+    "1930",
+    "Books, films, radio, TV, music, live theater, comics and video",
+    "The CJEU's duty is to \"ensure that in the interpretation and application of",
+    "1530",
+    "Anabaptists",
+    "composite number",
+    "The State Board of Education",
+    "The Apache Point Observatory is located in Sunspot, New Mexico",
+    "1936",
+    "2011",
+    "The rotation equivalent of force in the same way that angle is the rotational equivalent for",
+    "C\u00e9loron wrote, \"All I can say is that the Natives",
+    "1206",
+    "Colonialism is seen to be the architect deciding how to start dominating areas and then",
+    "CBSE",
+    "Coronation Street",
+    "The size of the input in bits",
+    "Bruno Mars",
+    "William Maclure",
+    "90\u00b0",
+    "Because it is open to all irrespective of age, literacy level and has materials relevant",
+    "1937",
+    "The former Strathclyde Regional Council debating chamber",
+    "2003",
+    "The Catholic Church",
+    "The Saxon Palace and Br\u00fchl Palace were the most distinctive buildings in prewar",
+    "Tem\u00fclen",
+    "Mark Twain",
+    "The experiment with the resonance of several buildings",
+    "Hospital pharmacies can often be found within the premises of the hospital",
+    "17 seconds",
+    "30",
+    "The agreement stipulated that the cabinet would include a vice-president and two deputy Prime",
+    "The mountainous areas",
+    "Every four years",
+    "Miller",
+    "The Newcastle Beer Festival",
+    "Environmental factors like light color and intensity",
+    "the geographical area it covers as well as the frequency of meeting",
+    "Katy\u0144 Museum",
+    "The old, ill man cannot earn as much income as a healthy young man",
+    "Adolf Galland",
+    "Dublin, Cork, Portarlington, Lisburn, Waterford and Yough",
+    "The goal of Islamist groups like Hezbollah and Hamas is to abolish the state of Israel",
+    "bunker",
+    "Hashimoto's thyroiditis",
+    "Super Bowl XX",
+    "William and Judith Bollinger",
+    "non-deterministic Turing machine",
+    "Del\u00fc\u00fcn Boldog",
+    "summa cum laude",
+    "The thylakoid network",
+    "12",
+    "The British were able to maintain strength relative to others empires such as the Portuguese",
+    "Socialists believe that the means of production should be socially owned so that income different",
+    "folk-rock",
+    "Emperor Chengzong",
+    "The list of primes up to 10,006,72",
+    "Peter Howell",
+    "Venus",
+    "The Masovian gothic style",
+    "$40 per barrel",
+    "previously separated specialties",
+    "180\u00b0",
+    "The Church of Santa Maria Novella in Florence",
+    "Thomas Sowell",
+    "Richard E",
+    "Lake \u00dcberlingen",
+    "Primary chloroplasts have a double membrane from their cyanobacterial ancestor",
+    "Chastity",
+    "1962",
+    "The Doctor",
+    "The Middle Rhine Valley",
+    "Each packet includes complete addressing information",
+    "\u00a31",
+    "1986",
+    "The phlogiston theory of combustion and corrosion",
+    "8",
+    "The history of arms",
+    "Planet of Giants",
+    "The temperature is too cold in northern Europe for the survival of fleas",
+    "The Khongirad",
+    "Larger fortunes generate higher returns",
+    "The Melbourne Cricket Ground",
+    "France",
+    "Stanford University",
+    "Plastoglobuli are spherical bubbles of lipids and proteins about 45",
+    "Japan",
+    "Atlanta Falcons",
+    "Seattle Seahawks",
+    "The statue of St John the Baptist",
+    "He became convinced that the church was corrupt in its ways and had lost sight of",
+    "the Catholic saints",
+    "1162",
+    "vitamin D",
+    "Trial division",
+    "Social exclusion",
+    "US Library of Congress",
+    "The Cloth of St Gereon",
+    "300",
+    "Charleston",
+    "early 1546",
+    "1952",
+    "The hymn, Aus tiefer Not, expressed the theme of \"grace",
+    "Derek Jacobi",
+    "The Financial crisis of 2007\u201308",
+    "Tesla was penniless and had to work at various electrical repair jobs and even as",
+    "mathematical models",
+    "The Book of Discipline",
+    "The reactive forms of oxygen, such as superoxide ion (O\u2212 2",
+    "The Simpsons",
+    "The English",
+    "The individual",
+    "The European Commission",
+    "Dave Logan",
+    "The chloroplast peripheral reticulum is found in the chloroplasts of C",
+    "The city sees very little cold weather, and winters are typically mild and sunny",
+    "5",
+    "The agricultural regions that could be found are the most fertile and have the most extensive",
+    "civil rebellion",
+    "11,000 years",
+    "The Legislative Assembly",
+    "Major General Louis-Joseph de Montcalm",
+    "February 7, 2016",
+    "1943",
+    "zh\u00e8ng",
+    "Chagatai and Jochi",
+    "Lavoisier observed that the tin had increased in weight and that increase was",
+    "Domestic legislation that applies only to England, Wales and Northern Ireland",
+    "The four every morning",
+    "15 miles away",
+    "The innate immune system and the adaptive immune system",
+    "isotope ratios",
+    "University Athletic Association",
+    "Six",
+    "The Saturn V had three stages: the S-IC, the second stage,",
+    "The paper \"On the Computational Complexity of Algorithms\" by Juris Hartmanis",
+    "Motion at a constant velocity is equivalent to rest",
+    "The earliest recorded incidents of collective civil disobedience took place during the Roman Empire",
+    "A unit of Turkish defenders",
+    "Peter Davison, Colin Baker, Sylvester McCoy",
+    "The type of oxygen production for emergency oxygen in airlines is chemical oxygen generators",
+    "The estimated amount of potential economic growth would be $105 billion over five",
+    "Cadeby stone",
+    "6",
+    "The 2004 Treaty establishing a Constitution for Europe never came into force",
+    "deadly explosives",
+    "The colloblasts",
+    "The Bachelorette",
+    "Vistula",
+    "The remainder of the British Isles",
+    "July",
+    "Nobel Prize",
+    "Stanford University",
+    "lymphocytes",
+    "Beyonc\u00e9",
+    "five to ten years",
+    "Johann von Staupitz",
+    "Teachers in publicly funded schools",
+    "Philip Roth",
+    "declining",
+    "vocational schools",
+    "The classical element fire",
+    "The sheath",
+    "Tesla",
+    "Over fifty",
+    "The Upper Rhine Graben and the Lower Rhine Embayment",
+    "A transparent dome made of long, immobile cilia",
+    "Charles Darwin",
+    "Southern Methodist University",
+    "second",
+    "The embargo was imposed by OPEC to curb oil exports to the US and to",
+    "Solve any problem in C",
+    "Public service",
+    "Emperor Charles V",
+    "Gothic architecture",
+    "30 \u00b0C",
+    "The Millerton residents",
+    "Ollie Treiz",
+    "Super Bowl 50",
+    "The Mercedes-Benz Superdome, Miami's Sun Life Stadium, and the San",
+    "Aristotle",
+    "The Lodger",
+    "1560",
+    "The employee was directed to go home and change her dress",
+    "blue",
+    "Oncorhynchus keta",
+    "1894",
+    "two",
+    "high voltage",
+    "Tesla was a consultant at the Westinghouse Electric & Manufacturing Company's Pittsburgh labs",
+    "11:28",
+    "The ABC logo is displayed in four variants",
+    "The AS-205 mission was canceled, since the validation of the C",
+    "The Milton Friedman Institute",
+    "He was involved in the development of the Tesla coil, which is a type of",
+    "Stratigraphers",
+    "1927",
+    "a telephone repeater or amplifier",
+    "The camera was accidentally pointed into the Sun",
+    "The Pauli exclusion principle",
+    "William Rainey Harper",
+    "The central highlands",
+    "a holy priesthood",
+    "2 millimeters",
+    "The Great Game",
+    "The loss meant the disappearance of a strong ally and counterweight to British expansion,",
+    "Cost of construction",
+    "Russell T Davies",
+    "The Romanesque idiom",
+    "nationalist differences",
+    "tenggis",
+    "David Hockney",
+    "The Henry Cole wing",
+    "The title G\u00fcr Khan means \"universal ruler\"",
+    "Germany",
+    "The disbelieving (Kafir) colonial powers",
+    "Broncos",
+    "Buckland Valley",
+    "third",
+    "The Spanish",
+    "Robert Koch",
+    "Extension",
+    "2005",
+    "The NFL Experience",
+    "Series 1",
+    "1271",
+    "The construction of Delta Works changed the Delta in the second half of the 2",
+    "9 October 2006",
+    "Gamma delta T cells",
+    "The bubonic plague, typhus, smallpox, and respiratory infections",
+    "Hilux",
+    "Book of Genesis",
+    "The Roman Empire",
+    "Doctor Who and the Curse of Fatal Death",
+    "The debating chamber of the Scottish Parliament has seating arranged in a hemicycle, which",
+    "Nederrijn",
+    "45 million",
+    "Wesleyan theology",
+    "1320",
+    "Houghton has stressed that the SPM is agreed upon by delegates from many",
+    "Fredericia, Berlin, Stockholm, Frankfurt, Helsinki, and Emden",
+    "Christianity and French culture",
+    "5,792",
+    "A chlorenchyma cell is a plant cell that contains chloroplasts",
+    "17",
+    "Mannerist architecture",
+    "Danny Lane",
+    "The Cape of Good Hope",
+    "According to the humoral theory of immunity, the active immune agents were soluble components",
+    "The Augustinian friars",
+    "Genghis Khan",
+    "$474 million",
+    "The Normans",
+    "If a problem X is hard for a class of problems C, then it is",
+    "The crew noticed a strange odor in their spacesuits, which delayed the sealing of",
+    "December 28, 2015",
+    "The warner of his people against the Jews",
+    "The $1",
+    "Quebec",
+    "Andrea Palladio",
+    "Huguon",
+    "Spain",
+    "Vietnam War",
+    "33",
+    "FuturePlan",
+    "The Arizona Cardinals",
+    "The common allotrope of elemental oxygen on Earth is called dioxygen, O",
+    "a and b are integers",
+    "B\u00f6rte had three more sons, Chagatai (118",
+    "P",
+    "The Ruhr currently provides the region with drinking water",
+    "Smiljan",
+    "The results of a measurement are now sometimes \"quantized\", i.e",
+    "To avoid prohibitively costly dowry demands",
+    "1234",
+    "The House of Tides",
+    "Outlaws",
+    "The number of sororities at the University of Chicago is seven",
+    "Mars",
+    "Dave Logan",
+    "Sun Life Stadium",
+    "1894",
+    "The legitimacy of their particular government",
+    "The European Court of Justice",
+    "70,000",
+    "The Cinerama Productions/Palomar theatrical library",
+    "He concentrated on the church in the Electorate of Saxony, acting only as",
+    "pathogens",
+    "Manakin Town",
+    "The traditional salute of a knight winning a bout",
+    "The water pump",
+    "487",
+    "England",
+    "18 February",
+    "Some Asian, African and Caribbean countries",
+    "The crew of Apollo 12 walked to the Surveyor, photographed it,",
+    "MHC I",
+    "Because some forms of H\u00e6matococcus pluvialis have accessory pigments",
+    "power windows and central locking",
+    "Cretaceous\u2013Paleogene extinction event",
+    "1185",
+    "Ogedei",
+    "black caiman",
+    "ASL",
+    "The government",
+    "case law by the Court of Justice, international law and general principles of European Union",
+    "Doctor Who Confidential",
+    "Nicholas E",
+    "20-18",
+    "11",
+    "The images from space provided an inspiring end to 1968, which",
+    "Neil Shubin and Paul Sereno",
+    "The ctenophore Mnemiopsis leidyi was accidentally introduced into the",
+    "between 1835 and 1842",
+    "100\u2013150",
+    "415,000",
+    "Warner Sinback",
+    "ESPN",
+    "Wang Zhen",
+    "The rocks collected from the Moon are extremely old compared to rocks found on Earth,",
+    "The Master",
+    "The name of the castle is Afranji",
+    "17%",
+    "Small",
+    "Influential in the young students life",
+    "42",
+    "Alfred S",
+    "The service sector",
+    "tourism",
+    "The Decision Time",
+    "1966",
+    "Up to half the carbon fixed by the Calvin cycle",
+    "EU law",
+    "9",
+    "sacerdotalism",
+    "San Francisco",
+    "Heterokontophyte",
+    "United Methodist Church",
+    "\u03b3\u03b4 T cells",
+    "The A1",
+    "The danger inherent in concentrated oxygen is that it can cause combustion to proceed rapidly and",
+    "Russell T Davies",
+    "The particle in the beam of force will travel much faster than such particles ",
+    "Sonderungsverbot",
+    "The situation was aggravated by other factors, such as over-fishing and long-term",
+    "The majority of chloroplast genes are nonfunctional pseudogenes",
+    "1964 and 1965",
+    "The Doctor's battle with a rogue Time Lord called The Master",
+    "Number one seeds from both conferences",
+    "Eleutherian",
+    "Herodotus",
+    "3 January 1521",
+    "Gold",
+    "Satyagraha",
+    "27",
+    "The most rigorous, intense learning experience",
+    "1041",
+    "The Peanuts television specials",
+    "Lorelei",
+    "The contents were sold two years later to satisfy a debt",
+    "The 12th century",
+    "The traditional old boy network",
+    "The Weavers, a half-timbered house by the river, was",
+    "1241",
+    "jellyfish",
+    "arrows",
+    "Cornell",
+    "Holocene",
+    "Miller\u2013Urey experiment",
+    "The first player to be chosen in the 2011 NFL draft was",
+    "Jacksonville",
+    "Elway",
+    "1884",
+    "Artisans and craftsmen",
+    "The role of committees is stronger in the Scottish Parliament than in other parliamentary systems,",
+    "teach",
+    "Human",
+    "Independent schools",
+    "The temperature range for the symptoms of the modern bubonic plague is 38",
+    "18 July 2000",
+    "The operator would observe the reflected signal on a fluorescent screen",
+    "Video On Demand",
+    "time and space",
+    "The market will bid up compensation for rare and desired skills to reward wealth creation,",
+    "L",
+    "The green chloroplast lineage",
+    "The interval [256kn + 1, 256k",
+    "2010",
+    "300",
+    "The mujahideen",
+    "The Catechisms of Martin Luther are written in German",
+    "Cholera",
+    "The presence of boarding facilities",
+    "The Late Show with Stephen Colbert",
+    "Jacksonville",
+    "13 years and 48 days",
+    "1979",
+    "The Acadians were deported from the area, leading to the cutting of vital supplies",
+    "(p \u2212 1)!",
+    "41-yard line",
+    "The Huguenot rebellions",
+    "If P and co-NP are established to be unequal, then it is not",
+    "The insight that constant velocity was associated with a lack of net force",
+    "The jiggle TV trend",
+    "The gauge bosons",
+    "The agreements between BSkyB and Virgin Media"
+   ],
+   "ms": {
+    "prefill_4b": 344.8016450451687,
+    "bridge": 229.63138460414484
+   },
+   "sec": 429
+  }
+ }
+}

@@ -377,7 +377,7 @@ def main():
     ap.add_argument("--cut", type=int, default=20); ap.add_argument("--source", default="4b", choices=["4b", "17b"])
     ap.add_argument("--steps", type=int, default=3000); ap.add_argument("--lr", type=float, default=1e-4)
     ap.add_argument("--lengths", default="256,512,1024,2048")
-    ap.add_argument("--corpus", default="wt103", help="wt103 | hotpot | qamix: alternate QA examples (loss on the answer) with wt103 chunks; qamix = hotpot, drop, musique, coqa")
+    ap.add_argument("--corpus", default="wt103", help="wt103 | hotpot | qamix | qamixcopy: alternate QA examples (loss on the answer) with wt103 chunks; qamix = hotpot, drop, musique, coqa; qamixcopy adds the synthetic exact-string copy source at about a quarter of the steps")
     ap.add_argument("--qa-lengths", default="512,1024,2048", help="target prompt lengths for the QA examples")
     ap.add_argument("--calib-chunks", type=int, default=64); ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--cut-src", type=int, default=1, help="top-k 4B layers concatenated into the cut map")
@@ -392,6 +392,7 @@ def main():
     ap.add_argument("--attn-w", type=float, default=1.0, help="weight of the attention-matching terms (teacher attn)")
     ap.add_argument("--prompt-attn", action="store_true", help="also match attention outputs at the prompt positions (teacher attn)")
     ap.add_argument("--pattn-pos", type=int, default=8192, help="prompt positions scored by --prompt-attn; a random subset above this")
+    ap.add_argument("--copy-n", type=int, default=4000, help="qamixcopy: number of synthetic copy examples beside the 4000 QA ones")
     ap.add_argument("--prompt-sub", type=int, default=0, help="teacher attn: at lengths where the full prompt KL is off (above 2k), score the logit KL at this many random prompt positions")
     ap.add_argument("--fit-only", action="store_true"); ap.add_argument("--layers", default="0-28")
     ap.add_argument("--tag", default=None)
@@ -443,6 +444,7 @@ def main():
     qlens = tuple(int(x) for x in a.qa_lengths.split(","))
     if a.corpus == "hotpot": qa = load_qa_examples(tok, 4000, seed=777, lengths=qlens)
     elif a.corpus == "qamix": import qa_data; qa = qa_data.train_mix(tok, 4000, 777, qlens)
+    elif a.corpus == "qamixcopy": import qa_data; qa = qa_data.train_mix(tok, 4000, 777, qlens, copy_n=a.copy_n)   # 4000 copy examples beside 4000 QA: copy at about one quarter of all steps
     else: qa = None
     tr = {P: load_corpus_chunks(tok, "wt103" if qa else a.corpus, N_TRAIN[P], P + CONT, seed=777) for P in lens}
 
@@ -475,7 +477,7 @@ def main():
           "  ".join(f"P{P}: {r0[P]['ppl']:.3f}->{rF[P]['ppl']:.3f}" for P in elens), flush=True)
     json.dump({"tag": a.tag, "cut": Lc, "source": a.source, "spec": maps.spec(), "params_M": n_par / 1e6,
                "steps": a.steps, "seed": a.seed, "corpus": a.corpus, "train_lengths": lens,
-               "cut_src": a.cut_src, "multi_src": a.multi_src, "multi_layers": a.multi_layers, "cut_mlp": a.cut_mlp, "attn": [a.attn_heads, a.attn_dh], "attn_lr": a.attn_lr, "first_tok": a.first_tok, "prompt_w": a.prompt_w, "teacher": a.teacher, "attn_w": a.attn_w, "prompt_attn": a.prompt_attn, "prompt_sub": a.prompt_sub,
+               "cut_src": a.cut_src, "multi_src": a.multi_src, "multi_layers": a.multi_layers, "cut_mlp": a.cut_mlp, "attn": [a.attn_heads, a.attn_dh], "attn_lr": a.attn_lr, "first_tok": a.first_tok, "prompt_w": a.prompt_w, "teacher": a.teacher, "attn_w": a.attn_w, "prompt_attn": a.prompt_attn, "prompt_sub": a.prompt_sub, "copy_n": a.copy_n,
                "step0": {P: r0[P]["ppl"] for P in elens}, "final": {P: rF[P]["ppl"] for P in elens},
                "nll_final": {P: rF[P]["nll"] for P in elens}},
               open(f"{C.RESULTS}/hv2_{a.tag}.json", "w"), indent=2)

@@ -1,0 +1,3018 @@
+{
+ "2048": {
+  "4b": {
+   "em": 0.454,
+   "f1": 0.5953476458498284,
+   "contains": 0.54,
+   "n": 500,
+   "per": [
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     0.0,
+     0.3333333333333333,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.16666666666666669,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.125,
+     0.0
+    ],
+    [
+     0.0,
+     0.28571428571428575,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.3333333333333333,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.4000000000000001,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.23529411764705882,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3333333333333333,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5714285714285715,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.14285714285714285,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.23529411764705885,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.9090909090909091,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.7692307692307693,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6,
+     1.0
+    ],
+    [
+     0.0,
+     0.75,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.15384615384615383,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.14285714285714285,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.2857142857142857,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3076923076923077,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.18181818181818182,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5714285714285715,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.7499999999999999,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.3333333333333333,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.888888888888889,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8571428571428571,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.3636363636363636,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.16666666666666669,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.15384615384615385,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.25,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.3333333333333333,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.23529411764705885,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.13333333333333333,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.33333333333333337,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     0.0,
+     0.2222222222222222,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.12903225806451613,
+     0.0
+    ],
+    [
+     0.0,
+     0.4444444444444444,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.3636363636363636,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666665,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.4444444444444445,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5714285714285715,
+     0.0
+    ],
+    [
+     0.0,
+     0.13333333333333333,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.5714285714285715,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.2,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8333333333333333,
+     1.0
+    ],
+    [
+     0.0,
+     0.5,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     0.0,
+     0.25,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.3333333333333333,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.6666666666666666,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.16666666666666666,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.8,
+     0.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.4,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "preds": [
+    "1923",
+    "Based on the documents, \"Hey Pa! There's a Goat on the Roof",
+    "The Fyre Festival was supposed to take place on the Bahamian island of",
+    "Claudio L\u00f3pez",
+    "Free Range Films",
+    "2002",
+    "India",
+    "football",
+    "Terrence Jones",
+    "Alba Longa",
+    "You Can Be a Star",
+    "Colin Kaepernick is an American football quarterback, and his preferred nickname is \"Kap",
+    "Tennis",
+    "Pride Fighting Championships",
+    "Marsilea",
+    "Viglen",
+    "California Polytechnic State University",
+    "James Bond",
+    "board games",
+    "Rockstar Games",
+    "Based on the documents, Ernst Messerschmid was born in 19",
+    "Yes",
+    "Labrador Retriever",
+    "1",
+    "Monticello",
+    "Thomas Boutflower Bennett was a schoolmaster at The Collegiate School of St Peter",
+    "StubHub Center",
+    "The White House",
+    "2006",
+    "The quarterback of the Minnesota Vikings, Case Keenum, holds the NCAA record for",
+    "Stapleton Cotton, 1st Viscount Combermere",
+    "SpongeBob SquarePants",
+    "The Los Angeles Xtreme, San Francisco Demons, and Memphis Maniax",
+    "2015",
+    "Brian G",
+    "The film industry",
+    "Chamelaucium is derived from the myrtle family, and Vanilla is derived",
+    "Casablanca",
+    "Shohola Falls",
+    "Alan Turing",
+    "Patricia Veryan",
+    "The Chronicle of Philanthropy was founded in 1988, and",
+    "Dutch",
+    "Alachua County",
+    "Mos Def",
+    "Flowering plants",
+    "Soccer",
+    "The Seduction of Hillary Rodham",
+    "Tottenham Hotspur",
+    "1961",
+    "Based on the documents, the southernmost administrative region of Denmark is Region Zealand",
+    "The Boy in the Striped Pyjamas",
+    "Yanka Dyagileva",
+    "Based on the documents, Carrie Akre was born on September 24,",
+    "Antelope",
+    "No",
+    "April 25, 2017",
+    "Hank Azaria",
+    "Rick Ducommun",
+    "The Salmita Mine",
+    "Australia's Lucille Ball",
+    "Robin Gibb",
+    "Based on the document about Gothard Wilhelm Butler, he was a captain of the",
+    "Geographical Indication",
+    "Steve Tisch and Vanessa Block",
+    "John Sullivan",
+    "Justin Verlander",
+    "28,776",
+    "Menges",
+    "8",
+    "Shukratara by Date",
+    "Kassie DePaiva",
+    "Wynn Palace",
+    "The King of Hollywood",
+    "indoor ski slope",
+    "Albany County",
+    "David O'Leary",
+    "Duke Kramer in \"As the World Turns\"",
+    "1954",
+    "Based on the documents provided, Jonathan Marray is British, as stated in the",
+    "No",
+    "No",
+    "Based on the documents, the architect of Hook and Ladder No",
+    "Yes",
+    "1887",
+    "The House of Representatives where Phyllis Kohn holds a seat meets in **",
+    "Muppet Treasure Island",
+    "Self-management",
+    "1988",
+    "Anthony Lynn",
+    "The three apps that have similar functionality to Google for Education are compatible with Microsoft Office",
+    "Christies Beach",
+    "Grand Valley State University",
+    "Based on the documents, Pizza Inn is based in The Colony, Texas, while",
+    "Imelda Marcos",
+    "Derry City F.C",
+    "Brooklyn",
+    "Luca Parmitano",
+    "The Marx Brothers film of the same name",
+    "The Marshall Mathers LP 2",
+    "Amyotrophic lateral sclerosis (ALS)",
+    "The seminar Jeanne Marie Beaumont directed from 2007\u20132",
+    "1912",
+    "1987",
+    "Vanessa Hudgens",
+    "The tidal estuary in which Branford is a shoreline town is Long Island Sound",
+    "552",
+    "Casey Bond",
+    "Hazel Keech",
+    "Francisco Antonio Zea",
+    "Based on the documents, the 2013 South Korean film \"Mont",
+    "1907",
+    "Tagliolini",
+    "1981",
+    "England",
+    "Austro-Hungarian Army",
+    "Nicolas Winding Refn",
+    "United States",
+    "The Austrian Pinscher's primary duty is to keep barns free of rats and",
+    "Based on the documents provided, Troy McClure is a fictional character from \"The",
+    "1914",
+    "Florence Welch",
+    "The father of Kasper Schmeichel, Peter Schmeichel, was voted",
+    "United States Air Force",
+    "The high school located in the Bronzeville neighborhood was named after Jean Baptiste Point",
+    "Social Code",
+    "The name of the publisher who published \"Finnegans Wake\" in",
+    "Yes",
+    "Marino Girolami",
+    "University of California, Berkeley",
+    "Alfred Molina",
+    "The belief in the religious authority of Hawai'i, inherited from his father, High",
+    "The Jewish community",
+    "Ithu Engal Neethi and Shoba Chandrasekhar are",
+    "1940",
+    "David Dunn",
+    "Hillary Clinton",
+    "3",
+    "S",
+    "Kansas Joe McCoy and Memphis Minnie",
+    "King Duncan",
+    "The Princess and the Frog",
+    "Eden Valley Railway",
+    "Alexander Borodin",
+    "The Second Battle of Bull Run was fought first",
+    "Eddie Albert",
+    "The Peel Group",
+    "The 2015 Africa Magic Viewers Choice Awards were held in Lagos",
+    "Love Actually",
+    "Dr",
+    "House of Fraser",
+    "Nicol Williamson",
+    "Selle v",
+    "1998",
+    "King George IV and the Duke of Wellington",
+    "Newt Gingrich was a former Speaker of the House of Representatives",
+    "Bayport",
+    "The Kingdom of the Isles",
+    "Yes",
+    "Nusretiye Mosque",
+    "Rafael M\u00e1rquez",
+    "The New South Wales Rugby League (NSWRL) was formed on 8",
+    "Pennsylvania",
+    "The 2007 WWE draft",
+    "Masa Takayama",
+    "The goddess associated with Frigg consists of tales involving her role as a protectress",
+    "Ford Falcon",
+    "Agent Carter",
+    "The castle, which Sir James Montgomery, 4th Baronet is the tenth",
+    "Chevron Corporation",
+    "Armin Meiwes",
+    "Based on the documents, the person recognized by the Mississippi Institute of Arts and Letters",
+    "devotional",
+    "Based on the documents, Boulder City is connected by State Route 582",
+    "The host of the 2014 MTV Africa Music Awards was Marlon",
+    "London",
+    "Florida and Oklahoma",
+    "Based on the documents, the common party princess is associated with Disney characters, and",
+    "Yes, Virgilia is found in Africa",
+    "The Lady",
+    "Fennec fox",
+    "The business Manny Cussins was chairman of makes furniture",
+    "Richard Nixon",
+    "Nate Albert",
+    "Based on the provided documents, the city at the mouth of the Congo River in",
+    "The Kilby International Awards were named after the inventor who discovered the integrated circuit",
+    "John Schlesinger",
+    "Yorgos Lanthimos",
+    "Hern\u00e1n Crespo",
+    "12",
+    "Albert Gallatin",
+    "Nebo Zovyot",
+    "Heather Graham Pozzessere",
+    "The full name of the captain of the Australian team that won the 19",
+    "The State of Nevada",
+    "Dire Straits",
+    "World War II",
+    "The British aristocrat who succeeded Gerald Grosvenor, 6th Duke of",
+    "Yes",
+    "The Schumann\u2013Runge bands are named for at least one German mathematician",
+    "Charmed",
+    "Based on the documents, Gregg Popovich is the longest tenured active coach in",
+    "No",
+    "Michael Tippett",
+    "Manchester United F.C",
+    "The 2016 World Indoor Championships",
+    "Big 12 Conference",
+    "1",
+    "Macworld",
+    "Kramer's caddy Stan",
+    "Delphine Software International",
+    "Black Mouth Cur",
+    "Donkeyskin",
+    "96",
+    "Othonna",
+    "The Million Dollar Duck",
+    "Avram Noam Chomsky",
+    "Rule of three",
+    "3",
+    "The Four Great Constables",
+    "HBO World Championship Boxing",
+    "Yes",
+    "The Birds",
+    "Samuel Eto'o",
+    "Bunker Hill",
+    "The Muppet Christmas Carol",
+    "NBA Live 18",
+    "Mercury Prize",
+    "The Jacksonville Jaguars",
+    "Mindy Kaling",
+    "Aaron Taylor-Johnson and Kieron Moore",
+    "Pulitzer Prize",
+    "Eric Whitacre",
+    "The 1960s",
+    "Brady Haran",
+    "Al-Masjid an-Nabawi",
+    "Eric Whitacre",
+    "Czech Kingdom",
+    "USC Marshall School of Business",
+    "Standard Oil",
+    "1973",
+    "Naruto Uzumaki",
+    "The Show Band Show",
+    "2027 Fairmount Avenue between Corinthian Avenue and North 2",
+    "Disco",
+    "The usual main ingredient of H\u00e1karl is normally found in the North Atlantic Ocean",
+    "They are both punk rock bands",
+    "Kate Higgins",
+    "Howard Ashman",
+    "Alice's Adventures in Wonderland",
+    "Based on the documents, Steve Sekely was known by multiple names, including Stefan",
+    "Wilmington International Airport",
+    "Taeko Ikeda",
+    "Gus Van Sant",
+    "Christopher Nolan",
+    "Charlie Murphy",
+    "ACC",
+    "The Real Ghostbusters",
+    "McG",
+    "1694",
+    "Continental AG",
+    "Subway",
+    "Arshile Gorky",
+    "7 minutes",
+    "Severe acute respiratory syndrome (SARS)",
+    "Volcano Bay",
+    "The Royal Family",
+    "1827",
+    "Captain Marvel",
+    "Leslie S",
+    "Carnegie Mellon University",
+    "I Am Furious (Yellow)",
+    "Philip Livingston",
+    "Yes",
+    "Diamond White",
+    "Yes",
+    "EGOT",
+    "The singer who sang \"Four Seasons of Love\" is Donna Summer, and she",
+    "Thorgan Hazard",
+    "Yes",
+    "St",
+    "The musician and stand-up comedian who recorded and released a live performance at London's",
+    "Yellowcraigs",
+    "Political correctness",
+    "Eleutherococcus and Amaryllis are both genera",
+    "The Wailing",
+    "The Battle of the Rosebud",
+    "1943",
+    "James Packer",
+    "Arbutus is a genus of flowering plants in the Ericaceae family,",
+    "Mako",
+    "The country where both Ugni and Stenomesson are native plants is Chile",
+    "The Handmaid's Tale",
+    "South Yarra",
+    "The Indian Super League is sponsored by Hero, so Nicolau Colaco played as",
+    "Season 3",
+    "Cradle of Filth",
+    "First baseman",
+    "Banjo",
+    "Teen Titans Go!",
+    "2010",
+    "1945",
+    "The Boz",
+    "Shaw Brothers",
+    "Suining",
+    "Las Vegas, Nevada",
+    "Motion City Soundtrack",
+    "1941",
+    "Josh",
+    "Theme Park Hotel and Genting Highlands are both considered as businesses in Malaysia, specifically",
+    "1986",
+    "Southern State Parkway",
+    "Sam Neill",
+    "The Rawlings Gold Glove Award",
+    "Dave Lee Travis",
+    "The Year Books cover the reigns of King Edward I to Henry VIII",
+    "The Five",
+    "Jeremy Renner",
+    "R.D",
+    "The Salzkammergut",
+    "Edward Trowbridge Collins Sr",
+    "Romantic comedy",
+    "Charles Laughton",
+    "Fred M",
+    "Thomas Jefferson",
+    "A hip hop ballad with a pop refrain",
+    "The Liberal Party",
+    "League of the Three Emperors",
+    "Quasimodo",
+    "Podocarpus",
+    "James Gregory",
+    "Kiernan Shipka",
+    "Scott Weiland and Richard Hawley both had occupations as musicians and songwriters",
+    "Yes",
+    "No",
+    "Based on the documents, Rocky Graziano's life story was the basis for the",
+    "The brother of Saulius Kuzminskas is Mindaugas Kuz",
+    "Sanshou",
+    "They both contain alcohol",
+    "34th",
+    "Robert Thornby",
+    "Randall Boggs",
+    "J",
+    "Mickey Gilley",
+    "Florida Panthers",
+    "Workers' Party",
+    "Death metal",
+    "The rock band that sang \"All Join Hands\" is Slade, which rose",
+    "1911",
+    "Walt Disney Productions",
+    "Sarah Kerrigan",
+    "PBS",
+    "John William Henry II",
+    "Frank Sinatra",
+    "FIM Road Racing World Championship Grand Prix",
+    "Cecily Strong",
+    "explosives",
+    "Rachel Maddow",
+    "Caistor",
+    "He was a governor of the New York Stock Exchange",
+    "The text \"The Parasite\" is a novelette, which is a",
+    "1975",
+    "No",
+    "No",
+    "Yes",
+    "The Tenerife airport disaster",
+    "Tony Award for Best Lighting Design",
+    "Based on the documents, SWX Right Now is a digital subchannel of K",
+    "The Caribbean Sea",
+    "No",
+    "Wayne Wang",
+    "Ron Cowen and Daniel Lipman",
+    "4",
+    "1895",
+    "Richard Curtis",
+    "sixth",
+    "Shooter Jennings",
+    "Maria Sharapova",
+    "In These Times",
+    "Yes",
+    "Ryan Babel",
+    "28 km",
+    "France",
+    "No",
+    "She was the technical director for the computer game \"The Last Express\"",
+    "Hotchkiss M1914 machine gun",
+    "1993",
+    "No",
+    "1940",
+    "27",
+    "Sam Raimi, Ivan Raimi, and Tom Spezialy",
+    "North African",
+    "Ordos City",
+    "The Big Lebowski",
+    "Ruffin Horne McNeill Jr",
+    "Yes",
+    "Based on the documents, the 2007 documentary 'Zoo'",
+    "1999",
+    "Minnesota State University, Mankato",
+    "The football manager who recruited David Beckham managed Manchester United from 1945",
+    "Based on the document, \"Not Richard, But Dick\" is the seventh studio",
+    "Based on the provided documents, Josh Abraham has worked with Adam Lambert, and it",
+    "Symphony in Black",
+    "Anakin Skywalker is the father of Princess Leia",
+    "The cities of Beitun, Xinjiang and Wafangdian are both",
+    "Academy Award",
+    "John Wesley and George Whitefield",
+    "Dirty Pretty Things",
+    "Yes",
+    "Physical",
+    "Thomas Friedman",
+    "Golden Globe for Best Supporting Actress",
+    "Psilocybin",
+    "PPA",
+    "East Anglia",
+    "writers",
+    "George Raft",
+    "Benjamin Banneker",
+    "The county seat of Pottawatomie County, Oklahoma, where Keok",
+    "The founder of the Orchestra which debuted on January 1, 198",
+    "1994",
+    "alcohol",
+    "The answer is based on the documents provided",
+    "Ohio River",
+    "new wave and punk scenes",
+    "Bactris",
+    "film director",
+    "Based on the document (1993 Tehran mid-air collision), the Iranian",
+    "2001",
+    "Sugar Ray",
+    "Panthera pardus",
+    "It is the first flume ride in Ireland",
+    "Bill Curry",
+    "Babiana",
+    "1993",
+    "Supergirl",
+    "631,486",
+    "The prefix \"The\" is used to avoid confusion for the winner of the",
+    "1",
+    "The Walking Dead",
+    "Based on the documents, Stephen Cepello painted the official Governor's Mansion and",
+    "Pimp My Ride",
+    "No",
+    "VNO",
+    "liberty and neoconservative principles",
+    "Based on the documents, Aichryson has about 15 species,",
+    "The Salvation Army",
+    "Russian",
+    "Virginia",
+    "2013",
+    "Mike Fiers",
+    "Graham Hill",
+    "One Magic Christmas",
+    "A dependent territory can contain an autonomous area",
+    "Board games",
+    "The Troubles",
+    "Panama City, Panama",
+    "Italian",
+    "No",
+    "No",
+    "general aviation",
+    "Roman Polanski",
+    "China",
+    "Dante",
+    "Nana Patekar",
+    "Based on the documents, the University of Virginia was founded by Thomas Jefferson, who",
+    "Silvia Navarro",
+    "A body of water",
+    "The Detroit Lions",
+    "Windigo",
+    "Polihale State Park",
+    "Amber Heard",
+    "Camille Saint-Sa\u00ebns",
+    "Memphis, Tennessee",
+    "mountain ranges",
+    "28 June 1945",
+    "110",
+    "Mimosa",
+    "278th",
+    "Romeo",
+    "31",
+    "Myrsine",
+    "Rhodesia",
+    "2001",
+    "566",
+    "Executive Chairman",
+    "The presenters of the 2016 Brit Awards were from England",
+    "Cyrtanthus",
+    "Sirius XM",
+    "God Lives Underwater",
+    "The Soloist",
+    "Constance M",
+    "Yes",
+    "Based on the documents, the head coach representing the Eastern Conference during the 2",
+    "The Tennessee River was once known as the Cherokee River",
+    "Outside",
+    "The 7 Habits of Highly Effective People",
+    "Aksel Sandemose",
+    "1856",
+    "7"
+   ],
+   "ms": {
+    "prefill": 482.4235728420317
+   },
+   "sec": 409
+  }
+ }
+}

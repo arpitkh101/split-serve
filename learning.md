@@ -931,3 +931,116 @@ form, and 512 scored prompt positions per step over 3000 steps did not change th
 things would tell whether this is capacity or data: a run where every prompt position is
 scored at every length (section 11 did that, at short prompts, and verbatim recall followed),
 and a run with a different prefiller, which the next section does.
+
+## 22. Five ways to attack the cross-model cache, one works: copy-style training data
+
+Section 21 left one fact: the same maps, objective and data teach a same-model stitch to
+copy exact strings and teach a 4B-sourced stitch to paraphrase them. Five changes were
+run against that fact in parallel, each one training run with the section 21 recipe
+(`--prompt-sub 512`) as the reference, 4B first token, 300 ALFWorld prompts per length
+and 500 for the QA sets. A sixth run swapped the prefiller for Qwen3-8B.
+
+| change | ALFWorld 2k / 4k / 8k | HotpotQA | SQuAD | bridge |
+|---|---|---|---|---|
+| reference, section 21 (`psub_4b_c28`) | 27.3 / 33.0 / 36.0 | 42.2 / 35.0 / 31.2 | 49.4 / 42.6 / 39.8 | 78 / 162 / 316 ms |
+| re-prefill (1.7B) | 66.0 / 70.0 / 70.3 | 38.8 / 36.2 / 35.6 | 67.8 / 66.6 / 58.4 | |
+| continuation KL toward the 4B's logits (`--target 4b`) | 23.0 / 25.0 / 28.0 | 40.4 / 36.8 / 33.0 | 52.4 / 42.8 / 40.6 | same |
+| prompt KL at every position at every length (`--prompt-dense`) | 23.7 / 29.3 / 28.3 | 40.2 / 35.6 / 34.2 | 51.2 / 42.2 / 40.6 | same |
+| ridge plus residual MLP at layers 12 to 23 (`--mlp-layers 12-24`) | 24.7 / 32.0 / 32.7 | 42.2 / 35.2 / 35.2 | 52.0 / 43.6 / 41.0 | 116 / 240 / 463 ms |
+| rank-16 LoRA on the 1.7B's attention, trained with the maps (`--lora-r 16`) | 30.7 / 33.3 / 35.3 | 42.2 / 35.6 / 34.4 | 52.0 / 44.4 / 41.2 | same |
+| synthetic copy examples in the mix (`--corpus qamixcopy`) | **47.7 / 55.3 / 58.0** | 40.4 / 36.2 / 31.8 | 50.0 / 43.2 / 39.6 | same |
+| Qwen3-8B prefiller, two GPUs (`psub8b_c28`) | 19.7 / 29.7 / 30.7 | not run | not run | 96 / 196 / 397 ms |
+
+Paired intervals against re-prefill for the copy row: ALFWorld -18.3 [-24.3, -12.3],
+-14.7 [-20.7, -8.7], -12.3 [-18.3, -6.3]; HotpotQA +1.6 [-2.8, +5.8], 0.0, -3.8
+[-8.0, +0.4]; SQuAD -17.8, -23.4, -18.8. The state tracker v2 went from 12.7 / 13.0 to
+24.3 / 39.3 at 2k / 8k, which is -4.0 [-10.0, +2.0] and -1.0 [-6.7, +4.7] against
+re-prefill: parity. Every other row is within noise of the reference on the QA sets and no
+better on ALFWorld.
+
+**The four that did nothing, and what each rules out.**
+
+*Targeting the 4B.* The idea was to let the pipeline inherit the prefiller's answers, as
+the 4B first token does for one token. The cross-model stitch lost 4 to 8 EM on ALFWorld
+and its training KL stayed at 1.7 nats where the same-model one reached 0.6. The
+same-model control trained toward the 4B is the informative row: with the 4B's first
+token it sits at the 1.7B's own level on ALFWorld (68.3 / 71.3 / 71.7 against the 1.7B's
+66.0 / 70.0 / 70.3 and the 4B's 73.7 / 77.7 / 78.3), and the one place it moved toward the
+4B is SQuAD, where the 4B is the worse model. The 1.7B tail behind 29 linear maps cannot
+become the 4B; it can only be nudged.
+
+*Dense prompt loss.* Every prompt position scored at 4k and 8k, chunked through the head
+under activation checkpointing, 18.9 GB peak. Wikitext and QA unchanged, ALFWorld 4 to 8
+EM worse than the subsampled version, paraphrase pattern unchanged (the stitched cache
+inserts "the" in three quarters of its actions and drops the object number in a third; no
+native model does either). Coverage of the prompt loss was not the bottleneck.
+
+*Nonlinear maps.* A two-layer MLP branch, 113M parameters, zero-initialised so training
+starts at the ridge solution, on the twelve layers the patching of section 18 pointed at.
+It bought 1 to 4 EM on HotpotQA at 8k and SQuAD at 2k, nothing on ALFWorld, and 47
+percent more bridge time. Per-position nonlinearity is not what is missing.
+
+*Decoder LoRA.* Rank 16 on q, k, v and o of all 28 layers, 6.4M parameters, trained
+jointly with the maps, the teacher computed with the adapters switched off. It trained
+(wikitext losses slightly below the reference) and moved nothing beyond noise. A decoder
+allowed to adapt its reading of the stitched cache does not find the surface strings in it.
+
+**The one that worked.** `--corpus qamixcopy` adds 4000 synthetic examples beside the 4000
+QA ones, so copying is about a quarter of the training steps. Two generators
+(`src/qa_data.py`, `copy_state` and `copy_cmds`): a robot log in the manner of the state
+tracker but with its own rooms, surfaces, sixty objects, move templates, filler and
+question wording, all disjoint from `statetrack.py`; and a numbered list of commands from
+a small grammar ("grab o n from R m", "place o n in/on R m", "rinse ... with basin m")
+with questions about the command at, before or after a step, or the last command naming
+an item. Every gold is a literal substring of its context, 3 to 10 tokens. No ALFWorld
+data was used. The ALFWorld predictions change character: "go to the fridge" becomes "go
+to fridge 1", "open the drawer" becomes "open drawer 7"; the misses that remain are mostly
+wrong receptacles ("go to cabinet 2" for "go to countertop 1"), which are decisions, not
+copies, plus "in fridge 1" for "in/on fridge 1" and "sink 1" for "sinkbasin 1". The
+share of actions with an inserted "the" fell from 8 percent to 2 and the share using the
+grammar's "in/on" rose from 0 to 11 (the native 1.7B: 14).
+
+**Does it hold up.** Four more runs on the same mix, ALFWorld at three lengths and SQuAD
+at 2k, paired intervals against re-prefill.
+
+| run | ALFWorld 2k / 4k / 8k | gap [95% CI] | SQuAD 2k |
+|---|---|---|---|
+| copy mix, seed 0 (above) | 47.7 / 55.3 / 58.0 | -18.3 / -14.7 / -12.3 | 50.0 |
+| copy mix, seed 1 | 50.7 / 60.0 / 60.7 | -15.3 [-21.7, -9.3] / -10.0 [-15.7, -4.3] / -9.7 [-16.0, -3.7] | 49.0 |
+| copy at a third of the steps (8000 examples) | 52.3 / 56.7 / 57.3 | -13.7 / -13.3 / -13.0 | 49.6 |
+| copy at a sixth (2000) | 50.0 / 55.3 / 57.0 | -16.0 / -14.7 / -13.3 | 50.0 |
+| same-model control on the mix, own first token | 57.3 / 60.0 / 62.0 | -8.7 / -10.0 / -8.3 | 64.4 |
+| same-model control on the mix, 4B first token | 61.3 / 65.7 / 68.0 | -4.7 [-10.0, +0.7] / -4.3 [-9.7, +0.7] / -2.3 [-7.7, +3.0] | 58.4 |
+
+The second seed lands above the first, so the first was not the lucky one. The share of
+copy steps between a sixth and a third does not matter, and SQuAD at 2k is 49 to 50 for
+all three. The same-model stitch gains from the mix too (from 58.7 / 62.7 / 65.0 in
+section 21 to 57.3 / 60.0 / 62.0 with its own first token and 61.3 / 65.7 / 68.0 with the
+4B's, the last within noise of re-prefill at every length). The cross-model stitch now
+trails the same-model one by 6 to 10 points where section 21 had it trailing by 30. On
+SQuAD the control with its own first token is at 64.4 (-3.4 [-6.0, -0.8]) and 58.4 with the
+4B's, the 4B being the worse reader there.
+
+**Reading.** The cross-model maps can carry surface form. Nothing about the objective,
+the map capacity or the decoder was stopping them; the training data was. QA data never
+asks the stitch to reproduce a string from the context verbatim, the same-model maps copy
+anyway because they start one step from identity, and the cross-model maps, which have to
+build every channel from scratch, build only the channels the data pays for. Four runs
+that changed the objective, the capacity and the decoder each left the paraphrasing in
+place; one that changed the data halved the gap on ALFWorld and closed it on the state
+tracker, at no cost on QA. For the robotics framing this is the result: a controller that
+must emit exact action strings can run off a cross-model cache if the stitch was trained
+on copy tasks, and those tasks can be synthetic.
+
+**A bigger prefiller does not help by itself.** Qwen3-8B on its own GPU, the 1.7B and
+the maps on another (`SPLITSERVE_PREFILL=Qwen/Qwen3-8B SPLITSERVE_PREFILL_DEV=cuda:1`,
+work directory `ckpt8b`; the prefill model's forward runs on its device and its residuals
+are copied across, counted as prefill time), the section 21 recipe, no copy data. The
+ridge fits from the 8B's 4096-wide residuals reach the same R2 as the 4B's, training
+reaches the same wikitext losses to the second decimal (17.61 against 17.65 at 256
+tokens), and ALFWorld comes out at 19.7 / 29.7 / 30.7 against the 4B pair's 27.3 / 33.0 /
+36.0, with the 8B alone at 72.7 / 77.3 / 77.3. The HotpotQA and SQuAD rows are missing:
+the runs were cut off when the shared GPUs were taken, and the 8B alone had reached 45.4 on
+HotpotQA at 2k (the 4B: 45.6). The reading matches section 21: the cross-model gap has
+nothing to do with the prefiller's size, and the data is the lever. The 8B with the copy
+mix is the natural next run.
