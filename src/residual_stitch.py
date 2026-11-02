@@ -11,6 +11,10 @@ Loss: next-token loss of the continuation decoded off the stitched cache; --prom
 LM loss over prompt positions from the prefill logits (needed at cut 28, where the final map
 otherwise gets no gradient). --attn-heads adds a zero-initialised causal attention branch over
 the source positions to every map. --fit-only caches the ridge fits per layer.
+--lora-r adds a LoRA (plain PyTorch, no peft) to the 1.7B's attention projections, trained jointly
+with the maps: it changes both how the stitched cache is produced (k_proj, v_proj in native_kv)
+and how the decoder attends at the continuation positions.  The teacher forward of --teacher is
+always computed with the LoRA disabled, so the target stays the original frozen model.
 """
 import sys, os, json, math, time, warnings, argparse, torch
 import torch.nn as nn
@@ -38,6 +42,59 @@ class LinMap(nn.Module):
     def forward(self, x):
         y = x @ self.W + self.b
         return y + self.mlp(x) if self.mlp is not None else y
+
+
+# ------------------------------------------------------------------ decoder LoRA
+
+class LoRALinear(nn.Module):
+    """y = base(x) + scale * B(A(x)).  A, B are fp32 parameters cast to the activation dtype on the
+    fly (only the [T, r] intermediate is saved for backward, not an fp32 copy of x).  `enabled`
+    is toggled by lora_off() so the frozen teacher can be run through the same module."""
+    def __init__(self, base, r, alpha):
+        super().__init__()
+        self.base = base; self.r, self.scale = r, alpha / r; self.enabled = True
+        self.lora_A = nn.Parameter(torch.empty(r, base.in_features)); nn.init.kaiming_uniform_(self.lora_A, a=math.sqrt(5))
+        self.lora_B = nn.Parameter(torch.zeros(base.out_features, r))
+    def forward(self, x):
+        y = self.base(x)
+        if not self.enabled: return y
+        return y + F.linear(F.linear(x, self.lora_A.to(x.dtype)), self.lora_B.to(x.dtype)) * self.scale
+
+LORA_TARGETS = ["q_proj", "k_proj", "v_proj", "o_proj"]
+
+def attach_lora(m17, r, alpha, targets=LORA_TARGETS):
+    """Wrap the named projections of every 1.7B layer.  Idempotent.  Returns the LoRA parameters."""
+    for layer in m17.model.layers:
+        for name in targets:
+            parent = layer.self_attn if hasattr(layer.self_attn, name) else layer.mlp
+            mod = getattr(parent, name)
+            if not isinstance(mod, LoRALinear): setattr(parent, name, LoRALinear(mod, r, alpha).to(mod.weight.device))
+    m17._lora_mods = [m for m in m17.modules() if isinstance(m, LoRALinear)]
+    return [p for m in m17._lora_mods for p in (m.lora_A, m.lora_B)]
+
+class lora_off:
+    """Context manager: run m17 as the original frozen model (teacher quantities, source residuals)."""
+    def __init__(self, m17): self.mods = getattr(m17, "_lora_mods", [])
+    def __enter__(self):
+        for m in self.mods: m.enabled = False
+    def __exit__(self, *exc):
+        for m in self.mods: m.enabled = True
+
+def lora_state(m17):
+    return {n: p.detach().cpu().clone() for n, p in m17.named_parameters() if ".lora_" in n}
+
+def load_lora(m17, tag):
+    """Attach and load the LoRA saved next to the maps of reskv_TAG.pt, if any.  Returns the number
+    of tensors loaded (0 = no LoRA in that checkpoint).  Once attached it is active for every forward
+    of m17 in this process: prefill (native_kv) and every decode step."""
+    ck = torch.load(f"{OUT}/reskv_{tag}.pt")
+    if not ck.get("lora"): return 0
+    cfg = ck["lora_cfg"]; attach_lora(m17, cfg["r"], cfg["alpha"], cfg["targets"])
+    sd = dict(m17.named_parameters()); miss = [n for n in ck["lora"] if n not in sd]
+    assert not miss, miss[:3]
+    for n, p in ck["lora"].items(): sd[n].data.copy_(p.to(sd[n].dtype))
+    for p in m17.parameters(): p.requires_grad_(False)
+    return len(ck["lora"])
 
 
 _ROPE = {}
@@ -112,7 +169,9 @@ def hidden_states(model, ids):
     otherwise run_last_layers applies the norm twice."""
     box = {}
     hk = model.model.norm.register_forward_hook(lambda m, i, o: box.__setitem__("pre", i[0]))
-    try: hs = model(input_ids=ids.to(model.device), output_hidden_states=True, use_cache=False).hidden_states
+    try:
+        with lora_off(model), torch.no_grad():                    # source residuals come from the original model
+            hs = model(input_ids=ids.to(model.device), output_hidden_states=True, use_cache=False).hidden_states
     finally: hk.remove()
     out = tuple(hs[:-1]) + (box["pre"],)
     return out if model.device == torch.device(DEV) else tuple(h.to(DEV) for h in out)   # source model on another GPU
@@ -229,7 +288,7 @@ def pipeline_kl(m4, m17, maps, ids, P, Lc, source, prompt_w=1.0, chunk=256):
     The KL is computed in position chunks under activation checkpointing: a float log-softmax of
     a 2k x 152k logit matrix, times four, does not fit next to the models on a 24 GB card."""
     from torch.utils.checkpoint import checkpoint
-    with torch.no_grad():
+    with torch.no_grad(), lora_off(m17):
         t = m17(input_ids=ids, use_cache=False).logits[0]           # bf16 [T, V]
     cache, plg = prefill(m4, m17, maps, ids[:, :P], Lc, source)
     lg = continuation_logits(m17, cache, ids, P)                     # float [cont-1, V], positions P..end-1
@@ -282,7 +341,7 @@ def pipeline_attn(m4, m17, maps, ids, P, Lc, source, prompt_w=1.0, kl_w=1.0, pro
     from torch.utils.checkpoint import checkpoint
     tap = AttnTap(m17); H = None; sub = (not prompt_kl) and prompt_sub > 0
     try:
-        with torch.no_grad():
+        with torch.no_grad(), lora_off(m17):                                  # teacher = the original frozen 1.7B
             keep = 0 if prompt_kl else ids.shape[1] - P + 1                   # 0 = all positions
             box = {}; hk = m17.model.norm.register_forward_hook(lambda m, i, o: box.__setitem__("h", o)) if sub else None
             try: t = m17(input_ids=ids, use_cache=False, logits_to_keep=keep).logits[0]
@@ -393,6 +452,9 @@ def main():
     ap.add_argument("--prompt-attn", action="store_true", help="also match attention outputs at the prompt positions (teacher attn)")
     ap.add_argument("--pattn-pos", type=int, default=8192, help="prompt positions scored by --prompt-attn; a random subset above this")
     ap.add_argument("--prompt-sub", type=int, default=0, help="teacher attn: at lengths where the full prompt KL is off (above 2k), score the logit KL at this many random prompt positions")
+    ap.add_argument("--lora-r", type=int, default=0, help="rank of a LoRA on the 1.7B's projections, trained jointly with the maps (0 = frozen decoder)")
+    ap.add_argument("--lora-alpha", type=float, default=32.0); ap.add_argument("--lora-lr", type=float, default=2e-4)
+    ap.add_argument("--lora-targets", default=",".join(LORA_TARGETS), help="projection names per layer, e.g. q_proj,k_proj,v_proj,o_proj or gate_proj,up_proj,down_proj")
     ap.add_argument("--fit-only", action="store_true"); ap.add_argument("--layers", default="0-28")
     ap.add_argument("--tag", default=None)
     a = ap.parse_args(); Lc = a.cut
@@ -437,6 +499,10 @@ def main():
     if a.attn_heads:
         maps = [AttnMap(m.src, m.W.data, m.b.data, a.attn_heads, a.attn_dh, a.cut_mlp if i == Lc else 0) for i, m in enumerate(maps)]
     maps = ResMaps(maps).to(DEV).float(); n_par = sum(p.numel() for p in maps.parameters())
+    lora_targets = [t for t in a.lora_targets.split(",") if t]
+    lora_par = attach_lora(m17, a.lora_r, a.lora_alpha, lora_targets) if a.lora_r else []
+    n_lora = sum(p.numel() for p in lora_par)
+    if a.lora_r: print(f"  decoder LoRA r={a.lora_r} alpha={a.lora_alpha} on {lora_targets} x {m17.config.num_hidden_layers} layers: {n_lora/1e6:.2f}M params", flush=True)
 
     lens = [int(x) for x in a.lengths.split(",")]; elens = [256, 512, 1024, 2048]
     ev = {P: C.load_text_chunks(tok, N_EVAL, P + CONT, split="test", seed=0) for P in elens}
@@ -454,7 +520,8 @@ def main():
     torch.manual_seed(a.seed)
     lin = [p for n, p in maps.named_parameters() if not any(k in n for k in (".qkv.", ".o.", ".norm."))]
     att = [p for n, p in maps.named_parameters() if any(k in n for k in (".qkv.", ".o.", ".norm."))]
-    groups = [{"params": lin, "lr": a.lr}] + ([{"params": att, "lr": a.attn_lr}] if att else [])
+    groups = [{"params": lin, "lr": a.lr}] + ([{"params": att, "lr": a.attn_lr}] if att else []) + ([{"params": lora_par, "lr": a.lora_lr}] if lora_par else [])
+    trainable = list(maps.parameters()) + lora_par
     opt = torch.optim.AdamW(groups, weight_decay=0.0)
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, max(1, a.steps)); t0, run = time.time(), None
     for step in range(a.steps):
@@ -466,20 +533,24 @@ def main():
         if a.teacher == "attn": loss = pipeline_attn(m4, m17, maps, ids, P, Lc, a.source, a.prompt_w or 1.0, prompt_kl=(P <= 2048), attn_w=a.attn_w, prompt_attn=a.prompt_attn, pattn_pos=a.pattn_pos, prompt_sub=a.prompt_sub)
         elif a.teacher: loss = pipeline_kl(m4, m17, maps, ids, P, Lc, a.source, a.prompt_w or 1.0)
         else: loss = pipeline_nll(m4, m17, maps, ids, P, Lc, a.source, a.first_tok, a.prompt_w)
-        opt.zero_grad(); loss.backward(); torch.nn.utils.clip_grad_norm_(maps.parameters(), 1.0); opt.step(); sched.step()
+        opt.zero_grad(); loss.backward(); torch.nn.utils.clip_grad_norm_(trainable, 1.0); opt.step(); sched.step()
         run = loss.item() if run is None else 0.98 * run + 0.02 * loss.item()
         if step % 250 == 0:
-            print(f"  [{step:4d}] lm ema={run:.4f} train-ppl~{math.exp(run):6.2f}  {time.time()-t0:.0f}s", flush=True)
+            print(f"  [{step:4d}] lm ema={run:.4f} train-ppl~{math.exp(run):6.2f}  {time.time()-t0:.0f}s  peak {torch.cuda.max_memory_allocated()/2**30:.1f}GB", flush=True)
     rF = full_eval("final") if a.steps else r0
-    print(f"\n[{a.tag}] RESULT cut={Lc} source={a.source} cut_src={a.cut_src} cut_mlp={a.cut_mlp} attn={a.attn_heads}x{a.attn_dh} first_tok={a.first_tok} prompt_w={a.prompt_w} teacher={a.teacher or 'none'} seed={a.seed} steps={a.steps}  " +
+    print(f"\n[{a.tag}] RESULT cut={Lc} source={a.source} cut_src={a.cut_src} cut_mlp={a.cut_mlp} attn={a.attn_heads}x{a.attn_dh} first_tok={a.first_tok} prompt_w={a.prompt_w} teacher={a.teacher or 'none'} lora_r={a.lora_r} seed={a.seed} steps={a.steps}  " +
           "  ".join(f"P{P}: {r0[P]['ppl']:.3f}->{rF[P]['ppl']:.3f}" for P in elens), flush=True)
     json.dump({"tag": a.tag, "cut": Lc, "source": a.source, "spec": maps.spec(), "params_M": n_par / 1e6,
                "steps": a.steps, "seed": a.seed, "corpus": a.corpus, "train_lengths": lens,
                "cut_src": a.cut_src, "multi_src": a.multi_src, "multi_layers": a.multi_layers, "cut_mlp": a.cut_mlp, "attn": [a.attn_heads, a.attn_dh], "attn_lr": a.attn_lr, "first_tok": a.first_tok, "prompt_w": a.prompt_w, "teacher": a.teacher, "attn_w": a.attn_w, "prompt_attn": a.prompt_attn, "prompt_sub": a.prompt_sub,
+               "lora_r": a.lora_r, "lora_alpha": a.lora_alpha, "lora_lr": a.lora_lr, "lora_targets": lora_targets, "lora_params_M": n_lora / 1e6,
+               "peak_mem_GB": torch.cuda.max_memory_allocated() / 2**30,
                "step0": {P: r0[P]["ppl"] for P in elens}, "final": {P: rF[P]["ppl"] for P in elens},
                "nll_final": {P: rF[P]["nll"] for P in elens}},
               open(f"{C.RESULTS}/hv2_{a.tag}.json", "w"), indent=2)
-    torch.save({"maps": maps.state_dict(), "spec": maps.spec(), "cut": Lc, "source": a.source}, f"{OUT}/reskv_{a.tag}.pt")
+    ck = {"maps": maps.state_dict(), "spec": maps.spec(), "cut": Lc, "source": a.source}
+    if a.lora_r: ck.update({"lora": lora_state(m17), "lora_cfg": {"r": a.lora_r, "alpha": a.lora_alpha, "targets": lora_targets}})
+    torch.save(ck, f"{OUT}/reskv_{a.tag}.pt")
 
 
 if __name__ == "__main__":

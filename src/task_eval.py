@@ -65,6 +65,8 @@ class Cond:
                 elif sfx == "mix": self.firstmix = True  # first token from the 4B's and the stitched 1.7B's log-probs added
                 else: self.suffix = int(sfx)            # last S prompt tokens recomputed natively
             maps, Lc, source = R.load_maps(tag)
+            n_lora = R.load_lora(m17, tag)                          # decoder LoRA trained with the maps, if the checkpoint has one
+            if n_lora: print(f"  [{name}] decoder LoRA loaded ({n_lora} tensors); active for prefill and every decode step, for every condition in this process", flush=True)
             self.reskv = (R, maps, Lc, source); return
         if ":" in name:
             kind, tag = name.split(":")
