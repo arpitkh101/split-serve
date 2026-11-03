@@ -86,7 +86,7 @@ is that whole gap (section 21). What moves it is training data: synthetic copy-s
 examples in the mix (`--corpus qamixcopy`) take the 4B-sourced pipeline to 48 to 61 on
 ALFWorld across two seeds against 66 to 70 for re-prefill, put the state tracker at parity
 and leave QA unchanged; a 4B logit target, a dense prompt loss, MLP maps, a decoder LoRA
-and an 8B prefiller each moved nothing (section 22). On the QA sets, giving the pipeline the native 1.7B's first
+and an 8B prefiller each moved nothing on ALFWorld (section 22); the 8B prefiller is worth 7 EM on SQuAD at 4k and 8k. On the QA sets, giving the pipeline the native 1.7B's first
 token (an oracle) halves the gaps; swapping native keys and values into the stitched cache
 block by block puts the other half in layers 12 to 23. A native question suffix, ridge-only
 maps, attention matching at prompt positions, two source layers in that band and a mixed

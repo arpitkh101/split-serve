@@ -1044,3 +1044,13 @@ the runs were cut off when the shared GPUs were taken, and the 8B alone had reac
 HotpotQA at 2k (the 4B: 45.6). The reading matches section 21: the cross-model gap has
 nothing to do with the prefiller's size, and the data is the lever. The 8B with the copy
 mix is the natural next run.
+
+**8B rows, completed later.** SQuAD with the 8B prefiller: 48.2 / 50.0 / 46.8 (gaps -19.6
+[-24.2, -15.0], -16.6 [-21.4, -11.8], -11.6 [-16.4, -6.8]) against the 4B pair's 49.4 /
+42.6 / 39.8, so the bigger prefiller is worth about 7 EM at 4k and 8k on span questions,
+where the 8B alone reads better than the 4B (60.0 / 63.8 / 67.0 against 59.6 / 51.8 /
+50.8). The 8B on the copy mix (`copy8b_c28`): ALFWorld 37.7 / 40.3 / 41.0 (-28.3, -29.7,
+-29.3), up from 19.7 / 29.7 / 30.7 without the copy data but well under the 4B pair's 48
+to 61; SQuAD 2k 47.2. So the copy data works for both pairs and the 4B pair profits
+more; the 8B pair's HotpotQA rows are still missing (its run was cut off twice by other
+users' jobs on the shared GPUs).
